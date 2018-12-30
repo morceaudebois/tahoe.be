@@ -1,0 +1,295 @@
+// En très large
+@media screen and (min-width: 1800px) {
+	header .container {
+		justify-content: space-between;
+	}
+
+	nav ul li a {
+		font-size: 1.5em;
+	}
+
+	.fullHeight .introContainer .intro {
+		max-width: 650px;
+
+		.introTitle {
+			font-size:3.8em;
+		}
+
+		.introText {
+			font-size: 1.5em;
+		}
+	}
+
+	.socialContainer .social li {
+		font-size: 1.5em;
+	}   
+}
+
+// En mobile
+@media screen and (max-width: 600px) {
+
+// OLED friendly dark mode
+	body {
+		background-color: $trueblack;
+	}
+
+	footer .footerLinksContainer .footerLink .ghost {
+		opacity: 0;
+	}
+
+	.sectionTitleContainer .sectionSubtitle {
+		font-size: 1.2em;
+	}
+
+	.projectSection .gridContainer .fullprojectLink {
+		padding-right: 0;
+		justify-content: center;
+	}
+
+	.photoSection .stickyContained .animatedWrap .unsplashLink, .projectSection .gridContainer .fullprojectLink {
+		background-color: $trueblack;
+
+		a {
+			font-size: 1em;
+		}
+	}
+
+	.fullHeight {
+		margin: 2.5em .5em;
+
+		.getDown {
+			height: auto;
+		}
+
+		.introContainer {
+			height: auto;
+			min-height: 0;
+
+			.intro {
+				max-width: 390px;
+				height: auto;
+
+				.introTitle {
+					font-size: 1.9em;
+					margin-bottom: 1em;
+				}
+
+				.firstBr {
+					display: none;
+				}
+
+				.introText {
+					font-size: 1.2em;
+					text-align:justify;
+				}
+			}
+		}
+
+		.socialContainer {
+			height: auto;
+			min-height: 0;
+			margin-top: 2em;
+
+			.social li {
+				margin: 0 1em;
+				font-size: 1.2em;
+			}
+		}
+	}
+
+	.photoSection .stickyContained .sectionTitleContainer {
+		padding: 30px 15px;
+	}
+
+	.photoSection .stickyContained .animatedWrap {
+		img {
+			height: 60vh;
+		}
+
+		.unsplashLink {
+			padding-right: 1em;
+		}
+	}
+
+	.statsWrap {
+		padding-right: 5px;
+		padding-left: 5px;
+
+		.singleStat .barreTitle {
+			justify-content: left;
+		}
+	}
+
+	.projectSection .gridContainer { 
+		width: 97%;
+
+		.expandedContent {
+			flex-wrap: wrap-reverse;
+
+			.imageContainer {
+				width: 100%;
+			}
+
+			.textContainer {
+				width: 100%;
+				padding: .5em .5em 1.5em .5em;
+
+				.expandedTitle {
+					font-size: 2em;
+					margin-top: 1.4em;
+				}
+
+				.expandedSubtitle {
+					font-size: 1.2em;
+				}
+
+				.expandedParagraph {
+					text-alig: left;
+					font-size: 1.2em;
+				}
+
+				div .expandedLink {
+					font-size: 1.3em;
+				}
+			}
+		}
+
+		.grid > li {
+			padding-right: 0px;
+			padding-left: 0px;
+		}
+	}
+}
+
+// mobile landscape
+@media screen and (max-width: 736px) and (max-height: 414px) {
+	.fullHeight {
+		margin: 2.5em .5em;
+
+		.introContainer {
+			height: auto;
+			min-height: 0;
+
+			.intro .introTitle {
+				font-size: 2.5em;
+			}
+		}
+
+		.socialContainer {
+			min-height: 240px;
+		}
+	}
+}
+
+@media screen and (min-width: 936px) {
+	.projectSection .gridContainer .expandedContent .textContainer .justToCenter .expandedTitle {
+		margin-top: 0px;
+	}
+
+	.statsSection {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}
+
+@media screen and (max-width: 330px) {
+	.fullHeight .introContainer .intro .introTitle {
+		font-size: 1.6em;
+	}
+
+	.fullHeight .introContainer .intro .introText {
+		font-size: 1em;
+	}
+
+	header .container .navContainer nav ul li a {
+		margin: .2em .6em;
+	}
+
+	.fullHeight .socialContainer .social li {
+		margin: 0 0.8em;
+		font-size: 1.1em;
+	}
+
+	.photoSection .stickyContained .animatedWrap .unsplashLink a, .projectSection .gridContainer .fullprojectLink a {
+	font-size: .9em;
+	}
+
+	.logoWrap h1 {
+		font-size: 1.8em;
+	}
+}
+
+@media screen and (max-height: 600px) {
+	.fullHeight {
+		height:auto;
+	}
+}
+
+// Pour le light mode / dark mode
+
+@media (prefers-color-scheme: dark) { 
+	.lightGetDown {
+		display: none;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		color: $dark;
+		background-color: $light;
+	}
+
+	a, a:link, a:visited {
+		color: $dark;
+	}
+
+	a:before {
+		background-color: $dark;
+	}
+
+	.lightTriangle, .lightGetDown, .lightGetUp {
+		display: block;
+	}
+
+	.darkTriangle, .darkGetDown, .darkGetUp {
+		display: none;
+	}
+
+	.projectSection .gridContainer .expandedContent .textContainer {
+		color: $light;
+		background-image: url("../images/paper_b.jpg");
+
+		> div .expandedLink {
+			color: $light;
+			border-bottom: 1px solid $light;
+		}
+	}
+
+	html body div#gotoprojects.projectSection div.gridContainer a.closeButton.active {
+		background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNLjcuN2wxOCAxOG0tMTggMGwxOC0xOCIvPjwvc3ZnPg==) no-repeat scroll 50% 50% transparent;
+	}
+
+	.projectSection .gridContainer .grid > li a.active::after {
+		border-bottom: 0.375em solid $dark;
+	}
+
+	.projectSection .gridContainer .expandingContainer {
+		background-color: $light;
+	}
+
+	.photoSection .stickyContained .animatedWrap .unsplashLink, .projectSection .gridContainer .fullprojectLink {
+		background-color: $light;
+
+		a {
+			color: $dark;
+		}
+	}
+
+	footer .footerLinksContainer .footerLink .ghost {
+		color: $light;
+
+		&:before {
+			background-color: $light;
+		}
+	}
+}

@@ -1,0 +1,251 @@
+// Problèmes connus :
+//.expandingContainer est plus large que .grid et dépasse sur le côté quand on ajoute un padding égal. Peut-être un problème de box-sizing ?
+
+.projectSection {
+    @include alignCenter();
+    flex-direction: column;
+
+    .gridContainer {
+        position: relative;
+        width: 95%;
+
+        .grid {
+            display: block;
+            padding: 1em 0;
+            margin: 0;
+
+            > li {
+                box-sizing: border-box;
+                float: left;
+                padding: 1em;
+                list-style: none;
+                @include blobLink-S();
+
+                a {
+                    display: block;
+                    height: auto;
+                    position: relative;
+                    text-decoration: none;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    background-color: none;
+
+
+                    &:before {
+                        content: none;
+                    }
+
+                    &.active {
+                        opacity: 1;
+                        
+                        // Le petit triangle
+                        &:after {
+                            background-color: transparent;
+                            border-bottom: 0.375em solid $light;
+                            border-left: 0.375em solid transparent;
+                            border-right: 0.375em solid transparent;
+                            bottom: -0.5em;
+                            content: '';
+                            height: 0;
+                            font-size: 2em;
+                            left: 50%;
+                            margin-left: -0.375em;
+                            position: absolute;
+                            width: 0;
+                        }
+                    }
+
+                    img {
+                        width: 100%;
+                        border-radius: $radius;
+                    }
+
+                    .blocTitle {
+                        width: 100%;
+                        height: 5em;
+                        color: #fff;
+                        background-color: rgba(18, 18, 18, 0.85);
+                        z-index: 1;
+                        position: absolute;
+                        bottom: 5px;
+                        border-radius: 0px 0px $radius $radius;
+                        &:hover {
+                            opacity: 1!important;}
+
+                        .mainBlocTitle {
+                            position: absolute;
+                            padding-top:.7em;
+                            padding-left: .3em;
+                            font-size: 1.3em;
+                        }
+
+                        .blocDesc {
+                            position: absolute;
+                            bottom: .7em;
+                            right: .5em;
+                            font-size: 1em;
+                        }
+                    }
+                }
+
+                @media only screen and (max-width: 39.99em) {
+                    width: 100%;
+
+                    &:nth-of-type(1) {
+                        clear: left;
+                    }
+                }
+
+                @media only screen and (min-width: 40em) and (max-width: 69.99em) {
+                    width: percentage(1/2);
+
+                    &:nth-of-type(2n+1) {
+                        clear: left;
+                    }  
+                }
+
+                @media only screen and (min-width: 70em) {
+                    width: percentage(1/4);
+
+                    &:nth-of-type(4n+1) {
+                        clear: left;
+                    }
+                }
+            }
+        }
+
+        .fullprojectLink {
+            height: 5vh;
+            min-height: 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 3em;
+            padding-bottom: 3vh;
+            background-color: $dark;
+
+            a {
+                @include blobLink();
+                font-size: 1.3em;
+            }
+        }
+
+        .spacer {
+            clear: both;
+            display: block;
+        }
+
+        .expandingContainer {
+            border-radius: $radius_L;
+            background-color: $dark;
+            display: none;
+            overflow: hidden;
+            width: 100%;
+
+            &.expanded,
+            &:target {
+                display: block;
+            }
+        }
+
+        .expandedContent {
+            background-color: $dark;
+            border-radius: $radius_L;
+            width: auto;
+            overflow: hidden;
+            display: flex;
+
+            .imageContainer {
+                width: 50%;
+                float: left;
+                overflow: hidden;
+
+                img {
+                   width:100%; 
+                    height:100%; 
+                    object-fit:cover; 
+                }
+            }
+
+            .textContainer {
+                background-image: url('../images/paper.jpg');
+                background-size: 50%;
+                width: 50%;
+                float: right;
+                padding: 1.8em;
+                color: $dark;
+                display: flex;
+                align-items: center;
+
+                .justToCenter {
+
+                    .expandedTitle {
+                        font-family: $subtitleFont;
+                        text-align: center;
+                        font-size: 2.2em;
+                        margin-bottom: 0;
+                    }
+
+                    .expandedSubtitle {
+                        font-family: $subtitleFont;
+                        text-align: center;
+                        font-size: 1.2em;
+                        margin-top: 0;
+                    }
+
+                    .expandedParagraph {
+                        font-family: $textFont;
+                        font-size: 1.3em;
+                        text-align: justify;
+                    }
+
+                    > div {
+                        text-align: center;
+
+                        .expandedLink {
+                            color: $dark;
+                            font-size: 1.5em;
+                            display: inline-block;
+
+                            padding-bottom: 5px;
+
+                            &:hover {
+                                border-bottom: none;
+                            }
+
+                            &:before {
+                                background-color: $dark;
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+
+        .closeButton {
+            background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cGF0aCBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNLjcuN2wxOCAxOG0tMTggMGwxOC0xOCIvPjwvc3ZnPg==) no-repeat scroll 50% 50% transparent;
+            color: #fff;
+            display: inline-block;
+            height: 20px;
+            line-height: 1;
+            overflow: hidden;
+            padding: 1.5em 2em;
+            text-decoration: none;
+            text-indent: 5em;
+            white-space: nowrap;
+            width: 20px;
+            will-change: opacity;
+            z-index: 5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+
+            &.active {
+                transition: opacity 0.2s;
+            }
+            
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
