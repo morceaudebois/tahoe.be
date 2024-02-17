@@ -15,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
+
+Route::get('/photography', function () {
+    return 'later';
+})->name('photography');
+
+Route::get('/about', function () {
+    return 'later';
+})->name('about');
 
 Route::middleware([
     'auth:sanctum',

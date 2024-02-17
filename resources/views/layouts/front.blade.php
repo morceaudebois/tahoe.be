@@ -17,11 +17,14 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
+    <body class="dark:bg-[#0B0C14]">
         @include('front.nav')
-        <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+        
+        <main class="my-6 px-4 max-w-6xl mx-auto font-sans text-gray-900 dark:text-gray-100 antialiased">
             {{ $slot }}
-        </div>
+        </main>
+
+        <div class="grainy-bg pointer-events-none absolute inset-0 z-10 opacity-[0.08]"></div>
 
         @livewireScripts
     </body>
