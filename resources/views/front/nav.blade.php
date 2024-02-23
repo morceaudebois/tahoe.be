@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    <ul class="flex items-center gap-7 text-2xl">
+    <ul class="flex items-center gap-7 opacity-80 text-2xl">
         <li>
             <a href="{{ route('home') }}">Projects</a>
         </li>
