@@ -6,16 +6,16 @@
         </a>
     </div>
 
-    <ul class="flex items-center gap-7 opacity-80 text-2xl">
-        <li>
+    <ul class="flex items-center gap-7 text-2xl">
+        <li class="opacity-80 hover:opacity-100 will-change-transform">
             <a href="{{ route('home') }}">Projects</a>
         </li>
 
-        <li>
+        <li class="opacity-80 hover:opacity-100 will-change-transform">
             <a href="{{ route('photography') }}">Photography</a>
         </li>
 
-        <li>
+        <li class="opacity-80 hover:opacity-100 will-change-transform">
             <a href="{{ route('about') }}">About</a>
         </li>
     </ul>
