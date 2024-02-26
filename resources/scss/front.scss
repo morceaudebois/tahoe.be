@@ -6,8 +6,8 @@ body {
 
     #bgGlow {
         position: absolute;
-        top: -200px;
-        width: 50%;
+        top: -250px;
+        width: 66%;
         min-width: 600px;
         margin-inline: auto;
         right: 0; left: 0;
@@ -83,13 +83,46 @@ body {
                 border-radius: 20px;
                 position: relative;
                 width: 100%;
-        
+                overflow: hidden;
+                scale: 1;
+                transition: .4s scale, .4s background-color;
+                
+                // glass effect
+                &:before {
+                    position: absolute;
+                    content: "";
+                    box-shadow: 0 0 100px 40px rgba(255, 255, 255, 0.15);
+                    top: -10%;
+                    left: -100%;
+                    transform: rotate(-45deg) ;
+                    height: 60rem;
+                    transition: .4s all;
+                }
+
+                &:hover:before {
+                    top: -100%;
+                    left: 200%;
+                }
+
+                &:hover {
+                    background-color: #212233;
+                    scale: 1.015;
+                    transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+                    border: 1px solid #3b3f55;
+                }
+                
                 .info {
                     padding-inline: 1.5em;
 
                     h3 {
                         font-size: 1.875em;
                         font-weight: bold;
+                    }
+
+                    h6 {
+                        color: #E73C7E;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
         
                     p {
@@ -104,34 +137,49 @@ body {
                         span {
                             border-radius: 10px;
                             background-color: #1f2937;
-                            padding: 0.5em;
+                            padding: 0.4em;
+                            padding-bottom: .45em;
+                            line-height: 1.3em;
                             padding-top: 0.25em;
-                            opacity: 0.9;
                             box-sizing: border-box;
+                            transition: .4s background-color;
                         }
                     }
                 }
         
-                img {
+                .imgContainer {
                     display: block;
                     border-radius: 20px;
                     height: 100%;
                     width: 100%;
+                    aspect-ratio: 16/9;
+                    overflow: hidden;
                 }
+
             }
 
             #latest {
                 display: flex;
                 gap: 2.25rem;
 
-
                 .info {
                     padding-right: 3em;
+
+                    h6 {
+                        font-size: .9em;
+                        margin-bottom: 1em;;
+                    }
                 }
 
-                .projects a img {
-                    max-width: 50%;
+                a {
+                    &:hover {
+                        .tagContainer span {
+                            background-color: #263243;
+                        }
+                    }
                 }
+
+               
             }
 
             #projectGrid {
@@ -150,6 +198,11 @@ body {
                     .info {
                         padding: 1em;
 
+                        h6 {
+                            font-size: .8em;
+                            margin-bottom: .5em;
+                        }
+
                         h3 {
                             font-size: 1.25rem;
                             font-weight: bold;
@@ -164,6 +217,15 @@ body {
                         position: absolute;
                         bottom: 15px;
                         right: 15px;
+
+                        span {
+                            font-size: .9em;
+                            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                            backdrop-filter: blur(4em);
+                            -webkit-backdrop-filter: blur(4em);
+                            background-color: #191919a5;
+                            border: 1px solid rgba(255, 255, 255, 0.076);
+                        }
                     }
 
                     img {
