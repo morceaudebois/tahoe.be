@@ -2,7 +2,7 @@ import './bootstrap';
 
 
 // Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
-const pres = document.querySelectorAll(".project");
+const pres = document.querySelectorAll(".tile");
 
 pres.forEach(function(pre) {
     document.addEventListener("mousemove", (e) => {

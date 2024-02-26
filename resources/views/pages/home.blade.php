@@ -1,8 +1,8 @@
 <x-front-layout>
-    <div id="projects">
+    <section id="projects">
         {{-- Latest --}}
         <div id="latest">
-            <a href="#" title="" alt="" class="project">
+            <a href="#" title="" alt="" class="tile">
                 <div class="info">
                     <h6>web app</h6>
                     <h3>My Favorite Dogs</h3>
@@ -24,7 +24,7 @@
         <div id="projectGrid">
             @foreach(range(1, 8) as $index)
 
-                <a href="#" title="" alt="" class="project">
+                <a href="#" title="" alt="" class="tile">
                     <div class="info">
                         <h6>Browser extension</h6>
                         <h3>My Favorite Dogs</h3>
@@ -46,5 +46,5 @@
         </div>
 
         {{-- and then the rest --}}
-    </div>
+    </section>
 </x-front-layout>
