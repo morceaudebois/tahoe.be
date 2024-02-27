@@ -15,14 +15,12 @@
                     </div>
                 </div>
 
-                <div class="imgContainer">
-                    <img src="https://picsum.photos/1920/1081" alt="">
-                </div>
+                <img src="https://picsum.photos/1920/1081" alt="">
             </a>
         </div>
 
         <div id="projectGrid">
-            @foreach(range(1, 8) as $index)
+            @foreach(range(1, 9) as $index)
 
                 <a href="#" title="" alt="" class="tile">
                     <div class="info">
@@ -37,10 +35,7 @@
                         </div>
                     </div>
 
-                    <div class="imgContainer">
-                        <img height='100%' src="https://picsum.photos/1920/1080" alt="">
-                    </div>
-                    
+                    <img height='100%' src="https://picsum.photos/1920/1080" alt="">                    
                 </a>
             @endforeach
         </div>

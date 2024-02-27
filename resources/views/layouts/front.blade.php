@@ -28,6 +28,8 @@
         
         <main>{{ $slot }}</main>
 
+        @include('front.footer')
+
         <div id="grainy-bg"></div>
 
         @livewireScripts

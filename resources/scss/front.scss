@@ -1,4 +1,6 @@
 $screenPadding: 1.5em;
+$accentColor: #E73C7E;
+$maxWidth: 1152px;
 
 body {
     background-color: #0B0C14;
@@ -25,6 +27,27 @@ body {
         width: 100%;
         height: 100%;
     }
+
+    .nice-hr {
+        line-height: 1em;
+        position: relative;
+        outline: 0;
+        border: 0;
+        text-align: center;
+        height: 1.5em;
+        opacity: .9;
+
+        &:before {
+            content: '';
+            // use the linear-gradient for the fading effect
+            background: linear-gradient(to right, transparent, #818078, transparent);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+        }
+    }
 }
 
 nav {
@@ -33,7 +56,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 72em;
+    max-width: $maxWidth;
     margin-inline: auto;
     padding-inline: $screenPadding;
     color: #fff;
@@ -73,7 +96,7 @@ nav {
 main {
     padding-inline: $screenPadding;
     margin-block: 1em;
-    max-width: 1152px;
+    max-width: $maxWidth;
     margin-inline: auto;
 
     #projects {
@@ -88,30 +111,35 @@ main {
             width: 100%;
             overflow: hidden;
             scale: 1;
-            transition: .4s scale, .4s background-color;
+            transition: .4s scale, .4s background-color, .4s border;
 
             &:hover {
                 background-color: #212233;
-                scale: 1.015;
-                transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
                 border: 1px solid #3b3f55;
             }
 
-            // glass effect
-            &:before {
-                position: absolute;
-                content: "";
-                box-shadow: 0 0 100px 40px rgba(255, 255, 255, 0.15);
-                top: -10%;
-                left: -100%;
-                transform: rotate(-45deg);
-                height: 60rem;
-                transition: .4s all;
-            }
+            @media (prefers-reduced-motion: no-preference) {
+                &:hover {
+                    scale: 1.015;
+                    transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+                }
 
-            &:hover:before {
-                top: -100%;
-                left: 200%;
+                // glass effect
+                &:before {
+                    position: absolute;
+                    content: "";
+                    box-shadow: 0 0 100px 40px rgba(255, 255, 255, 0.15);
+                    top: -10%;
+                    left: -100%;
+                    transform: rotate(-45deg);
+                    height: 60rem;
+                    transition: .4s all;
+                }
+            
+                &:hover:before {
+                    top: -100%;
+                    left: 200%;
+                }
             }
 
             .info {
@@ -123,7 +151,7 @@ main {
                 }
 
                 h6 {
-                    color: #E73C7E;
+                    color: $accentColor;
                     font-weight: bold;
                     text-transform: uppercase;
                 }
@@ -150,12 +178,13 @@ main {
                 }
             }
 
-            .imgContainer {
+            img {
                 display: block;
                 border-radius: 20px;
                 height: 100%;
                 width: 100%;
                 aspect-ratio: 16/9;
+                object-fit: cover;
                 overflow: hidden;
             }
 
@@ -238,12 +267,105 @@ main {
     }
 }
 
+footer {
+    max-width: $maxWidth;
+    padding-inline: 1.5em;
+    margin: 3em auto 2em auto;
+    color: rgba(226, 232, 255, 0.9);
+
+    a {
+        color: #e73c7ed1;
+        font-weight: bold;
+
+        &:hover {
+            color: $accentColor;
+        }
+    }
+
+    .top {
+        text-align: center;
+    }
+
+    .nice-hr {
+        margin-block: 1em;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        font-size: .9em;
+
+        > * {
+            flex: 1;
+        }
+
+        .social {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 1em;
+
+            a {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    width: 1.5em;
+
+                    path {
+                        fill: rgba(226, 232, 255, 0.9);
+                    }
+                }
+
+                &:hover {
+                    svg path {
+                        fill: rgba(226, 232, 255, 1);
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 
 
+// tablets
+@media only screen and (max-width: 850px) and (min-width: 630px) {
+    nav {
+        font-size: .9em;
 
+        #right {
+            gap: 1.15em;
+        }
+    }
 
+    main #projects {
+        #latest {
+            .info {
+                font-size: .9em;
+                padding-block: 1em;
+
+                h6 {
+                    margin-bottom: .5em;
+                }
+
+                p {
+                    margin-top: .5em;
+                }
+            }
+        }
+        #projectGrid {
+            margin-top: 1.5em;
+            gap: 1.5em;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+    }
+}
+
+// phones
 @media only screen and (max-width: 630px) {
     $screenPadding: 1em; 
 
@@ -283,6 +405,18 @@ main {
             margin-top: 3em;
             gap: 1.25em;
             grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+    }
+
+    footer {
+        .box {
+            flex-direction: column;
+            gap: 1em;
+            text-align: center;
+
+            .social {
+                margin-top: 5px;;
+            }
         }
     }
 }
