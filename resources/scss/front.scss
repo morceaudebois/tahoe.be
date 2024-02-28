@@ -93,6 +93,16 @@ nav {
     }
 }
 
+article {
+    padding: 0.25em;
+    background-color: #1b1c2a;
+    border: 1px solid #282B3A;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
 main {
     padding-inline: $screenPadding;
     margin-block: 1em;
@@ -100,18 +110,62 @@ main {
     margin-inline: auto;
 
     #projects {
-        a.tile {
-            display: flex;
-            align-items: center;
-            padding: 0.25em;
-            background-color: #1b1c2a;
-            border: 1px solid #282B3A;
-            border-radius: 20px;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            scale: 1;
-            transition: .4s scale, .4s background-color, .4s border;
+        article {
+            transition: .3s scale, .3s background-color, .3s border;
+
+            a {
+                display: flex;
+                align-items: center;
+                position: relative;
+                width: 100%;
+                scale: 1;
+                
+                .info {
+                    padding-inline: 1.5em;
+        
+                    h3 {
+                        font-size: 1.875em;
+                        font-weight: bold;
+                    }
+        
+                    h6 {
+                        color: $accentColor;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+        
+                    p {
+                        margin-block: 1em;
+                    }
+        
+                    .tagContainer {
+                        display: flex;
+                        gap: 0.5em;
+                        align-items: center;
+        
+                        span {
+                            border-radius: 10px;
+                            background-color: #1f2937;
+                            padding: 0.4em;
+                            padding-bottom: .45em;
+                            line-height: 1.3em;
+                            padding-top: 0.25em;
+                            box-sizing: border-box;
+                            transition: .4s background-color;
+                        }
+                    }
+                }
+        
+                img {
+                    display: block;
+                    border-radius: 20px;
+                    height: 100%;
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    object-fit: cover;
+                    overflow: hidden;
+                }
+            }
 
             &:hover {
                 background-color: #212233;
@@ -135,59 +189,12 @@ main {
                     height: 60rem;
                     transition: .4s all;
                 }
-            
+
                 &:hover:before {
                     top: -100%;
                     left: 200%;
                 }
             }
-
-            .info {
-                padding-inline: 1.5em;
-
-                h3 {
-                    font-size: 1.875em;
-                    font-weight: bold;
-                }
-
-                h6 {
-                    color: $accentColor;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                }
-
-                p {
-                    margin-block: 1em;
-                }
-
-                .tagContainer {
-                    display: flex;
-                    gap: 0.5em;
-                    align-items: center;
-
-                    span {
-                        border-radius: 10px;
-                        background-color: #1f2937;
-                        padding: 0.4em;
-                        padding-bottom: .45em;
-                        line-height: 1.3em;
-                        padding-top: 0.25em;
-                        box-sizing: border-box;
-                        transition: .4s background-color;
-                    }
-                }
-            }
-
-            img {
-                display: block;
-                border-radius: 20px;
-                height: 100%;
-                width: 100%;
-                aspect-ratio: 16/9;
-                object-fit: cover;
-                overflow: hidden;
-            }
-
         }
 
         #latest {
@@ -203,11 +210,9 @@ main {
                 }
             }
 
-            a {
-                &:hover {
-                    .tagContainer span {
-                        background-color: #263243;
-                    }
+            article:hover {
+                .tagContainer span {
+                    background-color: #263243;
                 }
             }
         }
@@ -218,12 +223,11 @@ main {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             margin-top: 1.75em;
 
-            a {
+            article a {
                 position: relative;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 0.25em;
 
                 .info {
                     padding: 1em;
@@ -380,7 +384,7 @@ footer {
     }
 
     main #projects {
-        #latest .tile {
+        #latest article a {
             flex-direction: column-reverse;
 
             .info {

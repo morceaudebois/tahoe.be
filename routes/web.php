@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+Route::get('/post', function () {
+    return view('pages.post');
+})->name('post');
+
 Route::get('/photography', function () {
     return 'later';
 })->name('photography');

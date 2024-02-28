@@ -2,9 +2,9 @@ import './bootstrap';
 
 
 // Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
-const pres = document.querySelectorAll(".tile");
+const articles = document.querySelectorAll("#projects article");
 
-pres.forEach(function(pre) {
+articles.forEach(function(pre) {
     document.addEventListener("mousemove", (e) => {
         rotateElement(e, pre)
     })
