@@ -1,0 +1,52 @@
+body.post main {
+    article {
+        padding: 1.15em;
+        padding-bottom: 2.5em;
+
+        header h6, header h1, header .tagContainer, section {
+            margin-inline: 30px;
+        }
+
+        header {
+            text-align: center;
+
+            img {
+                border-radius: $radius;
+                aspect-ratio: 2/1;
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+                display: block;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
+            h6 {
+                margin-top: 30px;
+                color: $accentColor;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            h1 {
+                font-weight: bold;
+                margin-block: 10px;
+                font-size: 2.2em;
+            }
+            .tagContainer {
+                justify-content: center;
+            }
+        }
+
+        section {
+            margin-top: 30px;
+            font-size: 1.3em;
+
+            p {
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+        }
+
+
+    }
+}
