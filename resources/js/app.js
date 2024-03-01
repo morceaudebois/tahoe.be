@@ -29,6 +29,6 @@ function rotateElement(event, element) {
     // console.log(offsetX, offsetY);
 
     // set rotation
-    element.style.setProperty("--rotateX", (offsetX/4) + "deg")
-    element.style.setProperty("--rotateY", -1 * (offsetY/4) + "deg")
+    element.style.setProperty("--rotateX", (offsetX/6) + "deg")
+    element.style.setProperty("--rotateY", -1 * (offsetY/6) + "deg")
 }

@@ -1,7 +1,16 @@
 $screenPadding: 1.5em;
 $accentColor: #E73C7E;
+$whiteButActuallyBlue: rgba(226, 232, 255, 0.9);
 $radius: 20px;
 $maxWidth: 1152px;
+
+@mixin glassBackground() {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    backdrop-filter: blur(4em);
+    -webkit-backdrop-filter: blur(4em);
+    background-color: #191919a5;
+    border: 1px solid rgba(255, 255, 255, 0.076);
+}
 
 body {
     background-color: #0B0C14;
@@ -102,6 +111,65 @@ article {
     overflow: hidden;
     position: relative;
     width: 100%;
+
+    .likeContainer {
+        display: flex;
+        align-items: center;
+        gap: .4em;
+        cursor: pointer;
+
+        .likeCounter {
+            font-weight: bold;
+            font-size: .9em;
+            transition: color ease-in .2s;
+            color: rgba(226, 232, 255, 0.8);
+        }
+
+        svg {
+            height: 1em;
+            transition: rotate ease-in .2s, scale ease .2s, box-shadow ease .2s;
+            rotate: 0deg;
+            scale: 1;
+
+            path {
+                fill: rgba(226, 232, 255, 0.7);
+            }
+        }
+
+        &.glass {
+            padding: .4em .7em;
+            border-radius: 10px;
+            @include glassBackground();
+            position: absolute;
+            bottom: 1.5em;
+            right: 1.5em;
+        }
+
+        &.liked {
+            .likeCounter {
+                color: rgba(226, 232, 255);
+            }
+
+            svg path {
+                fill: $accentColor;
+            }
+        }
+
+        &:not(.liked):hover {
+            .likeCounter {
+                color: rgba(226, 232, 255);
+            }
+
+            svg {
+                rotate: 10deg;
+                scale: 1.1;
+
+                path {
+                    fill: rgba(229, 146, 191)
+                }
+            }
+        }
+    }
 }
 
 main {
@@ -135,7 +203,7 @@ footer {
     max-width: $maxWidth;
     padding-inline: 1.5em;
     margin: 3em auto 2em auto;
-    color: rgba(226, 232, 255, 0.9);
+    color: $whiteButActuallyBlue;
 
     a {
         color: #e73c7ed1;

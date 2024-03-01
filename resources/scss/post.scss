@@ -10,15 +10,21 @@ body.post main {
         header {
             text-align: center;
 
-            img {
-                border-radius: $radius;
-                aspect-ratio: 2/1;
-                object-fit: cover;
-                object-position: center;
-                width: 100%;
-                display: block;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            .top {
+                position: relative;
+
+                img {
+                    border-radius: $radius;
+                    aspect-ratio: 2/1;
+                    object-fit: cover;
+                    object-position: center;
+                    width: 100%;
+                    display: block;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                }
             }
+
+
 
             h6 {
                 margin-top: 30px;
