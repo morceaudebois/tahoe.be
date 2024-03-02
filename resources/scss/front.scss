@@ -30,7 +30,7 @@ body {
     color: rgb(243 244 246);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100%;
+    min-height: 100vh;
     position: relative;
 
     #bg-glow {
@@ -54,6 +54,9 @@ body {
         background-repeat: repeat;
         background-size: 100px;
         pointer-events: none;
+
+        // background: #000;
+        // opacity: 1;
     }
 
     #particle-container {
@@ -232,8 +235,9 @@ main {
     }
 }
 
-@import 'post';
 @import 'home';
+@import 'post';
+@import 'photography';
 
 footer {
     max-width: $maxWidth;

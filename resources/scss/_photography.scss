@@ -1,0 +1,33 @@
+body.photography main {
+$w: minmax(Min(20em, 100%), 1fr);
+    $s: 1.75em;
+
+    /* basic reset */
+    * {
+        margin: 0
+    }
+
+    /* masonry grid styles */
+    .grid--masonry {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, $w);
+        grid-template-rows: masonry;
+        justify-content: center;
+        grid-gap: $s;
+
+        >* {
+            align-self: start
+        }
+    }
+
+
+    img {
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 2px 2px 5px rgba(#000, .7);
+        filter: sepia(1)
+    }
+
+
+}

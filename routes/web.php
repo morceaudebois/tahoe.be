@@ -22,7 +22,7 @@ Route::get('/post', function () {
 })->name('post');
 
 Route::get('/photography', function () {
-    return 'later';
+    return view('pages.photography');
 })->name('photography');
 
 Route::get('/about', function () {
