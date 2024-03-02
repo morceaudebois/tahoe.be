@@ -87,8 +87,8 @@ function animateParticle(particle, dx, dy) {
     requestAnimationFrame(update)
 }
 
-let grids = [...document.querySelectorAll('.grid--masonry')];
-
+// masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
+let grids = [...document.querySelectorAll('#photo-grid')];
 if (grids.length && getComputedStyle(grids[0]).gridTemplateRows !== 'masonry') {
     grids = grids.map(grid => ({
         _el: grid,
@@ -141,3 +141,32 @@ if (grids.length && getComputedStyle(grids[0]).gridTemplateRows !== 'masonry') {
     }, false);
 }
 
+
+
+const lightbox = new PhotoSwipeLightbox({
+    gallery: '#photo-grid',
+    children: 'a',
+    showHideAnimationType: 'zoom',
+    hideAnimationDuration: 300,
+    showAnimationDuration: 300,
+    pswpModule: () => import('https://unpkg.com/photoswipe'),
+})
+
+lightbox.on('firstUpdate', () => {
+    lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)';
+})
+
+lightbox.on('initialZoomInEnd', () => {
+    lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)';
+})
+
+lightbox.on('close', () => {
+    lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)';
+})
+
+lightbox.on('afterInit', () => {
+    // console.log(lightbox.pswp.currSlide.container)
+    lightbox.pswp.currSlide.container.classList.add('radius');
+})
+
+lightbox.init()

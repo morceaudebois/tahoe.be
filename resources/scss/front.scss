@@ -150,62 +150,62 @@ article {
     overflow: hidden;
     position: relative;
     width: 100%;
+}
 
-    .likeContainer {
-        display: flex;
-        align-items: center;
-        gap: .4em;
-        cursor: pointer;
+.likeContainer {
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    cursor: pointer;
 
+    .likeCounter {
+        font-weight: bold;
+        font-size: .9em;
+        transition: color ease-in .2s;
+        color: rgba(226, 232, 255, 0.8);
+    }
+
+    svg {
+        height: 1em;
+        transition: rotate ease-in .2s, scale ease .2s, box-shadow ease .2s;
+        rotate: 0deg;
+        scale: 1;
+
+        path {
+            fill: rgba(226, 232, 255, 0.7);
+        }
+    }
+
+    &.glass {
+        padding: .4em .7em;
+        border-radius: 10px;
+        @include glassBackground();
+        position: absolute;
+        bottom: 1.5em;
+        right: 1.5em;
+    }
+
+    &.liked {
         .likeCounter {
-            font-weight: bold;
-            font-size: .9em;
-            transition: color ease-in .2s;
-            color: rgba(226, 232, 255, 0.8);
+            color: rgba(226, 232, 255);
+        }
+
+        svg path {
+            fill: $accentColor;
+        }
+    }
+
+    &:not(.liked):hover {
+        .likeCounter {
+            color: rgba(226, 232, 255);
         }
 
         svg {
-            height: 1em;
-            transition: rotate ease-in .2s, scale ease .2s, box-shadow ease .2s;
-            rotate: 0deg;
-            scale: 1;
+            rotate: 10deg;
+            scale: 1.1;
 
             path {
-                fill: rgba(226, 232, 255, 0.7);
-            }
-        }
-
-        &.glass {
-            padding: .4em .7em;
-            border-radius: 10px;
-            @include glassBackground();
-            position: absolute;
-            bottom: 1.5em;
-            right: 1.5em;
-        }
-
-        &.liked {
-            .likeCounter {
-                color: rgba(226, 232, 255);
-            }
-
-            svg path {
-                fill: $accentColor;
-            }
-        }
-
-        &:not(.liked):hover {
-            .likeCounter {
-                color: rgba(226, 232, 255);
-            }
-
-            svg {
-                rotate: 10deg;
-                scale: 1.1;
-
-                path {
-                    fill: rgba(229, 146, 191)
-                }
+                fill: rgba(229, 146, 191)
             }
         }
     }
