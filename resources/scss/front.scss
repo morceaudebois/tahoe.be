@@ -152,6 +152,14 @@ article {
     width: 100%;
 }
 
+.links {
+    position: absolute;
+    display: flex;
+    bottom: 1.5em;
+    right: 1.5em;
+    gap: .4em;
+}
+
 .likeContainer {
     display: flex;
     align-items: center;
@@ -177,12 +185,9 @@ article {
     }
 
     &.glass {
+        @include glassBackground();
         padding: .4em .7em;
         border-radius: 10px;
-        @include glassBackground();
-        position: absolute;
-        bottom: 1.5em;
-        right: 1.5em;
     }
 
     &.liked {
@@ -207,6 +212,62 @@ article {
             path {
                 fill: rgba(229, 146, 191)
             }
+        }
+    }
+}
+
+.visitContainer {
+    display: flex;
+    align-items: center;
+    gap: .8em;
+    cursor: pointer;
+    position: relative;
+    overflow-x: hidden;
+    max-width: 50px;
+    justify-content: flex-end;
+    white-space: nowrap;
+    transition: max-width ease-in .2s, gap ease-in .2s;
+
+    &.glass {
+        padding: .4em .7em;
+        border-radius: 10px;
+        @include glassBackground();
+    }
+
+    svg {
+        min-width: 24px;
+    }
+
+    &:hover {
+        max-width: 140px;
+        gap: .4em;
+    }
+}
+
+.glassHover {
+    transition: .3s scale, .3s background-color, .3s border;
+
+    @media (prefers-reduced-motion: no-preference) {
+        &:hover {
+            scale: 1.015;
+            transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+        }
+
+        // glass reflection
+        &:before {
+            position: absolute;
+            content: "";
+            box-shadow: 0 0 100px 40px rgba(255, 255, 255, 0.15);
+            top: -10%;
+            left: -100%;
+            transform: rotate(-45deg);
+            height: 60rem;
+            transition: .4s all;
+        }
+
+        &:hover:before {
+            top: -100%;
+            left: 200%;
         }
     }
 }

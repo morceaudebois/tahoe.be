@@ -5,7 +5,7 @@ import 'photoswipe/style.css';
 
 
 // Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
-const articles = document.querySelectorAll("#projects article")
+const articles = document.querySelectorAll(".glassHover")
 
 articles.forEach(function(pre) {
     document.addEventListener("mousemove", (e) => {

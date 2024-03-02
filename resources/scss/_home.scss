@@ -2,7 +2,6 @@ body.home main {
     #projects {
         article {
             display: flex;
-            transition: .3s scale, .3s background-color, .3s border;
 
             a {
                 display: flex;
@@ -51,30 +50,6 @@ body.home main {
                 background-color: #212233;
                 border: 1px solid #3b3f55;
             }
-
-            @media (prefers-reduced-motion: no-preference) {
-                &:hover {
-                    scale: 1.015;
-                    transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
-                }
-
-                // glass reflection
-                &:before {
-                    position: absolute;
-                    content: "";
-                    box-shadow: 0 0 100px 40px rgba(255, 255, 255, 0.15);
-                    top: -10%;
-                    left: -100%;
-                    transform: rotate(-45deg);
-                    height: 60rem;
-                    transition: .4s all;
-                }
-
-                &:hover:before {
-                    top: -100%;
-                    left: 200%;
-                }
-            }
         }
 
         #latest {
@@ -86,12 +61,6 @@ body.home main {
 
                 .top {
                     margin-bottom: 1em;
-
-                    .likeContainer {
-                        position: absolute;
-                        bottom: 1.5em;
-                        right: 1.5em;
-                    }
 
                     h6 {
                         font-size: .9em;
