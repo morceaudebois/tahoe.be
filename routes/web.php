@@ -15,7 +15,7 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('pages.home', [
-        'posts' => Post::all()
+        'posts' => Post::with('category')->get()
     ]);
 })->name('home');
 
