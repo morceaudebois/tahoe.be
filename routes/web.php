@@ -19,8 +19,10 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/post', function () {
-    return view('pages.post');
+Route::get('posts/{post}', function ($id) {
+    return view('pages.post', [
+        'post' => Post::findOrFail($id)
+    ]);
 })->name('post');
 
 Route::get('/photography', function () {
