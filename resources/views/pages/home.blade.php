@@ -1,6 +1,6 @@
 <x-front-layout class="home">
     <section id="projects">
-        @foreach($posts as $post)
+        @foreach($posts->reverse() as $post)
             <article {{ $loop->index === 0 ? 'id=latest' : '' }} class="glassHover">
                 <a href="/post/{{ $post->slug }}" title="" alt="">
                     <div class="info">

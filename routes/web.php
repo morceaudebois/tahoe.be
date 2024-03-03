@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,11 +43,28 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
     Route::get('/dashboard/new', function () {
         return view('dashboard.new-post');
     })->name('new-post');
 
+    Route::get('dashboard/posts',
+        [AdminPostController::class, 'index']
+    )->name('all-posts');
+    
+    Route::get('dashboard/post/{post:slug}/edit',
+        [AdminPostController::class, 'edit']
+    );
 
-    Route::get('admin/posts/create', [PostController::class, 'create']);
-    Route::post('admin/posts', [PostController::class, 'store']);
+    Route::patch('dashboard/post/{post}',
+        [AdminPostController::class, 'update']
+    );
+
+    Route::delete('dashboard/post/{post}',
+        [AdminPostController::class, 'destroy']
+    );
+    
+    Route::post('dashboard/posts',
+        [AdminPostController::class, 'store']
+    );
 });
