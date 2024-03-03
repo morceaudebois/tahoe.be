@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable();
+            $table->string('slug');
             $table->string('title');
             $table->text('excerpt');
+            $table->text('external_url')->nullable();
+            $table->integer('likes')->nullable();
             $table->text('body');
             $table->timestamps();
             $table->string('tags');

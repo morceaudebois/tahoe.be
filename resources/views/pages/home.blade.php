@@ -2,14 +2,16 @@
     <section id="projects">
         @foreach($posts as $post)
             <article {{ $loop->index === 0 ? 'id=latest' : '' }} class="glassHover">
-                <a href="/posts/{{ $post->id }}" title="" alt="">
+                <a href="/post/{{ $post->slug }}" title="" alt="">
                     <div class="info">
                         <div class="top">
-                            <h6>Browser extension</h6>
+                            @if ($post->category->name)
+                                <h6>{{ $post->category->name }}</h6>
+                            @endif
                             <div {{ $loop->index === 0 ? 'class=links' : '' }}>
                                 @include(
                                     'front.likes',
-                                    ['glass' => $loop->index === 0 ? true : false]
+                                    ['likes' => $post->likes, 'glass' => $loop->index === 0 ? true : false]
                                 )
                             </div>
                         </div>

@@ -17,34 +17,42 @@ class PostSeeder extends Seeder
             [
                 'title' => 'My favorite dogs',
                 'excerpt' => 'Create a list of your favorite dog breeds and share it with your friends.',
+                'category_id' => 1,
                 'tags' => '2022|dogs|php',
-                'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus molestie arcu id fermentum. Sed ultrices iaculis ex at interdum. Integer aliquet dapibus dignissim. Donec elementum efficitur nunc in iaculis. Morbi pretium gravida interdum. Phasellus tempus gravida velit, quis porta nisi laoreet a. Duis et leo sed nunc suscipit vulputate nec quis felis. Donec justo enim, ullamcorper non tempor id, condimentum at leo. Fusce suscipit, nulla vitae semper posuere, tellus est commodo neque, nec hendrerit libero purus sed odio.
-
-                Aliquam aliquam convallis enim, congue tincidunt justo laoreet auctor. Nullam porttitor euismod dolor ut porta. Sed dictum purus gravida vehicula ultricies. Cras mauris leo, accumsan at purus id, finibus auctor diam. Vestibulum lobortis libero vitae mi feugiat, ut gravida tortor congue. Aliquam erat volutpat.'
+                'slug' => 'myfavoritedogs',
+                'likes' => 4,
+                'external_url' => 'https://myfavoritedogs.tahoe.be',
+                'body' => 'the bodyè'
             ],
             [
                 'title' => 'Another post',
                 'excerpt' => 'Create a list of your favorite dog breeds and share it with your friends.',
+                'category_id' => 2,
+                'slug' => 'bloublou',
+                'likes' => 2,
+                'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2021|other|javascript',
-                'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus molestie arcu id fermentum. Sed ultrices iaculis ex at interdum. Integer aliquet dapibus dignissim. Donec elementum efficitur nunc in iaculis. Morbi pretium gravida interdum. Phasellus tempus gravida velit, quis porta nisi laoreet a. Duis et leo sed nunc suscipit vulputate nec quis felis. Donec justo enim, ullamcorper non tempor id, condimentum at leo. Fusce suscipit, nulla vitae semper posuere, tellus est commodo neque, nec hendrerit libero purus sed odio.
-
-                Aliquam aliquam convallis enim, congue tincidunt justo laoreet auctor. Nullam porttitor euismod dolor ut porta. Sed dictum purus gravida vehicula ultricies. Cras mauris leo, accumsan at purus id, finibus auctor diam. Vestibulum lobortis libero vitae mi feugiat, ut gravida tortor congue. Aliquam erat volutpat.'
+                'body' => 'the bodyè'
             ],
             [
                 'title' => 'Wow that\'s a third post',
                 'excerpt' => 'Create a list of your favorite dog breeds and share it with your friends.',
+                'category_id' => 3,
+                'slug' => 'myfavoritedfdfdsfdsogs',
+                'likes' => 7,
+                'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2023|tag|wow',
-                'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus molestie arcu id fermentum. Sed ultrices iaculis ex at interdum. Integer aliquet dapibus dignissim. Donec elementum efficitur nunc in iaculis. Morbi pretium gravida interdum. Phasellus tempus gravida velit, quis porta nisi laoreet a. Duis et leo sed nunc suscipit vulputate nec quis felis. Donec justo enim, ullamcorper non tempor id, condimentum at leo. Fusce suscipit, nulla vitae semper posuere, tellus est commodo neque, nec hendrerit libero purus sed odio.
-
-                Aliquam aliquam convallis enim, congue tincidunt justo laoreet auctor. Nullam porttitor euismod dolor ut porta. Sed dictum purus gravida vehicula ultricies. Cras mauris leo, accumsan at purus id, finibus auctor diam. Vestibulum lobortis libero vitae mi feugiat, ut gravida tortor congue. Aliquam erat volutpat.'
+                'body' => 'the bodyè'
             ],
             [
                 'title' => 'And a fourth',
                 'excerpt' => 'Create a list of your favorite dog breeds and share it with your friends.',
+                'category_id' => 4,
+                'slug' => 'EEEEEE',
+                'likes' => 2,
+                'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2023|tag|wow',
-                'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus molestie arcu id fermentum. Sed ultrices iaculis ex at interdum. Integer aliquet dapibus dignissim. Donec elementum efficitur nunc in iaculis. Morbi pretium gravida interdum. Phasellus tempus gravida velit, quis porta nisi laoreet a. Duis et leo sed nunc suscipit vulputate nec quis felis. Donec justo enim, ullamcorper non tempor id, condimentum at leo. Fusce suscipit, nulla vitae semper posuere, tellus est commodo neque, nec hendrerit libero purus sed odio.
-
-                Aliquam aliquam convallis enim, congue tincidunt justo laoreet auctor. Nullam porttitor euismod dolor ut porta. Sed dictum purus gravida vehicula ultricies. Cras mauris leo, accumsan at purus id, finibus auctor diam. Vestibulum lobortis libero vitae mi feugiat, ut gravida tortor congue. Aliquam erat volutpat.'
+                'body' => 'the bodyè'
             ]
         ]);
     }
