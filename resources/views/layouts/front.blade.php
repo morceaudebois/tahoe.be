@@ -35,6 +35,11 @@
 
         <div id="particle-container"></div>
 
+        @if (Auth::check()) 
+            <a class="switchToAdmin glass" href="{{ route('dashboard') }}">
+                Dashboard ⌨️
+            </a>
+        @endif
 
         @livewireScripts
     </body>

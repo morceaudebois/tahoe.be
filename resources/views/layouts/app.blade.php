@@ -38,6 +38,10 @@
             </main>
         </div>
 
+        <a class="switchToAdmin glass" href="{{ route('home') }}">
+            Homepage 🖼
+        </a>
+
         @stack('modals')
 
         @livewireScripts

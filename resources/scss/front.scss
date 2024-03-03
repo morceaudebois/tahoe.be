@@ -300,6 +300,15 @@ main {
 @import 'post';
 @import 'photography';
 
+.switchToAdmin {
+    @include glassBackground();
+    padding: .4em .7em;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+}
+
 footer {
     max-width: $maxWidth;
     padding-inline: 1.5em;

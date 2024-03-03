@@ -5,3 +5,17 @@
 [x-cloak] {
     display: none;
 }
+
+.switchToAdmin {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    backdrop-filter: blur(4em);
+    -webkit-backdrop-filter: blur(4em);
+    background-color: #191919a5;
+    border: 1px solid rgba(255, 255, 255, 0.076);
+    padding: .4em .7em;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    color: white;
+}
