@@ -2,7 +2,7 @@
     <article>
         <header>
             <div class="top">
-                <img src="https://picsum.photos/1920/1080" alt="">
+                <img src="{{ asset('storage') . '/' . $post->thumbnail }}" alt="">
 
                 <div class="links">
                     @include('front.likes', ['likes' => $post->likes, 'glass' => true])

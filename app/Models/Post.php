@@ -15,6 +15,7 @@ class Post extends Model {
         'excerpt',
         'body',
         'category_id',
+        'thumbnail'
     ];
 
 

@@ -22,7 +22,7 @@
                         @include('front.tags', ['tags' => $post->tags])
                     </div>
 
-                    <img height='100%' src="https://picsum.photos/1080/720" alt="">                    
+                    <img height='100%' src="{{ asset('storage') . '/' . $post->thumbnail }}" alt="">                    
                 </a>
             </article>
         @endforeach

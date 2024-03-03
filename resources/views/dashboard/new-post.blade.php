@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-               <form method="POST" action="/admin/posts">
+               <form method="POST" action="/admin/posts" enctype="multipart/form-data">
                     @csrf
 
                     <div>
@@ -40,6 +40,14 @@
                         @enderror
                     </div>
 
+                    <div class="mb-6">
+                        <label for="thumbnail">thumbnail</label>
+
+                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" required>
+                        @error('thumbnail')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
 
                     <div class="mb-6">
                         <label for="excerpt">Excerpt</label>
@@ -74,7 +82,7 @@
                                     value="{{ $category->id }}"
                                     {{ old('category_id') == $category->id ? 'selected' : '' }}
                                 >{{ $category->name }}</option>
-                            @endforeach
+                            @endforeach 
                         </select>
 
                         @error('category_id')
