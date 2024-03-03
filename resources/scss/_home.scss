@@ -1,5 +1,10 @@
 body.home main {
     #projects {
+        display: grid;
+        gap: 1.75em;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1.75em;
+
         article {
             display: flex;
 
@@ -52,9 +57,9 @@ body.home main {
             }
         }
 
-        #latest {
+        article#latest {
             display: flex;
-            gap: 2.25rem;
+            grid-column: 1 / span 3;
 
             .info {
                 padding-right: 3em;
@@ -68,69 +73,68 @@ body.home main {
                 }
             }
 
-            article:hover {
+            &:hover {
                 .tagContainer span {
                     background-color: #263243;
                 }
             }
         }
 
-        #projectGrid {
-            display: grid;
-            gap: 1.75em;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            margin-top: 1.75em;
+        article:not(#latest) a {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-            article a {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+            .info {
+                padding: 1em;
 
-                .info {
-                    padding: 1em;
+                .top {
+                    margin-bottom: 1em;
 
-                    .top {
-                        margin-bottom: 1em;
-
-                        h6 {
-                            font-size: .8em;
-                        }
-                    }
-
-                    h3 {
-                        font-size: 1.25rem;
-                        font-weight: bold;
-                    }
-
-                    p {
-                        margin-block: .5em;
+                    h6 {
+                        font-size: .8em;
                     }
                 }
 
-                .tagContainer {
-                    position: absolute;
-                    bottom: 15px;
-                    right: 15px;
-
-                    span {
-                        font-size: .9em;
-                        @include glassBackground();
-                    }
+                h3 {
+                    font-size: 1.25rem;
+                    font-weight: bold;
                 }
 
-                img {
-                    display: block;
-                    max-width: 100%;
+                p {
+                    margin-block: .5em;
                 }
+            }
+
+            .tagContainer {
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+
+                span {
+                    font-size: .9em;
+                    @include glassBackground();
+                }
+            }
+
+            img {
+                display: block;
+                max-width: 100%;
             }
         }
     }
 
-
+    // tablet
     @media only screen and (max-width: 850px) and (min-width: 630px) {
         #projects {
-            #latest {
+            margin-top: 1.5em;
+            gap: 1.5em;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            article#latest {
+                grid-column: 1 / span 2;
+
                 .info {
                     font-size: .9em;
                     padding-block: 1em;
@@ -144,44 +148,41 @@ body.home main {
                     }
                 }
             }
-
-            #projectGrid {
-                margin-top: 1.5em;
-                gap: 1.5em;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
         }
     }
 
+    // mobile
     @media only screen and (max-width: 630px) {
         #projects {
-            #latest article a {
-                flex-direction: column-reverse;
-    
-                .info {
-                    padding: 1em;
-                    text-align: center;
-    
-                    h6 {
-                        margin-bottom: .5em;
-                    }
-    
-                    p {
-                        margin-top: .5em;
-                    }
-    
-                    .tagContainer {
-                        justify-content: center;
+            margin-top: 3em;
+            gap: 1.25em;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+
+            article#latest {
+                grid-column: 1 / span 1;
+                margin-bottom: 1.5em;
+
+                a {
+                    flex-direction: column-reverse;
+            
+                    .info {
+                        padding: 1em;
+                        text-align: center;
+            
+                        h6 {
+                            margin-bottom: .5em;
+                        }
+            
+                        p {
+                            margin-top: .5em;
+                        }
+            
+                        .tagContainer {
+                            justify-content: center;
+                        }
                     }
                 }
-            }
-    
-            #projectGrid {
-                margin-top: 3em;
-                gap: 1.25em;
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
+            } 
         }
     }
 }
