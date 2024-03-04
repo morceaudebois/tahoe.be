@@ -2,6 +2,10 @@
     <article>
         <header>
             <div class="top">
+                @php
+                    // define if small or large thumbnail
+                    $post->thumbnail = substr_replace($post->thumbnail, 'lg_', 11, 0);
+                @endphp
                 <img src="{{ asset('storage') . '/' . $post->thumbnail }}" alt="">
 
                 <div class="links">

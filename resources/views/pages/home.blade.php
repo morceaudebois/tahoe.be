@@ -22,7 +22,11 @@
                         @include('front.tags', ['tags' => $post->tags])
                     </div>
 
-                    <img height='100%' src="{{ asset('storage') . '/' . $post->thumbnail }}" alt="">                    
+                    @php
+                        // define if small or large thumbnail
+                        $post->thumbnail = substr_replace($post->thumbnail, ($loop->index === 0 ? 'lg_' : 'md_'), 11, 0);
+                    @endphp
+                    <img height='100%' src="{{ asset('storage') . '/' . "{$post->thumbnail}" }}" alt="">                    
                 </a>
             </article>
         @endforeach
