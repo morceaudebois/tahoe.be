@@ -9,6 +9,18 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AdminPostController extends Controller {
+    public function index() {
+        return view('dashboard.all-posts', [
+            'posts' => Post::paginate(50)
+        ]);
+    }
+
+    public function edit(Post $post) {
+        return view('dashboard.edit-post', [
+            'post' => $post
+        ]);
+    }
+    
     function resizeAndSaveAlts($imageFile, $name, $size = 'lg') {
         $dimensions = ['md' => 680, 'lg' => 1056, 'xl' => 2112];
 
@@ -46,18 +58,6 @@ class AdminPostController extends Controller {
         Post::create($attributes);
 
         return redirect('/');
-    }
-    
-    public function index() {
-        return view('dashboard.all-posts', [
-            'posts' => Post::paginate(50)
-        ]);
-    }
-
-    public function edit(Post $post) {
-        return view('dashboard.edit-post', [
-            'post' => $post
-        ]);
     }
 
     protected function update(Post $post) {
