@@ -22,4 +22,9 @@ class Post extends Model {
     public function category() {
         return $this->belongsTo(Category::class);
     }
+
+    public function getThumbnailUrl($size = 'lg') {
+        $thumbnailName = substr_replace($this->thumbnail, $size . '_', 11, 0);
+        return asset('storage') . '/' . $thumbnailName;
+    }
 }

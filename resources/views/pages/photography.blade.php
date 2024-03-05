@@ -1,15 +1,11 @@
 <x-front-layout class="photography">
     <section id='photo-grid'>
         @foreach ($photos as $photo)
-            @php
-                $medium = substr_replace($photo->thumbnail, 'md_', 11, 0);
-                $xlarge = substr_replace($photo->thumbnail, 'xl_', 11, 0);
-            @endphp
-            <a class="glassHover" href="{{ asset('storage') . '/' . $xlarge }}" 
+            <a class="glassHover" href="{{ $photo->getThumbnailUrl('xl') }}" 
                 data-pswp-width="{{ $photo->width }}" 
                 data-pswp-height="{{ $photo->height }}" 
                 target="_blank">
-                <img src="{{ asset('storage') . '/' . $medium }}" alt="" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
+                <img src="{{ $photo->getThumbnailUrl('md') }}" alt="" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
 
                 <div class="links">
                     <div class="likeContainer glass">

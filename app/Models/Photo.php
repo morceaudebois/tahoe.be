@@ -15,4 +15,9 @@ class Photo extends Model {
         'height',
         'excerpt'
     ];
+
+    public function getThumbnailUrl($size = 'lg') {
+        $thumbnailName = substr_replace($this->thumbnail, $size . '_', 11, 0);
+        return asset('storage') . '/' . $thumbnailName;
+    }
 }
