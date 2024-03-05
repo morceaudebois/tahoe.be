@@ -15,11 +15,21 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    
                     <x-nav-link href="{{ route('all-posts') }}" :active="request()->routeIs('all-posts')">
                         {{ __('All posts') }}
                     </x-nav-link>
+                    
                     <x-nav-link href="{{ route('new-post') }}" :active="request()->routeIs('new-post')">
                         {{ __('New post') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link href="{{ route('all-photos') }}" :active="request()->routeIs('all-photos')">
+                        {{ __('Photos') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('new-photo') }}" :active="request()->routeIs('new-photo')">
+                        {{ __('New photo') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -148,11 +158,21 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
             <x-responsive-nav-link href="{{ route('all-posts') }}" :active="request()->routeIs('all-posts')">
                 {{ __('All posts') }}
             </x-responsive-nav-link>
+
             <x-responsive-nav-link href="{{ route('new-post') }}" :active="request()->routeIs('new-post')">
                 {{ __('New post') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('all-photos') }}" :active="request()->routeIs('all-photos')">
+                {{ __('Photos') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('new-photo') }}" :active="request()->routeIs('new-photo')">
+                {{ __('photo') }}
             </x-responsive-nav-link>
         </div>
 
