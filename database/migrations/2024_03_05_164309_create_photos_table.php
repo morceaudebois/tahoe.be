@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('thumbnail');
+            $table->string('width');
+            $table->string('height');
             $table->text('excerpt');
             $table->integer('likes')->nullable();
             $table->timestamps();
@@ -24,8 +26,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('photos');
     }
 };

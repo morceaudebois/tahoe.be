@@ -11,6 +11,8 @@ class Photo extends Model {
     protected $fillable = [
         'title',
         'thumbnail',
+        'width',
+        'height',
         'excerpt'
     ];
 }

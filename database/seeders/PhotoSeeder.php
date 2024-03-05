@@ -16,7 +16,9 @@ class PhotoSeeder extends Seeder
             [
                 'excerpt' => 'maybe some info later',
                 'likes' => 4,
-                'thumbnail' => 'thumbnails/dog.jpg'
+                'thumbnail' => 'thumbnails/dog.jpg',
+                'width' => 1080,
+                'height' => 1920
             ]
         ]);
     }

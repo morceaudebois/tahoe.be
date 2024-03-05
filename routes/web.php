@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminPhotoController;
@@ -28,7 +29,9 @@ Route::get('post/{post:slug}', function (Post $post) {
 })->name('post');
 
 Route::get('/photography', function () {
-    return view('pages.photography');
+    return view('pages.photography', [
+        'photos' => Photo::all()
+    ]);
 })->name('photography');
 
 Route::get('/about', function () {
@@ -78,5 +81,9 @@ Route::middleware([
 
     Route::post('dashboard/post-photo',
         [AdminPhotoController::class, 'store']
+    );
+
+    Route::delete('dashboard/photo/{photo}',
+        [AdminPhotoController::class, 'destroy']
     );
 });
