@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Traits\ImageTrait;
 use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class AdminPostController extends Controller {
+    use ImageTrait;
+    
     public function index() {
         return view('dashboard.all-posts', [
             'posts' => Post::paginate(50)
@@ -19,27 +21,6 @@ class AdminPostController extends Controller {
         return view('dashboard.edit-post', [
             'post' => $post
         ]);
-    }
-    
-    function resizeAndSaveAlts($imageFile, $name, $size = 'lg') {
-        $dimensions = ['md' => 680, 'lg' => 1056, 'xl' => 2112];
-
-        Image::make($imageFile)->resize($dimensions[$size], null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        })->save(public_path("storage/thumbnails/{$size}_{$name}"));
-    }
-
-    function saveThumbnail($imageFile) {
-        $imageNameExt = $imageFile->hashName(); // name with og file extension
-        $imageName = basename($imageNameExt); // name without 
-
-        // pixel perfect thumbnails for retina display
-        $this->resizeAndSaveAlts($imageFile, $imageName, 'md');
-        $this->resizeAndSaveAlts($imageFile, $imageName, 'lg');
-        $this->resizeAndSaveAlts($imageFile, $imageName, 'xl');
-
-        return $imageFile->storeAs('thumbnails', $imageNameExt);
     }
 
     protected function store() {
@@ -53,7 +34,7 @@ class AdminPostController extends Controller {
             'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
 
-        $attributes['thumbnail'] = $this->saveThumbnail(request()->file('thumbnail'));
+        $attributes['thumbnail'] = $this->saveImage(request()->file('thumbnail'));
 
         Post::create($attributes);
 
@@ -72,7 +53,7 @@ class AdminPostController extends Controller {
         ]);
 
         if (isset($attributes['thumbnail'])) {
-            $attributes['thumbnail'] = $this->saveThumbnail(request()->file('thumbnail'));
+            $attributes['thumbnail'] = $this->saveImage(request()->file('thumbnail'));
         }
 
         $post->update($attributes);
