@@ -31,6 +31,7 @@
         <feGaussianBlur stdDeviation="130" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="189.5" ry="277.5" cx="387.37898932969586" cy="389.59564847750903" fill="#e73c7e"></ellipse></g></svg>
 
         <div id="bg-grain"></div>
+        <div id="vignette"></div>
 
 
         <div id="particle-container"></div>

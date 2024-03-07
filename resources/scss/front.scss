@@ -43,6 +43,14 @@ body {
         z-index: -1;
     }
 
+    #vignette {
+        position: fixed;
+        pointer-events: none;
+        height: 100vh;
+        top: 0; left: 0; right: 0;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 170vh);
+    }
+
     #bg-grain {
         position: absolute;
         width: 100%;
