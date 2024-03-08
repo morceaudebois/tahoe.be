@@ -18,6 +18,9 @@ class Post extends Model {
         'thumbnail'
     ];
 
+    public function getRouteKeyName(): string {
+        return 'slug';
+    }
 
     public function category() {
         return $this->belongsTo(Category::class);

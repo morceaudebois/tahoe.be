@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('All posts') }}
+            {{ __('All photos') }}
         </h2>
     </x-slot>
 
@@ -14,24 +14,24 @@
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($posts as $post)
+                                        @foreach ($photos as $photo)
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            <a href="/post/{{ $post->slug }}">
+                                                            {{-- <a href="/post/{{ $post->slug }}">
                                                                 {{ $post->title }}
-                                                            </a>
+                                                            </a> --}}
                                                         </div>
                                                     </div>
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="/dashboard/post/{{ $post->slug }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                                    <a href="{{ route('dashboard.photo.edit', $photo) }}" class="text-blue-500 hover:text-blue-600">Edit</a>
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <form method="POST" action="/dashboard/post/{{ $post->id }}">
+                                                    <form method="POST" action="{{ route('dashboard.photo.destroy', $photo) }}">
                                                         @csrf
                                                         @method('DELETE')
 

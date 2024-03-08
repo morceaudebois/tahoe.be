@@ -12,9 +12,13 @@ class AdminPostController extends Controller {
     use ImageTrait;
     
     public function index() {
-        return view('dashboard.all-posts', [
+        return view('dashboard.posts', [
             'posts' => Post::paginate(50)
         ]);
+    }
+
+    public function create() {
+        return view('dashboard.new-post');
     }
 
     public function edit(Post $post) {

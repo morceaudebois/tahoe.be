@@ -11,8 +11,18 @@ class AdminPhotoController extends Controller {
     use ImageTrait;
     
     public function index() {
-        return view('dashboard.all-photos', [
+        return view('dashboard.photos', [
             'photos' => Photo::paginate(50)
+        ]);
+    }
+
+    public function create() {
+        return view('dashboard.new-photo');
+    }
+
+    public function edit(Photo $photo) {
+        return view('dashboard.edit-photo', [
+            'photo' => $photo
         ]);
     }
 
@@ -33,6 +43,25 @@ class AdminPhotoController extends Controller {
         Photo::create($attributes);
 
         return redirect('/');
+    }
+
+    protected function update(Photo $photo) {
+        $attributes = request()->validate([
+            'thumbnail' => 'image',
+            'excerpt' => 'required'
+        ]);
+
+        $file = request()->file('thumbnail');
+        $attributes['thumbnail'] = $this->saveImage($file);
+
+        $image = Image::make($file);
+
+        $attributes['width'] = $image->width();
+        $attributes['height'] = $image->height();
+
+        $photo->update($attributes);
+
+        return back()->with('flash.banner', 'Photo updated!');
     }
 
     public function destroy(Photo $photo) {

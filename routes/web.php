@@ -47,43 +47,30 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('dashboard/posts',
-        [AdminPostController::class, 'index']
-    )->name('all-posts');
+    // posts
+    Route::resources(['dashboard/posts' => AdminPostController::class,],
+        ['names' => [
+            'index' => 'dashboard.posts',
+            'create' => 'dashboard.post.create',
+            'store' => 'dashboard.post.store',
+            'show' => 'dashboard.post.show',
+            'edit' => 'dashboard.post.edit',
+            'update' => 'dashboard.post.update',
+            'destroy' => 'dashboard.post.destroy'
+        ]
+    ]);
 
-    Route::get('/dashboard/new', function () {
-        return view('dashboard.new-post');
-    })->name('new-post');
+    // photos
+    Route::resources(['dashboard/photos' => AdminPhotoController::class,],
+        ['names' => [
+            'index' => 'dashboard.photos',
+            'create' => 'dashboard.photo.create',
+            'store' => 'dashboard.photo.store',
+            'show' => 'dashboard.photo.show',
+            'edit' => 'dashboard.photo.edit',
+            'update' => 'dashboard.photo.update',
+            'destroy' => 'dashboard.photo.destroy'
+        ]
+    ]);
 
-    Route::post('dashboard/posts',
-        [AdminPostController::class, 'store']
-    );
-    
-    Route::get('dashboard/post/{post:slug}/edit',
-        [AdminPostController::class, 'edit']
-    );
-
-    Route::patch('dashboard/post/{post}',
-        [AdminPostController::class, 'update']
-    );
-
-    Route::delete('dashboard/post/{post}',
-        [AdminPostController::class, 'destroy']
-    );
-
-    Route::get('dashboard/photos',
-        [AdminPhotoController::class, 'index']
-    )->name('all-photos');
-
-    Route::get('/dashboard/new-photo', function () {
-        return view('dashboard.new-photo');
-    })->name('new-photo');
-
-    Route::post('dashboard/post-photo',
-        [AdminPhotoController::class, 'store']
-    );
-
-    Route::delete('dashboard/photo/{photo}',
-        [AdminPhotoController::class, 'destroy']
-    );
 });

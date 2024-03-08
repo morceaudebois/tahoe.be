@@ -16,19 +16,19 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
-                    <x-nav-link href="{{ route('all-posts') }}" :active="request()->routeIs('all-posts')">
+                    <x-nav-link href="{{ route('dashboard.posts') }}" :active="request()->routeIs('dashboard.posts')">
                         {{ __('All posts') }}
                     </x-nav-link>
                     
-                    <x-nav-link href="{{ route('new-post') }}" :active="request()->routeIs('new-post')">
+                    <x-nav-link href="{{ route('dashboard.post.create') }}" :active="request()->routeIs('dashboard.post.create')">
                         {{ __('New post') }}
                     </x-nav-link>
                     
-                    <x-nav-link href="{{ route('all-photos') }}" :active="request()->routeIs('all-photos')">
+                    <x-nav-link href="{{ route('dashboard.photos') }}" :active="request()->routeIs('dashboard.photos')">
                         {{ __('Photos') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('new-photo') }}" :active="request()->routeIs('new-photo')">
+                    <x-nav-link href="{{ route('dashboard.photo.create') }}" :active="request()->routeIs('dashboard.photo.create')">
                         {{ __('New photo') }}
                     </x-nav-link>
                 </div>
@@ -159,20 +159,20 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('all-posts') }}" :active="request()->routeIs('all-posts')">
+            <x-responsive-nav-link href="{{ route('dashboard.posts') }}" :active="request()->routeIs('dashboard.posts')">
                 {{ __('All posts') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('new-post') }}" :active="request()->routeIs('new-post')">
+            <x-responsive-nav-link href="{{ route('dashboard.post.create') }}" :active="request()->routeIs('dashboard.post.create')">
                 {{ __('New post') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('all-photos') }}" :active="request()->routeIs('all-photos')">
+            <x-responsive-nav-link href="{{ route('dashboard.photos') }}" :active="request()->routeIs('dashboard.photos')">
                 {{ __('Photos') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link href="{{ route('new-photo') }}" :active="request()->routeIs('new-photo')">
-                {{ __('photo') }}
+            <x-responsive-nav-link href="{{ route('dashboard.photo.create') }}" :active="request()->routeIs('dashboard.photo.create')">
+                {{ __('New photo') }}
             </x-responsive-nav-link>
         </div>
 
