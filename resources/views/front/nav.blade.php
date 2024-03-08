@@ -8,15 +8,21 @@
 
     <ul id="right">
         <li>
-            <a href="{{ route('home') }}">Projects</a>
+            <a href="{{ route('home') }}" @class([
+                'active' => request()->routeIs('home'),
+            ])>Projects</a>
         </li>
 
         <li>
-            <a href="{{ route('photography') }}">Photography</a>
+            <a href="{{ route('photography') }}" @class([
+                'active' => request()->routeIs('photography'),
+            ])>Photography</a>
         </li>
 
         <li>
-            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('about') }}" @class([
+                'active' => request()->routeIs('about'),
+            ])>About</a>
         </li>
     </ul>
 </nav>

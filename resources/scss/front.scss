@@ -143,8 +143,12 @@ nav {
             opacity: 0.8;
             will-change: transform;
 
-            &:hover {
+            &:hover, &.active {
                 opacity: 1;
+            }
+
+            &.active {
+                font-weight: 500;
             }
         }
     }
