@@ -42,7 +42,7 @@ class AdminPhotoController extends Controller {
 
         Photo::create($attributes);
 
-        return redirect('/');
+        return redirect()->route('dashboard.photos');
     }
 
     protected function update(Photo $photo) {

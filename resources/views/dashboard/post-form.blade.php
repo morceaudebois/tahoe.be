@@ -53,7 +53,7 @@
                         <label for="thumbnail">thumbnail</label>
                         @if (isset($post))
                             <div class="flex mt-6">
-                                <img src="{{ asset('storage') . '/' . $post->thumbnail }}" width='100px' alt="">
+                                <img src="{{ $post->getThumbnailUrl('sm') }}" width='100px' alt="">
                             </div>
                         @endif
 

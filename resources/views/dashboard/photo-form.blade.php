@@ -20,6 +20,12 @@
                     @if (isset($photo))
                         @method('PATCH')
                     @endif
+
+                    @if (isset($photo))
+                        <div class="flex mt-6">
+                            <img src="{{ $photo->getThumbnailUrl('md') }}" width='100px' alt="">
+                        </div>
+                    @endif
                     
                     <div class="mb-6">
                         <label for="thumbnail">thumbnail</label>

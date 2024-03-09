@@ -42,7 +42,7 @@ class AdminPostController extends Controller {
 
         Post::create($attributes);
 
-        return redirect('/');
+         return redirect()->route('dashboard.photos');
     }
 
     protected function update(Post $post) {

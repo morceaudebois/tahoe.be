@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="flex items-center font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('All photos') }}
         </h2>
 
@@ -10,41 +10,25 @@
     </x-slot>
 
     <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="flex flex-col">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($photos as $photo)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{-- <a href="/post/{{ $post->slug }}">
-                                                    {{ $post->title }}
-                                                </a> --}}
-                                            </div>
-                                        </div>
-                                    </td>
+        <div class="grid grid-cols-3 gap-4">
+            @foreach ($photos as $photo)
+                <div class="photo">
+                    <a href="{{ route('dashboard.photo.edit', $photo) }}" class="h-64">
+                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="">
+                    </a>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('dashboard.photo.edit', $photo) }}" class="text-blue-500 hover:text-blue-600">Edit</a>
-                                    </td>
+                    <div class="deleteContainer" x-data="{ askedToDelete_{{ $loop->index }}: false }">
+                        <button class="text-xs text-gray-400" @click="askedToDelete_{{ $loop->index }}= true" x-show="!askedToDelete_{{ $loop->index }}">Delete</button>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <form method="POST" action="{{ route('dashboard.photo.destroy', $photo) }}">
-                                            @csrf
-                                            @method('DELETE')
+                        <form x-show="askedToDelete_{{ $loop->index }}" method="POST" action="{{ route('dashboard.photo.destroy', $photo) }}">
+                            @csrf
+                            @method('DELETE')
 
-                                            <button class="text-xs text-gray-400">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            <button class="text-xs text-red-400">Are you sure?</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>

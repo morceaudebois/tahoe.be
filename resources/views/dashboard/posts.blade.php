@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="flex items-center font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('All posts') }}
         </h2>
 
@@ -32,12 +32,16 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <form method="POST" action="{{ route('dashboard.post.destroy', $post) }}">
-                                        @csrf
-                                        @method('DELETE')
+                                    <div class="deleteContainer" x-data="{ askedToDelete_{{ $loop->index }}: false }">
+                                        <button class="text-xs text-gray-400" @click="askedToDelete_{{ $loop->index }}= true" x-show="!askedToDelete_{{ $loop->index }}">Delete</button>
 
-                                        <button class="text-xs text-gray-400">Delete</button>
-                                    </form>
+                                        <form x-show="askedToDelete_{{ $loop->index }}" method="POST" action="{{ route('dashboard.post.destroy', $post) }}">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button class="text-xs text-red-400">Are you sure?</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
