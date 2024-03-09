@@ -18,11 +18,11 @@ class AdminPostController extends Controller {
     }
 
     public function create() {
-        return view('dashboard.new-post');
+        return view('dashboard.post-form');
     }
 
     public function edit(Post $post) {
-        return view('dashboard.edit-post', [
+        return view('dashboard.post-form', [
             'post' => $post
         ]);
     }

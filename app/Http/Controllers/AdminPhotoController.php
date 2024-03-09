@@ -17,11 +17,11 @@ class AdminPhotoController extends Controller {
     }
 
     public function create() {
-        return view('dashboard.new-photo');
+        return view('dashboard.photo-form');
     }
 
     public function edit(Photo $photo) {
-        return view('dashboard.edit-photo', [
+        return view('dashboard.photo-form', [
             'photo' => $photo
         ]);
     }

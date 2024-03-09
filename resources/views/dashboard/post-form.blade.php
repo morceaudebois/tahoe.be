@@ -1,21 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit my post') }}
+            {{ __(isset($post) ? 'Edit my post' : 'New post') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-               <form method="POST" action="{{ route('dashboard.post.update', $post) }}" enctype="multipart/form-data">
+               <form method="POST" enctype="multipart/form-data"
+                    @if(isset($post))
+                        action="{{ route('dashboard.post.update', $post) }}"
+                    @else
+                        action="{{ route('dashboard.post.store') }}"
+                    @endif
+                >
                     @csrf
-                    @method('PATCH')
+                    @if (isset($post))
+                        @method('PATCH')
+                    @endif
 
                     <div>
                         <label for="title">Title</label>
 
-                        <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}" required>
+                        <input type="text" name="title" id="title" value="{{ old('title', isset($post) ? $post->title : '') }}" required>
 
                         @error('title')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -25,7 +33,7 @@
                     <div>
                         <label for="slug">Slug</label>
 
-                        <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug) }}" required>
+                        <input type="text" name="slug" id="slug" value="{{ old('title', isset($post) ? $post->slug : '') }}" required>
 
                         @error('slug')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -35,7 +43,7 @@
                     <div class="mb-6">
                         <label for="tags">Tags</label>
 
-                        <input type="text" name="tags" id="tags" value="{{ old('tags', $post->tags) }}" required>
+                        <input type="text" name="tags" id="tags" value="{{ old('title', isset($post) ? $post->tags : '') }}" required>
                         @error('tags')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                         @enderror
@@ -43,11 +51,13 @@
 
                     <div class="mb-6">
                         <label for="thumbnail">thumbnail</label>
-                        <div class="flex mt-6">
-                            <img src="{{ asset('storage') . '/' . $post->thumbnail }}" width='100px' alt="">
-                        </div>
+                        @if (isset($post))
+                            <div class="flex mt-6">
+                                <img src="{{ asset('storage') . '/' . $post->thumbnail }}" width='100px' alt="">
+                            </div>
+                        @endif
 
-                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', $post->thumbnail) }}">
+                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('title', isset($post) ? $post->thumbnail : '') }}">
 
                         @error('thumbnail')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -57,9 +67,7 @@
                     <div class="mb-6">
                         <label for="excerpt">Excerpt</label>
 
-                        <textarea name="excerpt" id="excerpt" required>
-                            {{ old('excerpt', $post->excerpt) }}
-                        </textarea>
+                        <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" required>
 
                         @error('excerpt')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -67,11 +75,8 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="body">Body</label>
-
-                        <textarea name="body" id="body" required>
-                            {{ old('body', $post->body) }}
-                        </textarea>
+                        <input id="body" type="hidden" name="body" value="{{ old('body', isset($post) ? $post->body : '') }}">
+                        <trix-editor input="body"></trix-editor>
 
                         @error('body')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -85,7 +90,7 @@
                             @foreach (\App\Models\Category::all() as $category)
                                 <option
                                     value="{{ $category->id }}"
-                                    {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}
+                                    {{ old('category_id', (isset($post) && $post->category_id == $category->id) ? 'selected' : '') }}
                                 >{{ $category->name }}</option>
                             @endforeach 
                         </select>
@@ -95,7 +100,7 @@
                         @enderror
                     </div>
 
-                    <x-button>Update</x-button>
+                    <x-button>{{ isset($post) ? 'Update post' : 'Publish post' }}</x-button>
                 </form>
             </div>
         </div>
