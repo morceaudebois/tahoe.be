@@ -19,7 +19,7 @@
                         <h3>{{ $post->title }}</h3>
                         <p>{{ $post->excerpt }}</p>
 
-                        @include('front.tags', ['tags' => $post->tags])
+                        @include('front.tags', ['tags' => $post->tags()])
                     </div>
 
                     <img height='100%' src="{{ $post->getThumbnailUrl($loop->first ? 'lg' : 'md') }}" alt="">                    

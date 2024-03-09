@@ -23,7 +23,7 @@
 
             <h1>{{ $post->title }}</h1>
 
-            @include('front.tags', ['tags' => $post->tags])
+            @include('front.tags', ['tags' => $post->tags()])
         </header>
 
         <section>
