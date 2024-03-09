@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 shadow sm:rounded-md dark:text-gray-300">
                <form method="POST" enctype="multipart/form-data"
                     @if(isset($photo))
                         action="{{ route('dashboard.photo.update', $photo) }}"
@@ -21,39 +21,35 @@
                         @method('PATCH')
                     @endif
 
-                    @if (isset($photo))
-                        <div class="flex mt-6">
-                            <img src="{{ $photo->getThumbnailUrl('md') }}" width='100px' alt="">
-                        </div>
-                    @endif
-                    
-                    <div class="mb-6">
-                        <label for="thumbnail">thumbnail</label>
+                    <div class="mb-6 col-span-6">
+                            <x-label id="thumbnail" for="thumbnail" value="{{ __('Image') }}" />
 
-                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', isset($photo) ? $photo->thumbnail : '') }}">
-                        @error('thumbnail')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                            @if (isset($photo->thumbnail))
+                                <div class="flex my-2">
+                                    <img src="{{ $photo->getThumbnailUrl('md') }}" width='100px' alt="">
+                                </div>
+                            @endif
+
+                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('title', isset($photo) ? $photo->thumbnail : '') }}" class="dark:text-gray-300">
+
+                            @error('thumbnail')
+                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                            @enderror
                     </div>
 
-                    <div class="mb-6">
-                        <label for="excerpt">Excerpt</label>
-
-                        <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', isset($photo) ? $photo->excerpt : '') }}">
-
-                        @error('excerpt')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                    <div class="col-span-6 mb-6 ">
+                        <x-label id="excerpt" for="excerpt" value="{{ __('Excerpt') }}" />
+                        <x-input name="excerpt" type="text" class="mt-1 block w-full" 
+                        required value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" />
+                        <x-input-error for="excerpt" class="mt-2" />
                     </div>
 
-                    <div class="mb-6">
-                        <label for="draft">Draft</label>
+                    <div class="col-span-6 flex mb-6">
+                        <input id="draft" type="checkbox" name="draft" class="mr-2 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" {{ old('draft', isset($photo) ? ($photo->draft ? 'checked' : '') : 'checked') }} >
 
-                        <input type="checkbox" name="draft" id="draft" {{ old('draft', isset($photo) ? ($photo->draft ? 'checked' : '') : '') }}>
-                        
-                        @error('draft')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                        <x-label id="draft" for="draft" value="{{ __('Draft') }}" />
+
+                        <x-input-error for="draft" class="mt-2" />
                     </div>
 
                     <x-button>{{ isset($photo) ? 'Update photo' : 'Save photo' }}</x-button>
