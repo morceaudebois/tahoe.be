@@ -35,9 +35,11 @@ class AdminPostController extends Controller {
             'tags' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'draft' => 'sometimes|boolean'
         ]);
 
+        $attributes['draft'] = request()->draft ? 1 : 0;
         $attributes['thumbnail'] = $this->saveImage(request()->file('thumbnail'));
 
         Post::create($attributes);
@@ -53,8 +55,11 @@ class AdminPostController extends Controller {
             'tags' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'draft' => 'sometimes'
         ]);
+
+        $attributes['draft'] = request()->draft ? 1 : 0;
 
         if (isset($attributes['thumbnail'])) {
             $attributes['thumbnail'] = $this->saveImage(request()->file('thumbnail'));

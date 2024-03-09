@@ -30,7 +30,7 @@
                     <div class="mb-6">
                         <label for="thumbnail">thumbnail</label>
 
-                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', isset($photo) ? $photo->thumbnail : '') }}" required>
+                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', isset($photo) ? $photo->thumbnail : '') }}">
                         @error('thumbnail')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                         @enderror
@@ -39,14 +39,24 @@
                     <div class="mb-6">
                         <label for="excerpt">Excerpt</label>
 
-                        <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', isset($photo) ? $photo->excerpt : '') }}" required>
+                        <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', isset($photo) ? $photo->excerpt : '') }}">
 
                         @error('excerpt')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <x-button>{{ isset($photo) ? 'Update photo' : 'Publish photo' }}</x-button>
+                    <div class="mb-6">
+                        <label for="draft">Draft</label>
+
+                        <input type="checkbox" name="draft" id="draft" {{ old('draft', isset($photo) ? ($photo->draft ? 'checked' : '') : '') }}>
+                        
+                        @error('draft')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <x-button>{{ isset($photo) ? 'Update photo' : 'Save photo' }}</x-button>
                 </form>
             </div>
         </div>

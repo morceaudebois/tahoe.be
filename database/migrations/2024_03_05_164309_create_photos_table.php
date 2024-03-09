@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('height');
             $table->text('excerpt');
             $table->integer('likes')->nullable();
+            $table->boolean('draft')->default(true);
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });

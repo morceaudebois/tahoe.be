@@ -23,9 +23,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('post/{post:slug}', function (Post $post) {
-    return view('pages.post', [
-        'post' => $post
-    ]);
+    if (!$post->draft) {
+        return view('pages.post', [
+            'post' => $post
+        ]);
+    } else abort(404);
 })->name('post');
 
 Route::get('/photography', function () {

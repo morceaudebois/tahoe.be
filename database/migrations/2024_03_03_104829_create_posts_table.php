@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('likes')->nullable();
             $table->text('body');
             $table->timestamps();
+            $table->boolean('draft')->default(true);
             $table->string('tags');
             $table->timestamp('published_at')->nullable();
         });

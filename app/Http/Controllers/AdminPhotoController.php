@@ -29,8 +29,11 @@ class AdminPhotoController extends Controller {
     protected function store() {
         $attributes = request()->validate([
             'thumbnail' => 'required|image',
-            'excerpt' => 'required'
+            'excerpt' => 'required',
+            'draft' => 'sometimes|boolean'
         ]);
+
+        $attributes['draft'] = request()->draft ? 1 : 0;
 
         $file = request()->file('thumbnail');
         $attributes['thumbnail'] = $this->saveImage($file);
@@ -48,16 +51,22 @@ class AdminPhotoController extends Controller {
     protected function update(Photo $photo) {
         $attributes = request()->validate([
             'thumbnail' => 'image',
-            'excerpt' => 'required'
+            'excerpt' => 'string|max:200',
+            'draft' => 'sometimes'
         ]);
 
+        $attributes['draft'] = request()->draft ? 1 : 0;
+
         $file = request()->file('thumbnail');
-        $attributes['thumbnail'] = $this->saveImage($file);
 
-        $image = Image::make($file);
+        if (isset($attributes['thumbnail'])) {
+            $attributes['thumbnail'] = $this->saveImage($file);
 
-        $attributes['width'] = $image->width();
-        $attributes['height'] = $image->height();
+            $image = Image::make($file);
+
+            $attributes['width'] = $image->width();
+            $attributes['height'] = $image->height();
+        }
 
         $photo->update($attributes);
 

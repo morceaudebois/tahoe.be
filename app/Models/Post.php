@@ -15,7 +15,8 @@ class Post extends Model {
         'excerpt',
         'body',
         'category_id',
-        'thumbnail'
+        'thumbnail',
+        'draft'
     ];
 
     public function getRouteKeyName(): string {

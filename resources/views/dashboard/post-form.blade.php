@@ -100,7 +100,18 @@
                         @enderror
                     </div>
 
-                    <x-button>{{ isset($post) ? 'Update post' : 'Publish post' }}</x-button>
+
+                    <div class="mb-6">
+                        <label for="draft">Draft</label>
+
+                        <input type="checkbox" name="draft" id="draft" {{ old('draft', isset($post) ? ($post->draft ? 'checked' : '') : '') }}>
+                        
+                        @error('draft')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <x-button>{{ isset($post) ? 'Update post' : 'Save post' }}</x-button>
                 </form>
             </div>
         </div>

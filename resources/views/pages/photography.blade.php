@@ -1,6 +1,6 @@
 <x-front-layout class="photography">
     <section id='photo-grid'>
-        @foreach ($photos as $photo)
+        @foreach ($photos->where('draft', false) as $photo)
             <a class="glassHover" href="{{ $photo->getThumbnailUrl('xl') }}" 
                 data-pswp-width="{{ $photo->width }}" 
                 data-pswp-height="{{ $photo->height }}" 
