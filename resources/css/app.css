@@ -19,3 +19,9 @@
     right: 3em;
     color: white;
 }
+
+@media (prefers-color-scheme: dark) {
+    .trix-button {
+        filter: invert(.95);
+    }
+}
