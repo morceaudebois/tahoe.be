@@ -20,40 +20,33 @@
                         @method('PATCH')
                     @endif
 
-                    <div>
-                        <label for="title">Title</label>
-
-                        <input type="text" name="title" id="title" value="{{ old('title', isset($post) ? $post->title : '') }}" required>
-
-                        @error('title')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="title" for="title" value="{{ __('Title') }}" />
+                        <x-input name="title" type="text" class="mt-1 block w-full" 
+                         required value="{{ old('title', isset($post) ? $post->title : '') }}" />
+                        <x-input-error for="title" class="mt-2" />
                     </div>
 
-                    <div>
-                        <label for="slug">Slug</label>
-
-                        <input type="text" name="slug" id="slug" value="{{ old('title', isset($post) ? $post->slug : '') }}" required>
-
-                        @error('slug')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="slug" for="slug" value="{{ __('Slug') }}" />
+                        <x-input name="slug" type="text" class="mt-1 block w-full" 
+                         required value="{{ old('slug', isset($post) ? $post->slug : '') }}" />
+                        <x-input-error for="slug" class="mt-2" />
                     </div>
 
-                    <div class="mb-6">
-                        <label for="tags">Tags</label>
-
-                        <input type="text" name="tags" id="tags" value="{{ old('title', isset($post) ? $post->tags : '') }}" required>
-                        @error('tags')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="tags" for="tags" value="{{ __('Tags') }}" />
+                        <x-input name="tags" type="text" class="mt-1 block w-full" 
+                         required value="{{ old('tags', isset($post) ? $post->tags : '') }}" />
+                        <x-input-error for="tags" class="mt-2" />
                     </div>
 
-                    <div class="mb-6">
-                        <label for="thumbnail">thumbnail</label>
-                        @if (isset($post))
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="thumbnail" for="thumbnail" value="{{ __('Thumbnail') }}" />
+
+                        @if (isset($post->thumbnail))
                             <div class="flex mt-6">
-                                <img src="{{ $post->getThumbnailUrl('sm') }}" width='100px' alt="">
+                                <img src="{{ $post->getThumbnailUrl('md') }}" width='100px' alt="">
                             </div>
                         @endif
 
@@ -64,17 +57,14 @@
                         @enderror
                     </div>
 
-                    <div class="mb-6">
-                        <label for="excerpt">Excerpt</label>
-
-                        <input type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" required>
-
-                        @error('excerpt')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="excerpt" for="excerpt" value="{{ __('Excerpt') }}" />
+                        <x-input name="excerpt" type="text" class="mt-1 block w-full" 
+                         required value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" />
+                        <x-input-error for="excerpt" class="mt-2" />
                     </div>
 
-                    <div class="mb-6">
+                    <div class="mb-6 col-span-6 sm:col-span-4">
                         <input id="body" type="hidden" name="body" value="{{ old('body', isset($post) ? $post->body : '') }}">
                         <trix-editor input="body"></trix-editor>
 
@@ -83,10 +73,10 @@
                         @enderror
                     </div>
 
-                    <div class="mb-6">
-                        <label for="category_id">Category</label>
+                    <div class="mb-6 col-span-6 sm:col-span-4">
+                        <x-label id="category_id" for="category_id" value="{{ __('Category') }}" />
 
-                        <select name="category_id" id="category_id">
+                        <select name="category_id" id="category_id" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full">
                             @foreach (\App\Models\Category::all() as $category)
                                 <option
                                     value="{{ $category->id }}"
@@ -100,15 +90,12 @@
                         @enderror
                     </div>
 
+                    <div class="mb-6 col-span-6 sm:col-span-4 flex">
+                        <input id="draft" type="checkbox" name="draft" class="mr-2 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" {{ old('draft', isset($post) ? ($post->draft ? 'checked' : '') : 'checked') }} >
 
-                    <div class="mb-6">
-                        <label for="draft">Draft</label>
+                        <x-label id="draft" for="draft" value="{{ __('Draft') }}" />
 
-                        <input type="checkbox" name="draft" id="draft" {{ old('draft', isset($post) ? ($post->draft ? 'checked' : '') : '') }}>
-                        
-                        @error('draft')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                        @enderror
+                        <x-input-error for="draft" class="mt-2" />
                     </div>
 
                     <x-button>{{ isset($post) ? 'Update post' : 'Save post' }}</x-button>

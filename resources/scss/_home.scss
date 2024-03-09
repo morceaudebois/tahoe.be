@@ -169,6 +169,10 @@ body.home main {
                     .info {
                         padding: 1em;
                         text-align: center;
+
+                        .top {
+                            justify-content: center;
+                        }
             
                         h6 {
                             margin-bottom: .5em;
