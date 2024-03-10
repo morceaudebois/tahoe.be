@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->string('width');
             $table->string('height');
-            $table->text('excerpt');
+            $table->string('info');
             $table->integer('likes')->nullable();
             $table->date('date')->default(now()->toDateString());
             $table->boolean('draft')->default(true);

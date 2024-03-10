@@ -20,5 +20,38 @@ body.photography main {
             }
         }
     }
+}
 
+body .pswp {
+    .pswp__button--info-button {
+        position: absolute;
+        left: 1em;
+        bottom: 1em;
+    }
+
+    .pswp__descContainer {
+        opacity: 0;
+        position: absolute;
+        bottom: 1.5em;
+        left: 5em;
+        padding: .5em;
+        background-color: #1b1c2a;
+        border: 1px solid #282B3A;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+        &.visible {
+            animation: fadeIn .35s ease forwards;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
 }

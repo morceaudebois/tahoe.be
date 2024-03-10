@@ -29,7 +29,7 @@ class AdminPhotoController extends Controller {
     protected function store() {
         $attributes = request()->validate([
             'thumbnail' => 'required|image',
-            'excerpt' => 'required',
+            'info' => 'required',
             'draft' => 'sometimes',
             'date' => ['required', 'date'],
         ]);
@@ -52,7 +52,7 @@ class AdminPhotoController extends Controller {
     protected function update(Photo $photo) {
         $attributes = request()->validate([
             'thumbnail' => 'image',
-            'excerpt' => 'string|max:200',
+            'info' => 'string|max:200',
             'draft' => 'sometimes',
             'date' => ['required', 'date'],
         ]);

@@ -14,11 +14,11 @@ class PhotoSeeder extends Seeder
     public function run(): void {
         Photo::insert([
             [
-                'excerpt' => 'maybe some info later',
                 'likes' => 4,
                 'thumbnail' => 'thumbnails/dog.jpg',
                 'width' => 1080,
-                'height' => 1920
+                'height' => 1920,
+                'info' => "bonjour"
             ]
         ]);
     }

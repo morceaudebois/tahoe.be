@@ -13,10 +13,10 @@ class Photo extends Model {
         'thumbnail',
         'width',
         'height',
-        'excerpt',
         'draft',
         'date',
-        'likes'
+        'likes',
+        'info'
     ];
 
     public function getThumbnailUrl($size = 'lg') {

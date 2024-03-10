@@ -1,12 +1,12 @@
 <x-front-layout class="photography">
     <section id='photo-grid'>
-        
             @foreach ($photos->where('draft', false)->sortBy('date') as $photo)
                 <div class="photoContainer glassHover">
                     <a href="{{ $photo->getThumbnailUrl('xl') }}" 
                         data-pswp-width="{{ $photo->width }}" 
                         data-pswp-height="{{ $photo->height }}" 
-                        target="_blank">
+                        target="_blank"
+                        data-description="{{ $photo->info }}">
                         <img src="{{ $photo->getThumbnailUrl('md') }}" alt="" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
                     </a>
                     <div class="links">
@@ -14,8 +14,5 @@
                     </div>
                 </div>
             @endforeach
-        
-
     </section>
-
 </x-front-layout>

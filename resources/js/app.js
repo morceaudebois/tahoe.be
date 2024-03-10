@@ -169,4 +169,38 @@ lightbox.on('afterInit', () => {
     lightbox.pswp.currSlide.container.classList.add('radius');
 })
 
+
+lightbox.on('uiRegister', function () {
+    // info button
+    lightbox.pswp.ui.registerElement({
+        name: 'info-button',
+        order: 8,
+        isButton: true,
+        tagName: 'button',
+        appendTo: 'root',
+        // SVG with outline
+        html: {
+            isCustomSVG: true,
+            inner: '<svg clip-rule="evenodd" id="pswp__icn-download" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg"><path d="m13 11c0-1.646-1.354-3-3-3s-3 1.354-3 3 1.354 3 3 3 3-1.354 3-3zm-3 5c-2.743 0-5-2.257-5-5s2.257-5 5-5 5 2.257 5 5-2.257 5-5 5zm-3.58-13.44-.67.64c-.371.357-.865.558-1.38.56h-2.37c-1.027-.063-1.926.724-2 1.75v10.54c.069 1.03.97 1.822 2 1.76h16c1.03.062 1.931-.73 2-1.76v-10.54c-.069-1.03-.97-1.822-2-1.76h-2.37c-.515-.002-1.009-.203-1.38-.56l-.67-.64c-.372-.354-.867-.551-1.38-.55h-4.4c-.515.002-1.009.203-1.38.56z" transform="translate(0 -2)"/></svg>',
+            outlineID: 'pswp__icn-download'
+        },
+        onClick: () => {
+            document.querySelector('.pswp__descContainer').classList.toggle('visible')
+        }
+    }),
+    // info block
+    lightbox.pswp.ui.registerElement({
+        name: 'descContainer',
+        tagName: 'div',
+        appendTo: 'root',
+
+        onInit: (el, pswp) => {
+            pswp.on('change', () => {
+                let desc = pswp.currSlide.data.element.getAttribute("data-description")
+                document.querySelector('.pswp__descContainer').innerHTML = desc
+            })
+        }
+    })
+})
+
 lightbox.init()

@@ -184,6 +184,7 @@ article {
     align-items: center;
     gap: .4em;
     cursor: pointer;
+    user-select: none;
 
     .likeCounter {
         font-weight: bold;

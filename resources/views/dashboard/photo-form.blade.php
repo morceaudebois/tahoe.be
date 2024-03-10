@@ -38,10 +38,12 @@
                     </div>
 
                     <div class="col-span-6 mb-6 ">
-                        <x-label id="excerpt" for="excerpt" value="{{ __('Excerpt') }}" />
-                        <x-input name="excerpt" type="text" class="mt-1 block w-full" 
-                        required value="{{ old('excerpt', isset($photo) ? $photo->excerpt : '') }}" />
-                        <x-input-error for="excerpt" class="mt-2" />
+                        <x-label id="info" for="info" value="{{ __('Info') }}" />
+                        <x-input name="info" type="text" class="mt-1 block w-full" 
+                        required value="{{ old('info', isset($photo) ? $photo->info : '') }}" />
+                        @error('info')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="col-span-6">
@@ -59,7 +61,9 @@
 
                         <x-label id="draft" for="draft" value="{{ __('Draft') }}" />
 
-                        <x-input-error for="draft" class="mt-2" />
+                        @error('draft')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <x-button>{{ isset($photo) ? 'Update photo' : 'Save photo' }}</x-button>
