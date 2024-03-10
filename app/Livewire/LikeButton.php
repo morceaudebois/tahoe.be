@@ -4,18 +4,20 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Post;
+use App\Models\Photo;
 
 class LikeButton extends Component {
-    public $post, $glass;
+    public $element, $glass;
 
-    public function mount(Post $post) {
-        $this->post = $post;
+    // $element can be either a photo or a post
+    public function mount($element) {
+        $this->element = $element;
     }
 
     public function toggleLike() {
-         $this->post->update([
-            'likes' => $this->post->likes + 1,
-        ]);
+        $this->element->update(
+            ['likes' => $this->element->likes + 1]
+        );
     }
 
     public function render() {

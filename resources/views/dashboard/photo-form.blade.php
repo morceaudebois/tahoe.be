@@ -40,7 +40,7 @@
                     <div class="col-span-6 mb-6 ">
                         <x-label id="excerpt" for="excerpt" value="{{ __('Excerpt') }}" />
                         <x-input name="excerpt" type="text" class="mt-1 block w-full" 
-                        required value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" />
+                        required value="{{ old('excerpt', isset($photo) ? $photo->excerpt : '') }}" />
                         <x-input-error for="excerpt" class="mt-2" />
                     </div>
 
