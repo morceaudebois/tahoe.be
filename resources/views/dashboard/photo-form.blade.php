@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit photo') }}
+            {{ __(isset($photo) ? 'Edit photo' : 'New photo') }}
         </h2>
     </x-slot>
 
@@ -30,7 +30,7 @@
                                 </div>
                             @endif
 
-                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('title', isset($photo) ? $photo->thumbnail : '') }}" class="dark:text-gray-300">
+                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', isset($photo) ? $photo->thumbnail : '') }}" class="dark:text-gray-300">
 
                             @error('thumbnail')
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -42,6 +42,15 @@
                         <x-input name="excerpt" type="text" class="mt-1 block w-full" 
                         required value="{{ old('excerpt', isset($post) ? $post->excerpt : '') }}" />
                         <x-input-error for="excerpt" class="mt-2" />
+                    </div>
+
+                    <div class="col-span-6 flex">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" value="{{ old('date', $photo->date ?? now()->toDateString()) }}">
+
+                        @error('date')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="col-span-6 flex mb-6">

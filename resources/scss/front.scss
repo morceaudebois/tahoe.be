@@ -34,6 +34,12 @@ body {
     position: relative;
     // overflow-x: hidden;
 
+    ::selection {
+        background-color: rgba(231, 60, 126, 0.5);
+        opacity: .5;
+        color: white
+    }
+
     #bg-glow {
         position: absolute;
         top: -250px;

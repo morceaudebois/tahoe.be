@@ -11,7 +11,7 @@
 
     <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-3 gap-4">
-            @foreach ($photos as $photo)
+            @foreach ($photos->sortBy('created_at') as $photo)
                 <div class="photo">
                     <a href="{{ route('dashboard.photo.edit', $photo) }}" class="h-64">
                         <img src="{{ $photo->getThumbnailUrl('md') }}" alt="">

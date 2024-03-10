@@ -36,7 +36,8 @@ class AdminPostController extends Controller {
             'excerpt' => 'required',
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'draft' => 'sometimes|boolean'
+            'draft' => 'sometimes',
+            'date' => ['required', 'date'],
         ]);
 
         $attributes['draft'] = request()->draft ? 1 : 0;
@@ -44,18 +45,19 @@ class AdminPostController extends Controller {
 
         Post::create($attributes);
 
-         return redirect()->route('dashboard.photos');
+        return redirect()->route('dashboard.posts');
     }
 
     protected function update(Post $post) {
         $attributes = request()->validate([
             'title' => 'required',
-            'thumbnail' => 'image',
+            'thumbnail' => ['sometimes', 'image'],
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
             'tags' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
+            'date' => ['required', 'date'],
             'draft' => 'sometimes'
         ]);
 

@@ -17,9 +17,10 @@ class Post extends Model {
         'body',
         'category_id',
         'thumbnail',
+        'date',
         'draft'
     ];
-
+    
     public function getRouteKeyName(): string {
         return 'slug';
     }

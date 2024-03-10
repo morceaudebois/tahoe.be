@@ -1,6 +1,6 @@
 <x-front-layout class="home">
     <section id="projects">
-        @foreach($posts->where('draft', false)->reverse() as $post)
+        @foreach($posts->where('draft', false)->sortBy('date') as $post)
             <article {{ $loop->first ? 'id=latest' : '' }} class="glassHover">
                 <a href="/post/{{ $post->slug }}" title="" alt="">
                     <div class="info">

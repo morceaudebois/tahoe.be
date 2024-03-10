@@ -30,7 +30,8 @@ class AdminPhotoController extends Controller {
         $attributes = request()->validate([
             'thumbnail' => 'required|image',
             'excerpt' => 'required',
-            'draft' => 'sometimes|boolean'
+            'draft' => 'sometimes',
+            'date' => ['required', 'date'],
         ]);
 
         $attributes['draft'] = request()->draft ? 1 : 0;
@@ -52,7 +53,8 @@ class AdminPhotoController extends Controller {
         $attributes = request()->validate([
             'thumbnail' => 'image',
             'excerpt' => 'string|max:200',
-            'draft' => 'sometimes'
+            'draft' => 'sometimes',
+            'date' => ['required', 'date'],
         ]);
 
         $attributes['draft'] = request()->draft ? 1 : 0;

@@ -12,18 +12,19 @@ return new class extends Migration
     public function up(): void {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->nullable();
-            $table->string('slug');
-            $table->string('thumbnail')->nullable();
             $table->string('title');
+            $table->string('slug');
+            $table->foreignId('category_id')->nullable();
+            $table->string('tags');
+            $table->text('body');
+            $table->date('date')->default(now()->toDateString());
+            $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->text('external_url')->nullable();
             $table->integer('likes')->nullable();
-            $table->text('body');
-            $table->timestamps();
             $table->boolean('draft')->default(true);
-            $table->string('tags');
-            $table->timestamp('published_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

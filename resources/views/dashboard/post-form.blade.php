@@ -91,7 +91,7 @@
                                 </div>
                             @endif
 
-                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('title', isset($post) ? $post->thumbnail : '') }}" class="dark:text-gray-300">
+                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail', isset($post) ? $post->thumbnail : '') }}" class="dark:text-gray-300">
 
                             @error('thumbnail')
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -105,6 +105,17 @@
 
                             <x-input-error for="draft" class="mt-2" />
                         </div>
+
+                        <div class="col-span-6 flex">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" value="{{ old('date', $post->date ?? now()->toDateString()) }}">
+
+                            @error('date')
+                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+
 
                         <x-button class="col-span-2 max-w-32 flex">{{ isset($post) ? 'Update post' : 'Save post' }}</x-button>
                     </x-slot>
