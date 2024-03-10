@@ -5,7 +5,7 @@
                 <img src="{{ $post->getThumbnailUrl('lg') }}" alt="">
 
                 <div class="links">
-                    @include('front.likes', ['likes' => $post->likes, 'glass' => true])
+                    @livewire('like-button', ['post' => $post, 'glass' => true])
 
                     @if ($post->external_url)
                         <a class="visitContainer glass" href="{{ $post->external_url }}">

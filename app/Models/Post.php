@@ -18,7 +18,8 @@ class Post extends Model {
         'category_id',
         'thumbnail',
         'date',
-        'draft'
+        'draft',
+        'likes'
     ];
     
     public function getRouteKeyName(): string {

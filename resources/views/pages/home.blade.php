@@ -9,10 +9,7 @@
                                 <h6>{{ $post->category->name }}</h6>
                             @endif
                             <div {{ $loop->first ? 'class=links' : '' }}>
-                                @include(
-                                    'front.likes',
-                                    ['likes' => $post->likes, 'glass' => $loop->first ? true : false]
-                                )
+                                @livewire('like-button', ['post' => $post, 'glass' => $loop->first ? true : false])
                             </div>
                         </div>
                         

@@ -4,7 +4,7 @@
 [ ] Fix bugs
 [ ] SEO
 [ ] Optimisation
-[ ] Dates in photo and posts
+[x] Dates in photo and posts
 [ ] Support section
 [ ] About section
 [ ] Photo info

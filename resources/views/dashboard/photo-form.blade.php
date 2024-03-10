@@ -44,9 +44,10 @@
                         <x-input-error for="excerpt" class="mt-2" />
                     </div>
 
-                    <div class="col-span-6 flex">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date" value="{{ old('date', $photo->date ?? now()->toDateString()) }}">
+                    <div class="col-span-6">
+                        <x-label id="date" for="date" value="{{ __('Date') }}" />
+
+                        <x-input name="date" type="date" id="date" value="{{ old('date', $photo->date ?? now()->toDateString()) }}" class="mt-1 block w-full" />
 
                         @error('date')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
