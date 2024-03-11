@@ -11,12 +11,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-        @stack('scripts')
-
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/scss/front.scss'])
+        @vite(['resources/css/app.css', 'resources/scss/front.scss'])
 
         <!-- Styles -->
         @livewireStyles
@@ -35,7 +31,6 @@
         <div id="bg-grain"></div>
         <div id="vignette"></div>
 
-
         <div id="particle-container"></div>
 
         @if (Auth::check()) 
@@ -44,6 +39,10 @@
             </a>
         @endif
 
+        @vite(['resources/js/app.js'])
+
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
         @livewireScripts
     </body>
 </html>

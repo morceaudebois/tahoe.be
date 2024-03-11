@@ -13,6 +13,49 @@ articles.forEach(function(pre) {
     })
 })
 
+window.createFirework = function(x, y) {
+    const container = document.getElementById('particle-container')
+
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div.particle')
+        particle.className = 'particle'
+
+        const angle = Math.random() * Math.PI * 2
+        const velocity = Math.random() * 8 + 2 // Random velocity between 2 and 10
+
+        const dx = Math.cos(angle) * velocity
+        const dy = Math.sin(angle) * velocity
+
+        particle.style.left = x + 'px'
+        particle.style.top = y + 'px'
+
+        container.appendChild(particle)
+
+        setTimeout(() => {
+            particle.remove()
+        }, 400)
+
+        animateParticle(particle, dx, dy)
+    }
+}
+
+function animateParticle(particle, dx, dy) {
+    const startTime = Date.now()
+    function update() {
+        const deltaTime = Date.now() - startTime
+        const progress = Math.min(deltaTime / 400, 1)
+
+        const x = parseFloat(particle.style.left) + dx * progress
+        const y = parseFloat(particle.style.top) + dy * progress
+
+        particle.style.left = x + 'px'
+        particle.style.top = y + 'px'
+
+        if (progress < 1) requestAnimationFrame(update)
+    }
+
+    requestAnimationFrame(update)
+}
 
 function rotateElement(event, element) {
     // get mouse position

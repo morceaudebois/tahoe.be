@@ -24,11 +24,11 @@ class LikeButton extends Component {
     }
 
     public function isLiked() {
-        return session()->get('liked_' . $this->element->id, false);
+        return session()->get("liked_" . class_basename($this->element) . "_" . $this->element->id, false);
     }
 
     public function setLikedState() {
-        session()->put('liked_' . $this->element->id, true);
+        session()->put("liked_" . class_basename($this->element) . "_" . $this->element->id, true);
     }
 
     public function render() {
