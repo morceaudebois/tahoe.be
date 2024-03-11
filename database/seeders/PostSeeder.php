@@ -22,7 +22,8 @@ class PostSeeder extends Seeder
                 'slug' => 'myfavoritedogs',
                 'likes' => 4,
                 'external_url' => 'https://myfavoritedogs.tahoe.be',
-                'body' => 'the bodyè'
+                'body' => 'the bodyè',
+                'draft' => false
             ],
             [
                 'title' => 'Another post',
@@ -32,7 +33,8 @@ class PostSeeder extends Seeder
                 'likes' => 2,
                 'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2021|other|javascript',
-                'body' => 'the bodyè'
+                'body' => 'the bodyè',
+                'draft' => false
             ],
             [
                 'title' => 'Wow that\'s a third post',
@@ -42,7 +44,8 @@ class PostSeeder extends Seeder
                 'likes' => 7,
                 'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2023|tag|wow',
-                'body' => 'the bodyè'
+                'body' => 'the bodyè',
+                'draft' => false
             ],
             [
                 'title' => 'And a fourth',
@@ -52,7 +55,8 @@ class PostSeeder extends Seeder
                 'likes' => 2,
                 'external_url' => 'https://myfavoritedogs.tahoe.be',
                 'tags' => '2023|tag|wow',
-                'body' => 'the bodyè'
+                'body' => 'the bodyè',
+                'draft' => false
             ]
         ]);
     }

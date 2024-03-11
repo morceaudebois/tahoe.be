@@ -1,11 +1,11 @@
 # To do
-- [ ] Animations
+- [x] Photo info
 - [x] Working likes
+- [x] Dates in photo and posts
+- [ ] Animations
 - [ ] Fix bugs
 - [ ] SEO
 - [ ] Optimisation
-- [x] Dates in photo and posts
 - [ ] Support section
 - [ ] About section
-- [ ] Photo info
 - [ ] Post body style

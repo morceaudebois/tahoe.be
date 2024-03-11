@@ -24,4 +24,12 @@
             </article>
         @endforeach
     </section>
+
+    <section id="support">
+        <h6>Why it matters</h6>
+        <h3>Support</h3>
+        <p>Open source development requires a significant amount of time and effort. Since I don't run ads on my projects nor do I collect & sell your data, I don't make any money from them. This is why your support matters so much, as it keeps me motivated and allows me to dedicate more time into these projects.</p><br>
+
+        <p>If you like what I do, please consider sharing them around, donating, or even just <a href="mailto:mail@tahoe.be">saying thank you</a>. 😊</p>
+    </section>
 </x-front-layout>
