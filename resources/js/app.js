@@ -2,8 +2,6 @@ import './bootstrap'
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
-
-
 // Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
 const articles = document.querySelectorAll(".glassHover")
 
@@ -75,19 +73,9 @@ function rotateElement(event, element) {
     // console.log(offsetX, offsetY)
 
     // set rotation
-    element.style.setProperty("--rotateX", (offsetX/6) + "deg")
-    element.style.setProperty("--rotateY", -1 * (offsetY/6) + "deg")
+    element.style.setProperty("--rotateX", (offsetX/5) + "deg")
+    element.style.setProperty("--rotateY", -1 * (offsetY/5) + "deg")
 }
-
-// document.querySelectorAll('.likeContainer').forEach(function(likeContainer) {
-//     likeContainer.addEventListener('click', function (event) {
-//         event.preventDefault()
-//         console.log(likeContainer.classList.contains('liked'))
-//         if (!likeContainer.classList.contains('liked')) {
-//             createFirework(event.clientX, event.clientY)
-//         }
-//     })
-// })
 
 // masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
 let grids = [...document.querySelectorAll('#photo-grid')];

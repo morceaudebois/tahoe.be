@@ -32,7 +32,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     position: relative;
-    // overflow-x: hidden;
+    overflow-x: hidden;
 
     ::selection {
         background-color: rgba(231, 60, 126, 0.5);
@@ -42,11 +42,12 @@ body {
 
     #bg-glow {
         position: absolute;
-        top: -250px;
-        width: 66%;
-        min-width: 600px;
+        top: -400px;
+        width: 77%;
+        min-width: 800px;
         margin-inline: auto;
-        right: 0; left: 0;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: -1;
     }
 

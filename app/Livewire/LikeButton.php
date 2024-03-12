@@ -15,20 +15,9 @@ class LikeButton extends Component {
     }
 
     public function toggleLike() {
-        if (!$this->isLiked()) {
-            $this->element->update(
-                ['likes' => $this->element->likes + 1]
-            );
-            $this->setLikedState();
-        }
-    }
-
-    public function isLiked() {
-        return session()->get("liked_" . class_basename($this->element) . "_" . $this->element->id, false);
-    }
-
-    public function setLikedState() {
-        session()->put("liked_" . class_basename($this->element) . "_" . $this->element->id, true);
+        $this->element->update(
+            ['likes' => $this->element->likes + 1]
+        );
     }
 
     public function render() {
