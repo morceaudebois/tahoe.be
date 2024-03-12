@@ -8,6 +8,12 @@ body.home main {
         article {
             display: flex;
 
+            @media (prefers-reduced-motion: no-preference) {
+                opacity: 0;
+                animation: fadeInScaleUpAnimation .8s ease forwards;
+                transform-origin: center;
+            }
+
             a {
                 display: flex;
                 align-items: center;
@@ -125,6 +131,11 @@ body.home main {
         padding-inline: 4em;
         margin-top: 4em;
         margin-inline: auto;
+
+        @media (prefers-reduced-motion: no-preference) {
+            opacity: 0;
+            animation: simpleFadeIn .8s ease forwards;
+        }
 
         h3, h6 {
             text-align: center;

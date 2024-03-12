@@ -129,7 +129,19 @@ if (grids.length && getComputedStyle(grids[0]).gridTemplateRows !== 'masonry') {
         layout(); /* initial load */
         addEventListener('resize', layout, false) /* on resize */
     }, false);
+
+    // trigger fonction de layout pendant l'animation d'apparition
+    if (document.body.classList.contains('photography')) {
+        let intervalId = setInterval(layout, 1)
+
+        setTimeout(function () {
+            clearInterval(intervalId);
+        }, 1000)
+    }
 }
+
+
+
 
 
 

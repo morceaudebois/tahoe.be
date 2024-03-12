@@ -1,7 +1,25 @@
+@keyframes fadeInScaleUpAnimation {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 body.post main {
     article {
         padding: 1.15em;
         padding-bottom: 2.5em;
+
+        @media (prefers-reduced-motion: no-preference) {
+            opacity: 0;
+            animation: fadeInScaleUpAnimation .8s ease forwards;
+            transform-origin: bottom;
+        }
 
         header h6, header h1, header .tagContainer, section {
             margin-inline: 30px;
@@ -48,7 +66,11 @@ body.post main {
                 text-align: justify;
             }
         }
+    }
 
-
+    @media only screen and (max-width: 630px) {
+        article section {
+            margin-inline: unset;
+        }
     }
 }

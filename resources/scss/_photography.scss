@@ -13,6 +13,12 @@ body.photography main {
             overflow: hidden;
             position: relative;
 
+            @media (prefers-reduced-motion: no-preference) {
+                opacity: 0;
+                animation: fadeInScaleUpAnimation .8s ease forwards;
+                transform-origin: center;
+            }
+
             img {
                 display: block;
                 width: 100%;   

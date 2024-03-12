@@ -24,6 +24,27 @@ $maxWidth: 1152px;
     }
 }
 
+@keyframes fadeInScaleUpAnimation {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes simpleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 body {
     background-color: #0B0C14;
@@ -43,12 +64,26 @@ body {
     #bg-glow {
         position: absolute;
         top: -400px;
-        width: 77%;
+        width: 80%;
         min-width: 800px;
         margin-inline: auto;
         left: 50%;
-        transform: translateX(-50%);
         z-index: -1;
+        animation: bg-glow-animation .8s ease-in forwards;
+        animation-fill-mode: both;
+        transform: translateZ(0) translateX(-50%);
+    }
+
+    @keyframes bg-glow-animation {
+        from {
+            top: -600px;
+            opacity: 0;
+        }
+
+        to {
+            top: -400px;
+            opacity: 0.18;
+        }
     }
 
     #vignette {
@@ -207,6 +242,7 @@ h6 {
         transition: rotate ease-in .2s, scale ease .2s, box-shadow ease .2s;
         rotate: 0deg;
         scale: 1;
+        overflow: visible;
 
         path {
             fill: rgba(226, 232, 255, 0.7);

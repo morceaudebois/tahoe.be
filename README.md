@@ -2,7 +2,7 @@
 - [x] Photo info
 - [x] Working likes
 - [x] Dates in photo and posts
-- [ ] Animations
+- [x] Animations
 - [ ] Fix bugs
 - [ ] SEO
 - [ ] Optimisation
