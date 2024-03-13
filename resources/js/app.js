@@ -149,7 +149,15 @@ const lightbox = new PhotoSwipeLightbox({
 })
 
 lightbox.on('firstUpdate', () => {
-    lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)';
+    lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)'
+
+    // disables right click 
+    lightbox.pswp.element.querySelectorAll('.pswp__item').forEach(function(item) {
+        item.oncontextmenu = function (event) {
+            console.error("Thief! 🫠")
+            event.preventDefault()
+        }
+    })  
 })
 
 lightbox.on('initialZoomInEnd', () => {
