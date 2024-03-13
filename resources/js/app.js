@@ -2,14 +2,7 @@ import './bootstrap'
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
-// Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
-const articles = document.querySelectorAll(".glassHover")
 
-articles.forEach(function(pre) {
-    document.addEventListener("mousemove", (e) => {
-        rotateElement(e, pre)
-    })
-})
 
 window.createFirework = function(x, y) {
     const container = document.getElementById('particle-container')
@@ -55,7 +48,8 @@ function animateParticle(particle, dx, dy) {
     requestAnimationFrame(update)
 }
 
-function rotateElement(event, element) {
+// Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
+document.addEventListener("mousemove", (event) => {
     // get mouse position
     const x = event.clientX
     const y = event.clientY
@@ -73,9 +67,9 @@ function rotateElement(event, element) {
     // console.log(offsetX, offsetY)
 
     // set rotation
-    element.style.setProperty("--rotateX", (offsetX/5) + "deg")
-    element.style.setProperty("--rotateY", -1 * (offsetY/5) + "deg")
-}
+    document.body.style.setProperty("--rotateX", (offsetX / 5) + "deg")
+    document.body.style.setProperty("--rotateY", -1 * (offsetY / 5) + "deg")
+})
 
 // masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
 let grids = [...document.querySelectorAll('#photo-grid')];

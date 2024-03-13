@@ -1,16 +1,16 @@
-@keyframes fadeInScaleUpAnimation {
-    from {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 body.post main {
+    @keyframes fadeInScaleUpAnimation {
+        from {
+            opacity: 0;
+            scale: 0.96;
+        }
+
+        to {
+            opacity: 1;
+            scale: 1;
+        }
+    }
+
     article {
         padding: 1.15em;
         padding-bottom: 2.5em;
