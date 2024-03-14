@@ -1,4 +1,11 @@
 <x-front-layout class="home">
+    @section('metatags')
+        <x-meta
+            image="{{ $posts->first()->getThumbnailUrl('lg') }}"
+            url="{{ url()->current() }}"
+        />
+    @endsection
+
     <section id="projects">
         @foreach($posts->where('draft', false)->sortBy('date') as $post)
             <article {{ $loop->first ? 'id=latest' : '' }} class="glassHover">
