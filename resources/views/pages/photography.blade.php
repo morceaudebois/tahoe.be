@@ -1,4 +1,13 @@
 <x-front-layout class="photography">
+    @section('metatags')
+        <x-meta
+            title="Photography"
+            image="{{ $photos->first()->getThumbnailUrl('lg') }}"
+            url="{{ url()->current() }}"
+            noindex="true"
+        />
+    @endsection
+
     <section id='photo-grid'>
             @foreach ($photos->where('draft', false)->sortBy('date') as $photo)
                 <div class="photoContainer glassHover">

@@ -1,27 +1,15 @@
 @props([
-    'title' => false,
-    'description' => false,
-    'keywords' => false,
-    'image' => false,
-    'url' => false,
-    'author' => false,
+    'title' => null,
+    'description' => "I'm an open source web developer and designer who creates projects for you to enjoy! Check out my latest work and support what I do. 🪵",
+    'keywords' => 'open source, independant, php, css, chrome extension, minecraft mods',
+    'image' => null,
+    'url' => url()->current(),
+    'author' => 'Tahoe Beetschen',
+    'noindex' => false
 ])
 
-@php // to know if the values are default or passed down
-    $defaults = [
-        'title' => 'Tahoe Beetschen',
-        'description' => "I'm an open source web developer and designer who creates projects for you to enjoy! Check out my latest work and support what I do. 🪵",
-        'keywords' => 'open source, independant, php, css, chrome extension, minecraft mods',
-        'image' => '',
-        'url' => '',
-        'author' => 'Tahoe Beetschen'
-    ];
-
-    if (!$title) {
-        $title = "{$defaults['author']} · Maker of things";
-    } else {
-        $title = $title . $defaults['author'];
-    }
+@php 
+    $title = $title ? "$title · $author" : "$author · Maker of things";
 @endphp
  
 <title>{{ $title }}</title>
@@ -45,3 +33,7 @@
 <meta property="twitter:title" content="{{ $title }}" />
 <meta property="twitter:description" content="{{ $description }}" />
 <meta property="twitter:image" content="{{ $image }}" />
+
+@if ($noindex)
+    <meta name=”robots” content=”noindex”>
+@endif

@@ -1,4 +1,12 @@
 <x-front-layout class="post">
+    @section('metatags')
+        <x-meta
+            title="{{ $post->title }}"
+            image="{{ $post->getThumbnailUrl('lg') }}"
+            description="{{ $post->excerpt }}"
+        />
+    @endsection
+
     <article>
         <header>
             <div class="top">

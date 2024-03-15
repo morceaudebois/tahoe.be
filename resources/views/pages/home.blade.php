@@ -2,7 +2,6 @@
     @section('metatags')
         <x-meta
             image="{{ $posts->first()->getThumbnailUrl('lg') }}"
-            url="{{ url()->current() }}"
         />
     @endsection
 
