@@ -3,7 +3,7 @@
     x-data="{ 
         liked: localStorage.getItem('{{ "liked_" . class_basename($element) . "_" . $element->id }}'),
         toggleLike: function() {
-            if (!this.liked) { createF      irework(event.clientX, event.clientY);
+            if (!this.liked) { createFirework(event.clientX, event.clientY);
                 localStorage.setItem(
                     '{{ 'liked_' . class_basename($element) . '_' . $element->id }}', true
                 );

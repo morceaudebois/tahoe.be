@@ -14,7 +14,7 @@
             @foreach ($photos->sortBy('created_at') as $photo)
                 <div class="photo">
                     <a href="{{ route('dashboard.photo.edit', $photo) }}" class="h-64">
-                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="">
+                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}">
                     </a>
 
                     <div class="deleteContainer" x-data="{ askedToDelete_{{ $loop->index }}: false }">

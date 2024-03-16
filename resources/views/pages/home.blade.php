@@ -26,7 +26,7 @@
                         @include('front.tags', ['tags' => $post->tags()])
                     </div>
 
-                    <img height='100%' src="{{ $post->getThumbnailUrl($loop->first ? 'lg' : 'md') }}" alt="">                    
+                    <img height='100%' src="{{ $post->getThumbnailUrl($loop->first ? 'lg' : 'md') }}" alt="Thumbnail for the post about {{ $post->title }}">                    
                 </a>
             </article>
         </div>

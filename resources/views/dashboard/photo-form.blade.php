@@ -26,7 +26,7 @@
 
                             @if (isset($photo->thumbnail))
                                 <div class="flex my-2">
-                                    <img src="{{ $photo->getThumbnailUrl('md') }}" width='100px' alt="">
+                                    <img src="{{ $photo->getThumbnailUrl('md') }}" width='100px'>
                                 </div>
                             @endif
 

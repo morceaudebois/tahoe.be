@@ -17,7 +17,7 @@
                         data-pswp-height="{{ $photo->height }}" 
                         target="_blank"
                         data-description="{{ $photo->info }}">
-                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
+                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
                     </a>
                     <div class="links">
                         @livewire('like-button', ['element' => $photo, 'glass' => true])
