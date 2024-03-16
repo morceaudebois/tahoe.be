@@ -315,12 +315,11 @@ h6 {
 }
 
 .glassHover {
-    transition: .3s scale, .3s background-color, .3s border;
+    transition: .3s transform, .3s background-color, .3s border;
 
     @media (prefers-reduced-motion: no-preference) {
         &:hover {
-            scale: 1.015;
-            transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+            transform: scale(1.015);
         }
 
         // glass reflection

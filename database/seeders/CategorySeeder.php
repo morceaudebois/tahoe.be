@@ -36,6 +36,14 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'WordPress extension',
                 'slug' => 'wordpress_extension'
+            ],
+            [
+                'name' => 'Client work',
+                'slug' => 'client_work'
+            ],
+            [
+                'name' => 'Graphic design',
+                'slug' => 'graphic_design'
             ]
         ]);
     }

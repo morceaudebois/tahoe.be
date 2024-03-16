@@ -7,7 +7,8 @@
 
     <section id="projects">
         @foreach($posts->where('draft', false)->sortBy('date') as $post)
-            <article {{ $loop->first ? 'id=latest' : '' }} class="glassHover">
+        <div class="article-wrapper" {{ $loop->first ? 'id=latest' : '' }}>
+            <article class="glassHover">
                 <a href="/post/{{ $post->slug }}" title="" alt="">
                     <div class="info">
                         <div class="top">
@@ -28,6 +29,8 @@
                     <img height='100%' src="{{ $post->getThumbnailUrl($loop->first ? 'lg' : 'md') }}" alt="">                    
                 </a>
             </article>
+        </div>
+            
         @endforeach
     </section>
 
