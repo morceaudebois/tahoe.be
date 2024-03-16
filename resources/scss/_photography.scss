@@ -6,8 +6,15 @@ body.photography main {
         justify-content: center;
         grid-gap: 1.75em;
 
-        .photoContainer {
+        .photo-wrapper {
             align-self: start;
+
+            &:hover {
+                transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+            }
+        }
+
+        .photo {
             border: 1px solid #1e1f2a;
             border-radius: $radius;
             overflow: hidden;

@@ -9,8 +9,9 @@
     @endsection
 
     <section id='photo-grid'>
-            @foreach ($photos->where('draft', false)->sortBy('date') as $photo)
-                <div class="photoContainer glassHover">
+        @foreach ($photos->where('draft', false)->sortBy('date') as $photo)
+            <div class="photo-wrapper">
+                <div class="photo glassHover">
                     <a href="{{ $photo->getThumbnailUrl('xl') }}" 
                         data-pswp-width="{{ $photo->width }}" 
                         data-pswp-height="{{ $photo->height }}" 
@@ -22,6 +23,7 @@
                         @livewire('like-button', ['element' => $photo, 'glass' => true])
                     </div>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
     </section>
 </x-front-layout>
