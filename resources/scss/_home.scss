@@ -56,7 +56,7 @@ body.home main {
                 }
             }
 
-            &:hover {
+            &:hover, &:has(a:focus:not(:active)) {
                 background-color: #212233;
                 border: 1px solid #3b3f55;
             }
