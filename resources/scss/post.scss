@@ -61,9 +61,20 @@ body.post main {
             margin-top: 30px;
             font-size: 1.3em;
 
+            div {
+                text-align: justify
+            }
+
+            a {
+                @include pinkLink();
+            }
+
             p {
                 margin-bottom: 20px;
-                text-align: justify;
+            }
+
+            strong {
+                font-weight: bold;
             }
         }
     }

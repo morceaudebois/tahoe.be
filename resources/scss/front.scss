@@ -4,6 +4,15 @@ $whiteButActuallyBlue: rgba(226, 232, 255, 0.9);
 $radius: 20px;
 $maxWidth: 1152px;
 
+@mixin pinkLink() {
+    color: #e73c7ed1;
+    font-weight: bold;
+
+    &:hover {
+        color: $accentColor;
+    }
+}
+
 @mixin glassBackground() {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     backdrop-filter: blur(4em);
@@ -361,7 +370,7 @@ main {
             border-radius: 10px;
             background-color: #1f2937;
             padding: 0.4em;
-            padding-bottom: .45em;
+            padding-bottom: .3em;
             line-height: 1.3em;
             padding-top: 0.25em;
             box-sizing: border-box;
@@ -385,12 +394,7 @@ main {
 
 footer, #support {
     a {
-        color: #e73c7ed1;
-        font-weight: bold;
-
-        &:hover {
-            color: $accentColor;
-        }
+        @include pinkLink();
     }
 }
 

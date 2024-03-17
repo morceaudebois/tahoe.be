@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->uuid('uuid');
             $table->string('thumbnail');
             $table->string('width');
             $table->string('height');

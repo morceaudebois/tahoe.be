@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Photo;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -18,7 +19,8 @@ class PhotoSeeder extends Seeder
                 'thumbnail' => 'thumbnails/dog.jpg',
                 'width' => 1080,
                 'height' => 1920,
-                'info' => "bonjour"
+                'info' => "bonjour",
+                'uuid' => Str::random(8)
             ]
         ]);
     }

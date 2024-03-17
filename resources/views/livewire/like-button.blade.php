@@ -1,11 +1,11 @@
 <div role="button" tabindex="0"
     class="likeContainer {{ $glass ? 'glass' : '' }}"
     x-data="{ 
-        liked: localStorage.getItem('{{ "liked_" . class_basename($element) . "_" . $element->id }}'),
+        liked: localStorage.getItem('{{ "liked_" . class_basename($element) . "_" . (isset($element->slug) ? $element->slug : $element->uuid) }}'),
         toggleLike: function() {
             if (!this.liked) { createFirework(event.clientX, event.clientY);
                 localStorage.setItem(
-                    '{{ 'liked_' . class_basename($element) . '_' . $element->id }}', true
+                    '{{ 'liked_' . class_basename($element) . '_' . (isset($element->slug) ? $element->slug : $element->uuid) }}', true
                 );
                 $wire.toggleLike(); this.liked = true;
             }

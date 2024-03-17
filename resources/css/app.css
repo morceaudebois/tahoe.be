@@ -24,4 +24,14 @@
     .trix-button {
         filter: invert(.95);
     }
+
+    trix-toolbar .trix-dialog {
+        background: #1f2937;
+    }
+}
+
+trix-editor {
+    a {
+        color: #6875F5;
+    }
 }
