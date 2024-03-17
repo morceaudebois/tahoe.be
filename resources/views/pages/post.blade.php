@@ -10,7 +10,7 @@
     <article>
         <header>
             <div class="top">
-                <img src="{{ $post->getThumbnailUrl('lg') }}" alt="Featured image of the {{ $post->title }} post">
+                <img src="{{ $post->getThumbnailUrl('xl') }}" alt="Featured image of the {{ $post->title }} post">
 
                 <div class="links">
                     @livewire('like-button', ['element' => $post, 'glass' => true])
