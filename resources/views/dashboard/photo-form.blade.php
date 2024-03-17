@@ -21,6 +21,15 @@
                         @method('PATCH')
                     @endif
 
+                    <div class="col-span-6 mb-6 ">
+                        <x-label id="title" for="title" value="{{ __('Title') }}" />
+                        <x-input name="title" type="text" class="mt-1 block w-full" 
+                        required value="{{ old('title', isset($photo) ? $photo->title : '') }}" />
+                        @error('title')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <div class="mb-6 col-span-6">
                             <x-label id="thumbnail" for="thumbnail" value="{{ __('Image') }}" />
 
@@ -40,18 +49,28 @@
                     <div class="col-span-6 mb-6 ">
                         <x-label id="info" for="info" value="{{ __('Info') }}" />
                         <x-input name="info" type="text" class="mt-1 block w-full" 
-                        required value="{{ old('info', isset($photo) ? $photo->info : '') }}" />
+                         value="{{ old('info', isset($photo) ? $photo->info : '') }}" />
                         @error('info')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div class="col-span-6">
+                    <div class="col-span-6 mb-6">
                         <x-label id="date" for="date" value="{{ __('Date') }}" />
 
                         <x-input name="date" type="date" id="date" value="{{ old('date', $photo->date ?? now()->toDateString()) }}" class="mt-1 block w-full" />
 
                         @error('date')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="col-span-6 flex mb-6">
+                        <input id="cope" type="checkbox" name="cope" class="mr-2 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" {{ old('cope', isset($photo) ? ($photo->cope ? 'checked' : '') : '') }} >
+
+                        <x-label id="cope" for="cope" value="{{ __('Cope') }}" />
+
+                        @error('cope')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                         @enderror
                     </div>

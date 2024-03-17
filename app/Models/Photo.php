@@ -16,7 +16,8 @@ class Photo extends Model {
         'draft',
         'date',
         'likes',
-        'info'
+        'info',
+        'cope'
     ];
 
     public function getThumbnailUrl($size = 'lg') {

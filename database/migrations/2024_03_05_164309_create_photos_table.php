@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
             $table->string('thumbnail');
             $table->string('width');
             $table->string('height');
-            $table->string('info');
+            $table->string('info')->nullable();
             $table->integer('likes')->nullable();
             $table->date('date')->default(now()->toDateString());
             $table->boolean('draft')->default(true);
+            $table->boolean('cope')->default(false);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

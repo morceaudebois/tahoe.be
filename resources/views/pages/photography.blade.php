@@ -9,21 +9,25 @@
     @endsection
 
     <section id='photo-grid'>
-        @foreach ($photos->where('draft', false)->sortBy('date') as $photo)
-            <div class="photo-wrapper">
-                <div class="photo glassHover">
-                    <a href="{{ $photo->getThumbnailUrl('xl') }}" 
-                        data-pswp-width="{{ $photo->width }}" 
-                        data-pswp-height="{{ $photo->height }}" 
-                        target="_blank"
-                        data-description="{{ $photo->info }}">
-                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
-                    </a>
-                    <div class="links">
-                        @livewire('like-button', ['element' => $photo, 'glass' => true])
+        @foreach ($photos->where('draft', false)->sortByDesc('date') as $photo)
+            @if (Auth::check() && !$photo->cope) 
+                <div class="photo-wrapper">
+                    <div class="photo glassHover">
+                        <a href="{{ $photo->getThumbnailUrl('xl') }}" 
+                            data-pswp-width="{{ $photo->width }}" 
+                            data-pswp-height="{{ $photo->height }}" 
+                            target="_blank"
+                            @if ($photo->info)
+                                data-description="{{ $photo->info }}"
+                            @endif>
+                            <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
+                        </a>
+                        <div class="links">
+                            @livewire('like-button', ['element' => $photo, 'glass' => true])
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     </section>
 </x-front-layout>

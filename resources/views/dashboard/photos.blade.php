@@ -14,7 +14,11 @@
             @foreach ($photos->sortBy('created_at') as $photo)
                 <div class="photo">
                     <a href="{{ route('dashboard.photo.edit', $photo) }}" class="h-64">
-                        <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}">
+                        @if (!$photo->cope)
+                            <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}">
+                        @else
+                            <div style="background-color: coral; width: 100%; height: 140px;"></div>
+                        @endif
                     </a>
 
                     <div class="deleteContainer" x-data="{ askedToDelete_{{ $loop->index }}: false }">

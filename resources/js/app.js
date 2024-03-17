@@ -201,7 +201,12 @@ lightbox.on('uiRegister', function () {
         onInit: (el, pswp) => {
             pswp.on('change', () => {
                 let desc = pswp.currSlide.data.element.getAttribute("data-description")
-                document.querySelector('.pswp__descContainer').innerHTML = desc
+                
+                if (desc) {
+                    document.querySelector('.pswp__descContainer').innerHTML = desc
+                } else {
+                    document.querySelector('.pswp__button--info-button').style.display = "none"
+                }
             })
         }
     })
