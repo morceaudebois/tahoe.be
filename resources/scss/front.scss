@@ -19,6 +19,14 @@ $maxWidth: 1152px;
     -webkit-backdrop-filter: blur(4em);
     background-color: #19191972;
     border: 1px solid rgba(255, 255, 255, 0.076);
+    
+    // firefox backdrop-filter fallback because performance is terrible otherwise
+    // may they fix it someday 🙏
+    @-moz-document url-prefix() {
+        backdrop-filter: unset;
+        -webkit-backdrop-filter: unset;
+        background-color: rgba(50, 50, 50, .9);
+    }
 }
 
 @keyframes particleAnimation {
@@ -78,9 +86,16 @@ body {
         margin-inline: auto;
         left: 50%;
         z-index: -1;
-        animation: bg-glow-animation .8s ease-in forwards;
         animation-fill-mode: both;
         transform: translateZ(0) translateX(-50%);
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: bg-glow-animation .8s ease-in forwards;
+        }
+
+        @media (prefers-reduced-motion) {
+            opacity: 0.18;
+        }
     }
 
     @keyframes bg-glow-animation {

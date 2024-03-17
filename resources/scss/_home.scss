@@ -5,9 +5,12 @@ body.home main {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         margin-top: 1.75em;
 
-        .article-wrapper:hover {
-            transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+        @media (prefers-reduced-motion: no-preference) {
+            .article-wrapper:hover {
+                transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+            }
         }
+
 
         article {
             display: flex;
