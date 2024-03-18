@@ -26,7 +26,7 @@
 
         @include('front.footer')
 
-        <svg id="bg-glow" viewBox="0 0 800 800"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%"><feGaussianBlur stdDeviation="130" in="SourceGraphic" result="blur"/></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="189.5" ry="277.5" cx="387.37898932969586" cy="389.59564847750903" fill="#e73c7e"/></g></svg>
+        <svg id="bg-glow" viewBox="0 0 800 800"><g><ellipse rx="189.5" ry="277.5" cx="387.37898932969586" cy="389.59564847750903" fill="#e73c7e"/></g></svg>
 
         <div id="bg-grain"></div>
         <div id="vignette"></div>

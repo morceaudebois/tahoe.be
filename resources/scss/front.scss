@@ -82,19 +82,20 @@ body {
         position: absolute;
         top: -400px;
         width: 80%;
-        min-width: 800px;
+        min-width: 900px;
         margin-inline: auto;
         left: 50%;
         z-index: -1;
         animation-fill-mode: both;
         transform: translateZ(0) translateX(-50%);
+        filter: blur(130px);
 
         @media (prefers-reduced-motion: no-preference) {
             animation: bg-glow-animation .8s ease-in forwards;
         }
 
         @media (prefers-reduced-motion) {
-            opacity: 0.18;
+            opacity: 0.2;
         }
     }
 
@@ -106,7 +107,7 @@ body {
 
         to {
             top: -400px;
-            opacity: 0.18;
+            opacity: 0.2;
         }
     }
 
