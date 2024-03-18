@@ -10,7 +10,7 @@
 
     <section id='photo-grid'>
         @foreach ($photos->where('draft', false)->sortByDesc('date') as $photo)
-            @if (Auth::check() && !$photo->cope) 
+            @if (!Auth::check() || Auth::check() && !$photo->cope) 
                 <div class="photo-wrapper">
                     <div class="photo glassHover">
                         <a href="{{ $photo->getThumbnailUrl('xl') }}" 

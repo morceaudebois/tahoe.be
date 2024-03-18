@@ -78,4 +78,15 @@ class AdminPostController extends Controller {
         $post->delete();
         return back()->with('flash.banner', 'Post deleted!');
     }
+
+    public function uploadImage(Request $request) {
+        $uploadedFile = $request->file('file');
+        $fileName = time() . '-' . $uploadedFile->getClientOriginalName();
+        $uploadedFile->storeAs('post-body', $fileName);
+
+        return response()->json([
+            'url' => asset("storage/post-body/{$fileName}"),
+            'href' => asset("storage/post-body/{$fileName}"),
+        ]);
+    }
 }

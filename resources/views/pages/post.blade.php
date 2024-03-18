@@ -34,7 +34,7 @@
             @include('front.tags', ['tags' => $post->tags()])
         </header>
 
-        <section>
+        <section class="trix-content">
             {!! $post->body !!}
         </section>
     </article>

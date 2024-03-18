@@ -62,6 +62,9 @@ Route::middleware([
         ]
     ]);
 
+    // saves images in post body
+    Route::post('/upload-post-image', [AdminPostController::class, 'uploadImage']);
+
     // photos
     Route::resources(['dashboard/photos' => AdminPhotoController::class,],
         ['names' => [

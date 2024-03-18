@@ -37,6 +37,6 @@ class Post extends Model {
 
     public function getThumbnailUrl($size = 'lg') {
         $thumbnailName = substr_replace($this->thumbnail, $size . '_', 11, 0);
-        return asset('storage') . '/' . $thumbnailName;
+        return asset("storage/{$thumbnailName}");
     }
 }

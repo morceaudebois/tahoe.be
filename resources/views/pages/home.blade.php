@@ -1,12 +1,16 @@
 <x-front-layout class="home">
+    @php
+        $sortedPosts = $posts->where('draft', false)->sortByDesc('date')
+    @endphp
+
     @section('metatags')
         <x-meta
-            image="{{ $posts->first()->getThumbnailUrl('lg') }}"
+            image="{{ $sortedPosts->first()->getThumbnailUrl('lg') }}"
         />
     @endsection
 
     <section id="projects">
-        @foreach($posts->where('draft', false)->sortByDesc('date') as $post)
+        @foreach($sortedPosts as $post)
         <div class="article-wrapper" {{ $loop->first ? 'id=latest' : '' }}>
             <article class="glassHover">
                 <a href="/post/{{ $post->slug }}" title='Read post "{{ $post->title }}", a {{ $post->category->name }}' tabindex="0">

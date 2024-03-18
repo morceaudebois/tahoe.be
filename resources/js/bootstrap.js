@@ -30,3 +30,50 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+// for uploading Trix post body images
+(function () {
+    let upload_url = "/upload-post-image"
+    let csrfToken = document.querySelector('input[name="_token"]').value
+
+    function uploadFileAttachment(attachment) {
+        uploadFile(attachment.file, setProgress, setAttributes)
+
+        function setProgress(progress) {
+            attachment.setUploadProgress(progress)
+        }
+
+        function setAttributes(attributes) {
+            attachment.setAttributes(attributes)
+        }
+    }
+
+    function uploadFile(file, progressCallback, successCallback) {
+        let formData = new FormData();
+        formData.append("file", file)
+        formData.append("_token", csrfToken) // Include the CSRF token
+
+        let xhr = new XMLHttpRequest()
+        xhr.open("POST", upload_url, true)
+
+        xhr.upload.addEventListener("progress", function (event) {
+            let progress = (event.loaded / event.total) * 100
+            progressCallback(progress)
+        });
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText)
+                successCallback(response)
+            }
+        }
+
+        xhr.send(formData)
+    }
+
+    addEventListener("trix-attachment-add", function (event) {
+        if (event.attachment.file) {
+            uploadFileAttachment(event.attachment)
+        }
+    })
+})()

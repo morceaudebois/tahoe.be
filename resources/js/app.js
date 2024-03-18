@@ -1,8 +1,5 @@
-import './bootstrap'
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-
-
 
 window.createFirework = function(x, y) {
     const container = document.getElementById('particle-container')
