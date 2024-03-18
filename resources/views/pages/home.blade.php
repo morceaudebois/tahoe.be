@@ -10,32 +10,21 @@
     @endsection
 
     <section id="projects">
-        @foreach($sortedPosts as $post)
-        <div class="article-wrapper" {{ $loop->first ? 'id=latest' : '' }}>
-            <article class="glassHover">
-                <a href="/post/{{ $post->slug }}" title='Read post "{{ $post->title }}", a {{ $post->category->name }}' tabindex="0">
-                    <div class="info">
-                        <div class="top">
-                            @if ($post->category->name)
-                                <h6>{{ $post->category->name }}</h6>
-                            @endif
-                            <div {{ $loop->first ? 'class=links' : '' }}>
-                                @livewire('like-button', ['element' => $post, 'glass' => $loop->first ? true : false])
-                            </div>
-                        </div>
-                        
-                        <h3>{{ $post->title }}</h3>
-                        <p>{{ $post->excerpt }}</p>
-
-                        @include('front.tags', ['tags' => $post->tags()])
-                    </div>
-
-                    <img height='100%' src="{{ $post->getThumbnailUrl($loop->first ? 'lg' : 'md') }}" alt="Thumbnail for the post about {{ $post->title }}" {{ $loop->index > 4 ? 'loading="lazy"' : '' }}>                    
-                </a>
-            </article>
+        <div class="latest">
+            <x-post-bloc 
+                :post="$sortedPosts->first()"
+                featured="true"
+            />
         </div>
-            
-        @endforeach
+        
+        <div id="post-grid">
+            @foreach($sortedPosts as $post)
+                <x-post-bloc 
+                    :loop="$loop"
+                    :post="$post"
+                />
+            @endforeach
+        </div>
     </section>
 
     <section id="support">

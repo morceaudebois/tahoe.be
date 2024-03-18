@@ -1,16 +1,23 @@
 body.home main {
     #projects {
-        display: grid;
-        gap: 1.75em;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin-top: 1.75em;
+        #post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+            grid-template-rows: masonry;
+            justify-content: center;
+            grid-gap: 1.75em;
+            margin-top: 1.75em;
+
+            >.article-wrapper {
+                align-self: start;
+            }
+        }
 
         @media (prefers-reduced-motion: no-preference) {
             .article-wrapper:hover {
                 transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
             }
         }
-
 
         article {
             display: flex;

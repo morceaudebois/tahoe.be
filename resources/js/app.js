@@ -1,6 +1,8 @@
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
+
+
 window.createFirework = function(x, y) {
     const container = document.getElementById('particle-container')
 
@@ -69,15 +71,16 @@ document.addEventListener("mousemove", (event) => {
 })
 
 // masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
-let grids = [...document.querySelectorAll('#photo-grid')];
+let grids = [...document.querySelectorAll('#photo-grid, #post-grid')];
+console.log(grids)
 if (grids.length && getComputedStyle(grids[0]).gridTemplateRows !== 'masonry') {
     grids = grids.map(grid => ({
         _el: grid,
-        gap: parseFloat(getComputedStyle(grid).gridRowGap),
+        gap: parseFloat(getComputedStyle(grid).rowGap),
         items: [...grid.childNodes].filter(c => c.nodeType === 1 && +getComputedStyle(c).gridColumnEnd !== -1),
         ncol: 0,
         mod: 0
-    }));
+    }))
 
     function layout() {
         grids.forEach(grid => {
@@ -144,6 +147,7 @@ const lightbox = new PhotoSwipeLightbox({
     showAnimationDuration: 300,
     pswpModule: () => import('https://unpkg.com/photoswipe'),
 })
+
 
 lightbox.on('firstUpdate', () => {
     lightbox.pswp.options.easing = 'cubic-bezier(0.165, 0.84, 0.44, 1)'
