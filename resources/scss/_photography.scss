@@ -11,6 +11,11 @@ body.photography main {
 
             &:hover {
                 transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+
+                // pas d'animation sur Safari parce que bug dégueulasse
+                @supports (hanging-punctuation: first) and (-webkit-appearance: none) {
+                    transform: unset;
+                }
             }
         }
 

@@ -72,7 +72,6 @@ document.addEventListener("mousemove", (event) => {
 
 // masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
 let grids = [...document.querySelectorAll('#photo-grid, #post-grid')];
-console.log(grids)
 if (grids.length && getComputedStyle(grids[0]).gridTemplateRows !== 'masonry') {
     grids = grids.map(grid => ({
         _el: grid,
