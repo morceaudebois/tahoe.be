@@ -80,8 +80,19 @@ body.post main {
     }
 
     @media only screen and (max-width: 630px) {
-        article section {
-            margin-inline: unset;
-        }
+        article {
+            padding: .85em;
+
+            header h1 {
+                margin-inline: 0;
+                font-size: 1.6em;
+            }
+            
+            section {
+                margin-inline: unset;
+                font-size: 1.15em;
+                padding-bottom: 1em;
+            }
+        } 
     }
 }

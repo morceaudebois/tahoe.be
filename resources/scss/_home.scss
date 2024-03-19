@@ -199,7 +199,6 @@ body.home main {
     // mobile
     @media only screen and (max-width: 630px) {
         #projects {
-            margin-top: 3em;
             gap: 1.25em;
             grid-template-columns: repeat(1, minmax(0, 1fr));
 
@@ -209,6 +208,10 @@ body.home main {
 
                 a {
                     flex-direction: column-reverse;
+
+                    h3 {
+                        font-size: 1.7em;
+                    }
             
                     .info {
                         padding: 1em;
@@ -216,6 +219,13 @@ body.home main {
 
                         .top {
                             justify-content: center;
+                            margin-bottom: 0;
+
+                            .links {
+                                bottom: unset;
+                                top: 1em;
+                                right: 1em;
+                            }
                         }
             
                         h6 {
@@ -232,6 +242,10 @@ body.home main {
                     }
                 }
             } 
+        }
+
+        #support {
+            padding-inline: .25em;
         }
     }
 }
