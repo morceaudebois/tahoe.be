@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->text('external_url')->nullable();
+            $table->text('source_url')->nullable();
             $table->integer('likes')->nullable();
             $table->boolean('draft')->default(true);
             $table->timestamp('created_at')->useCurrent();

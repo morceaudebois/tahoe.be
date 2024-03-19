@@ -72,6 +72,12 @@
                         </div>
 
                         <div class="col-span-6">
+                            <x-label id="source_url" for="source_url" value="{{ __('Source URL') }}" />
+                            <x-input name="source_url" type="url" class="mt-1 block w-full" value="{{ old('source_url', isset($post) ? $post->source_url : '') }}" />
+                            <x-input-error for="source_url" class="mt-2" />
+                        </div>
+
+                        <div class="col-span-6">
                             <x-label id="category_id" for="category_id" value="{{ __('Category') }}" />
 
                             <select name="category_id" id="category_id" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full">

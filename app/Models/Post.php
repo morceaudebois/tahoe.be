@@ -15,6 +15,7 @@ class Post extends Model {
         'tags',
         'excerpt',
         'external_url',
+        'source_url',
         'body',
         'category_id',
         'thumbnail',
