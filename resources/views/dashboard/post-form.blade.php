@@ -110,14 +110,6 @@
                             @enderror
                         </div>
 
-                        <div class="col-span-6 flex">
-                            <input id="draft" type="checkbox" name="draft" class="mr-2 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" {{ old('draft', isset($post) ? ($post->draft ? 'checked' : '') : 'checked') }} >
-
-                            <x-label id="draft" for="draft" value="{{ __('Draft') }}" />
-
-                            <x-input-error for="draft" class="mt-2" />
-                        </div>
-
                         <div class="col-span-6">
                             <x-label id="date" for="date" value="{{ __('Date') }}" />
 
@@ -126,6 +118,14 @@
                             @error('date')
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                             @enderror
+                        </div>
+
+                        <div class="col-span-6 flex">
+                            <input id="draft" type="checkbox" name="draft" class="mr-2 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" {{ old('draft', isset($post) ? ($post->draft ? 'checked' : '') : 'checked') }} >
+
+                            <x-label id="draft" for="draft" value="{{ __('Draft') }}" />
+
+                            <x-input-error for="draft" class="mt-2" />
                         </div>
 
                         <x-button class="col-span-2 max-w-32 flex">{{ isset($post) ? 'Update post' : 'Save post' }}</x-button>

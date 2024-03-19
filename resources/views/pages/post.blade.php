@@ -36,6 +36,27 @@
 
         <section class="trix-content">
             {!! $post->body !!}
+
+            <div class="callToAction">
+                <h5>Enjoying this project?</h5><span>Please share it on social media and tell your friends about it!<br>It helps making what I do worth it.</span> 😊
+            </div>
+
+            @if ($post->external_url || $post->source_url)
+                <div class="bottomLinks">
+                    @if ($post->external_url)
+                        <a href="{{ $post->external_url }}">Visit the live version →</a>
+                    @endif
+
+                    @if ($post->source_url)
+                        <a href="{{ $post->source_url }}">See the source →</a>
+                    @endif
+                </div>
+            @endif
+
+         
         </section>
+
+
+
     </article>
 </x-front-layout>
