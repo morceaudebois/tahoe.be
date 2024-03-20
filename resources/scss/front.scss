@@ -63,6 +63,10 @@ $maxWidth: 1152px;
     }
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: #0B0C14;
     color: rgb(243 244 246);
@@ -70,7 +74,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     position: relative;
-    overflow-x: hidden;
 
     ::selection {
         background-color: rgba(231, 60, 126, 0.5);
@@ -505,6 +508,11 @@ footer {
         flex-direction: column;
         text-align: center;
         font-size: .9em;
+    }
+
+    .links {
+        bottom: .5em;
+        right: .5em;
     }
 
     footer {
