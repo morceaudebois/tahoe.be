@@ -37,10 +37,6 @@
         <section class="trix-content">
             {!! $post->body !!}
 
-            <div class="callToAction">
-                <h5>Enjoying this project?</h5><span>Please share it on social media and tell your friends about it!<br>It helps making what I do worth it.</span> 😊
-            </div>
-
             @if ($post->external_url || $post->source_url)
                 <div class="bottomLinks">
                     @if ($post->external_url)
@@ -52,11 +48,13 @@
                     @endif
                 </div>
             @endif
-
-         
         </section>
-
-
-
     </article>
+
+    <div class="callToAction">
+        <h5>✨ <span>Enjoying this project?</span> ✨</h5>
+        <span>Please share it on social media and tell your friends about it!<br>
+            It helps making what I do worth it.
+        </span>
+    </div>
 </x-front-layout>

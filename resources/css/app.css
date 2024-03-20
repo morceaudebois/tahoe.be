@@ -30,8 +30,6 @@
     }
 }
 
-trix-editor {
-    a {
-        color: #6875F5;
-    }
+trix-editor a {
+    color: #6875F5;
 }

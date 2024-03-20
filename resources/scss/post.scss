@@ -87,23 +87,26 @@ body.post main {
             margin-top: 2em;
         }
 
-        .callToAction {
-            color: rgba(226, 232, 255, 0.9);
-            font-size: .9em;
+        
+    }
 
-            background-color: #1f2937;
-            border-radius: 10px;
-            padding: .4em;
-            text-align: center;
-            margin-top: 2em;
+    .callToAction {
+        color: rgba(226, 232, 255, 0.9);
+        font-size: 1.1em;
+        background-color: #1f2937;
+        border-radius: 10px;
+        padding: 1em;
+        text-align: center;
+        margin-top: 3em;
+        width: 66%;
+        margin-inline: auto;
+        border: 1px solid rgba(255, 255, 255, 0.076);
 
-            h5 {
-                margin-bottom: .4em;
-                font-size: 1.1em;
-                font-weight: bolder;
-                font-style: italic;
-            }
-            
+        h5 {
+            margin-bottom: .4em;
+            font-size: 1.1em;
+            font-weight: bolder;
+
             span {
                 font-style: italic;
             }
@@ -118,12 +121,16 @@ body.post main {
                 margin-inline: 0;
                 font-size: 1.6em;
             }
-            
+
             section {
                 margin-inline: unset;
                 font-size: 1.15em;
                 padding-bottom: 1em;
             }
         } 
+
+        .callToAction {
+            width: 100%;
+        }
     }
 }
