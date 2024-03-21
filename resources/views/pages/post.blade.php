@@ -10,8 +10,13 @@
     <article>
         <header>
             <div class="top">
-                <img src="{{ $post->getThumbnailUrl('xl') }}" alt="Featured image of the {{ $post->title }} post">
-
+                <picture>
+                    <source media="(max-width: 630px)" srcset="{{ $post->getThumbnailUrl('md') }}" />
+                    <source media="(min-width: 631px) and (max-width: 1099px)" srcset="{{ $post->getThumbnailUrl('lg') }}" />
+                    <source media="(min-width: 1100px)" srcset="{{ $post->getThumbnailUrl('xl') }}" />
+                    <img src="{{ $post->getThumbnailUrl('xl') }}" alt="Featured image of the {{ $post->title }} post">
+                </picture>
+                
                 <div class="links">
                     @livewire('like-button', ['element' => $post, 'glass' => true])
 
