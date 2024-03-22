@@ -1,7 +1,8 @@
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
-
+Livewire.start()
 
 window.createFirework = function(x, y) {
     const container = document.getElementById('particle-container')

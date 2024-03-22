@@ -38,7 +38,7 @@
             </a>
         @endif
 
-        @livewireScripts
+        @livewireScriptConfig 
         @vite(['resources/js/app.js'])
     </body>
 </html>
