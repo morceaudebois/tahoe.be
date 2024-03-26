@@ -1,4 +1,4 @@
-import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import { Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
@@ -49,7 +49,7 @@ function animateParticle(particle, dx, dy) {
 }
 
 // Mouse animation stolen here: https://codepen.io/kevinpowell/pen/GRBdLEv
-document.addEventListener("mousemove", (event) => {
+const glassHover = (event) => {
     // get mouse position
     const x = event.clientX
     const y = event.clientY
@@ -69,7 +69,21 @@ document.addEventListener("mousemove", (event) => {
     // set rotation
     document.body.style.setProperty("--rotateX", (offsetX / 5) + "deg")
     document.body.style.setProperty("--rotateY", -1 * (offsetY / 5) + "deg")
+}
+
+document.querySelectorAll('.glassHover').forEach(function (glassHoverBloc) {
+    // adds event listener when hover on bloc
+    glassHoverBloc.addEventListener("mouseenter", () => {
+        document.addEventListener("mousemove", glassHover)
+    })
+
+    // then removes it when mouse out 
+    glassHoverBloc.addEventListener("mouseleave", () => {
+        document.removeEventListener("mousemove", glassHover)
+    })
 })
+
+
 
 // masonry grid stolen here: https://css-tricks.com/a-lightweight-masonry-solution/
 let grids = [...document.querySelectorAll('#photo-grid, #post-grid')];
