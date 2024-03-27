@@ -242,6 +242,13 @@ body.home main {
                     }
                 }
             } 
+
+            .article-wrapper:not(#latest) a {
+                .tagContainer {
+                    bottom: .5em;
+                    right: .5em;
+                }
+            }
         }
 
         #support {
