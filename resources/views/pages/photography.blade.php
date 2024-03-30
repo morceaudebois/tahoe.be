@@ -20,7 +20,14 @@
                             @if ($photo->info)
                                 data-description="{{ $photo->info }}"
                             @endif>
-                            <img src="{{ $photo->getThumbnailUrl('md') }}" alt="{{ $photo->info }}" style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"/>
+                            <img 
+                                src="{{ $photo->getThumbnailUrl('md') }}" 
+                                alt="{{ $photo->info }}" 
+                                style="aspect-ratio: {{ $photo->width }}/{{ $photo->height }}"
+                                @if ($loop && $loop->index > 6)
+                                    loading="lazy"
+                                @endif
+                            />
                         </a>
                         <div class="links">
                             @livewire('like-button', ['element' => $photo, 'glass' => true])

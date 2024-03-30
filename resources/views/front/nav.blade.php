@@ -13,11 +13,11 @@
             ])>Projects</a>
         </li>
 
-        {{-- <li>
+        <li>
             <a href="{{ route('photography') }}" title="Photography page" @class([
                 'active' => request()->routeIs('photography'),
             ])>Photography</a>
-        </li> --}}
+        </li>
 
         {{-- <li>
             <a href="{{ route('about') }}" title="About page" @class([
