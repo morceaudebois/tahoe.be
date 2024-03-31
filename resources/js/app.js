@@ -228,3 +228,62 @@ lightbox.on('uiRegister', function () {
 })
 
 lightbox.init()
+
+
+function isValidYouTubeUrl(url) {
+    // Regular expression pattern for YouTube video URLs
+    let pattern = /^(http(s)?:\/\/)?(www\.)?(m\.)?(youtube\.com\/(watch\?(v=|.*&v=)|embed\/|v\/)|youtu\.be\/|youtube\.com\/live\/)([\w-]{11})(\?‌​.+)?.*$/
+
+    return pattern.test(url)
+
+    // should work with these:
+    // https://youtu.be/dQw4w9WgXcQ
+    // https://www.youtube.com/live/1ThO140eQY4?si=XvSU7qDUmrSo9v-1
+    // https://www.youtube.com/watch?v=1ThO140eQY4
+}
+
+function removeParametersFromUrl(url) {
+    let parsedUrl = new URL(url)
+    let params = new URLSearchParams(parsedUrl.search)
+
+    let videoId
+
+    // if live url, gets video id with regex
+    if (!params.get('v') && url.includes('/live/')) {
+        let match = url.match(/\/live\/([^?]+)/)
+            videoId = match ? match[1] : null
+    } else videoId = params.get('v') // else just gets the parameter
+
+    parsedUrl.search = ''
+    
+    return `https://youtube.com/watch?v=${videoId}`
+}
+
+let resultInput = document.querySelector('#result'),
+    secondsInput = document.querySelector('input[name=seconds]'),
+    minutesInput = document.querySelector('input[name=minutes]'),
+    hoursInput = document.querySelector('input[name=hours]')
+
+document.querySelector('#urlInput').oninput = processLink
+secondsInput.oninput = processLink
+minutesInput.oninput = processLink
+hoursInput.oninput = processLink
+
+function processLink() {
+    let link = urlInput.value
+
+    if (isValidYouTubeUrl(link)) {
+        let cleanLink = removeParametersFromUrl(link)
+
+        let seconds = parseInt(secondsInput?.value) || 0,
+            minutes = parseInt(minutesInput?.value) || 0,
+            hours = parseInt(hoursInput?.value) || 0
+
+        let time = seconds + (minutes * 60) + (hours * 60 * 60)
+
+        resultInput.innerText = cleanLink + '&t=' + time.toString()
+    }
+}
+
+
+

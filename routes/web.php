@@ -77,5 +77,8 @@ Route::middleware([
             'destroy' => 'dashboard.photo.destroy'
         ]
     ]);
+});
 
+Route::get('/youtube-timecode', function () {
+    return view('pages.youtube');
 });

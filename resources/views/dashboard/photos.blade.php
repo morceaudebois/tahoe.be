@@ -18,7 +18,7 @@
                             src="{{ $photo->getThumbnailUrl('md') }}" 
                             alt="{{ $photo->info }}"
                             @if ($photo->cope)
-                                style="filter: blur(15px)" 
+                                style="filter: blur(20px)" 
                             @endif
                         />
                     </a>
