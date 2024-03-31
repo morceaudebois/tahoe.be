@@ -11,16 +11,22 @@ body.youtube-timecode {
     .times {
         display: flex;
         gap: 2em;
-        justify-content: center;
+        justify-content: space-between;
 
         input {
-            min-width: 4em;
+            width: 100%;
+        }
+
+        > div {
+            display: flex;
+            flex-direction: column;
         }
     }
 
     #result {
         margin-top: 3em;
         text-align: center;
+        cursor: pointer;
     }
 }
 

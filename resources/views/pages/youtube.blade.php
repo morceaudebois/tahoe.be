@@ -17,12 +17,23 @@
             <input type="url" id="urlInput" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
 
             <div class="times">
-                <input type="number" name="hours" min='0' placeholder="1">
-                <input type="number" name="minutes" min="0" max="59" placeholder="12">
-                <input type="number" name="seconds" min="0" max="59" placeholder="27">
+                <div>
+                    <label for="hours">Hours</label>
+                    <input type="number" name="hours" min='0' placeholder="1">
+                </div>
+
+                <div>
+                    <label for="hours">Minutes</label>
+                    <input type="number" name="minutes" min="0" max="59" placeholder="12">
+                </div>
+
+                <div>
+                    <label for="hours">Seconds</label>
+                    <input type="number" name="seconds" min="0" max="59" placeholder="27">
+                </div>
             </div>
 
-            <p contenteditable id="result"></p>
+            <p contenteditable="false" id="result"></p>
         </section>
     </article>
 

@@ -229,6 +229,20 @@ lightbox.on('uiRegister', function () {
 
 lightbox.init()
 
+function copyToClipboard(text) {
+    const el = document.createElement('textarea')
+        el.value = text;
+        el.setAttribute('readonly', '')
+        el.style.position = 'absolute'
+        el.style.left = '-9999px'
+    document.body.appendChild(el)
+
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+
+    console.log('Text copied to clipboard:', text)
+}
 
 function isValidYouTubeUrl(url) {
     // Regular expression pattern for YouTube video URLs
@@ -259,31 +273,40 @@ function removeParametersFromUrl(url) {
     return `https://youtube.com/watch?v=${videoId}`
 }
 
-let resultInput = document.querySelector('#result'),
-    secondsInput = document.querySelector('input[name=seconds]'),
-    minutesInput = document.querySelector('input[name=minutes]'),
-    hoursInput = document.querySelector('input[name=hours]')
 
-document.querySelector('#urlInput').oninput = processLink
-secondsInput.oninput = processLink
-minutesInput.oninput = processLink
-hoursInput.oninput = processLink
 
-function processLink() {
-    let link = urlInput.value
 
-    if (isValidYouTubeUrl(link)) {
-        let cleanLink = removeParametersFromUrl(link)
 
-        let seconds = parseInt(secondsInput?.value) || 0,
-            minutes = parseInt(minutesInput?.value) || 0,
-            hours = parseInt(hoursInput?.value) || 0
+if (document.body.classList.contains('youtube-timecode')) {
+    function processLink() {
+        let link = urlInput.value
 
-        let time = seconds + (minutes * 60) + (hours * 60 * 60)
+        if (isValidYouTubeUrl(link)) {
+            let cleanLink = removeParametersFromUrl(link)
 
-        resultInput.innerText = cleanLink + '&t=' + time.toString()
+            let seconds = parseInt(secondsInput?.value) || 0,
+                minutes = parseInt(minutesInput?.value) || 0,
+                hours = parseInt(hoursInput?.value) || 0
+
+            let time = seconds + (minutes * 60) + (hours * 60 * 60)
+
+            resultInput.innerText = cleanLink + '&t=' + time.toString()
+        }
+    }
+
+    let resultInput = document.querySelector('#result'),
+        secondsInput = document.querySelector('input[name=seconds]'),
+        minutesInput = document.querySelector('input[name=minutes]'),
+        hoursInput = document.querySelector('input[name=hours]')
+
+    document.querySelector('#urlInput').oninput = processLink
+    secondsInput.oninput = processLink
+    minutesInput.oninput = processLink
+    hoursInput.oninput = processLink
+
+    resultInput.onclick = function () {
+        copyToClipboard(resultInput.innerText)
     }
 }
-
 
 
