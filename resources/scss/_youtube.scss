@@ -101,6 +101,18 @@ body.youtube-timecode {
         .times {
             gap: 1em;
         }
+
+        main article {
+            padding: 0.85em;
+
+            .result #timecodeLink {
+                bottom: 0.5em;
+                right: 0.5em;
+                font-size: .9em;
+                width: 80%;
+                text-overflow: ellipsis;
+            }
+        }
     }
 }
 
@@ -114,10 +126,9 @@ body.youtube-timecode {
      width: 100%;
      overflow: hidden;
      background: #000;
-     margin: 5px;
-        overflow: hidden;
-            border-radius: 13px;
-         
+    overflow: hidden;
+    border-radius: 13px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
  }
 
  /* Poster image */
