@@ -8,14 +8,14 @@ body.youtube-timecode {
         margin-bottom: 2em;
 
         #error {
-            display: none;
+            display: block;
             font-size: 1rem;
             padding-left: .75rem;
             margin-top: .5rem;
             color: red;
-    
-            &.visible {
-                display: block;
+
+            &:empty {
+                display: none;
             }
         }
     }
@@ -58,13 +58,36 @@ body.youtube-timecode {
         }
     }
 
-    #result {
-        margin-top: 3em;
-        text-align: center;
-        cursor: pointer;
+    .result {
+        margin-top: 2em;
+        position: relative;
+        display: none;
 
-        &:empty {
-            display: none;
+        #timecodeLink {
+            cursor: pointer;
+            position: relative;
+            overflow-x: hidden;
+            justify-content: flex-end;
+            white-space: nowrap;
+            transition: max-width ease-in .2s, gap ease-in .2s;
+            bottom: 1em;
+            right: 1em;
+            position: absolute;
+            margin-bottom: 0;
+        
+            &.glass {
+                padding: .4em .7em;
+                border-radius: 10px;
+                @include glassBackground();
+            }
+        
+            svg {
+                min-width: 24px;
+            }
+        }
+
+        &.visible {
+            display: block;
         }
     }
 
@@ -81,3 +104,46 @@ body.youtube-timecode {
     }
 }
 
+
+
+
+ .youtube-player {
+     position: relative;
+     aspect-ratio: 16 / 9;
+     /* Modern browsers https://caniuse.com/mdn-css_properties_aspect-ratio */
+     width: 100%;
+     overflow: hidden;
+     background: #000;
+     margin: 5px;
+        overflow: hidden;
+            border-radius: 13px;
+         
+ }
+
+ /* Poster image */
+ .youtube-player img {
+     object-fit: cover;
+     display: block;
+     left: 0;
+     bottom: 0;
+     margin: auto;
+     max-width: 100%;
+     width: 100%;
+     position: absolute;
+     right: 0;
+     top: 0;
+     border: none;
+     height: auto;
+     cursor: pointer;
+    -webkit-filter: brightness(75%);
+ }
+
+ .youtube-player .videotitle {
+    font-weight: bold;
+    z-index: 1;
+     position: absolute;
+     color: white;
+     text-shadow: 1px 1px black;
+     left: 10px;
+     top: 10px;
+ }

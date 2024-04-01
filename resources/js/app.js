@@ -262,7 +262,6 @@ function isValidYouTubeUrl(url) {
 
     if (!result) {
         document.querySelector('#error').innerHTML = "Your link is invalid"
-        document.querySelector('#error').classList = "visible"
     } return result
 
     // should work with these:
@@ -290,6 +289,7 @@ function cleanLink(url) {
             videoId = lastPart.split('?')[0]
         } else videoId = params.get('v') // else just gets the parameter
 
+        initYouTubeVideo(videoId)
         return `https://youtu.be/${videoId}`
     } else return null
 
@@ -309,7 +309,7 @@ function validateNumber(event) {
 }
 
 if (document.body.classList.contains('youtube-timecode')) {
-    let resultInput = document.querySelector('#result'),
+    let resultInput = document.querySelector('#timecodeLink'),
         secondsInput = document.querySelector('input[name=seconds]'),
         minutesInput = document.querySelector('input[name=minutes]'),
         hoursInput = document.querySelector('input[name=hours]')
@@ -329,20 +329,20 @@ if (document.body.classList.contains('youtube-timecode')) {
         // obligé de refaire la validation d'URL ici parce que beforeevent pue
         // mais obligé de l'utiliser parce que c'est le seul cancellable et pas deprecated
         if (urlInput.value && isValidYouTubeUrl(urlInput.value) || !time) {
-            document.querySelector('#error').classList = null
-        } else {
-            document.querySelector('#error').classList = "visible"
-
-            if (!urlInput.value) {
-                document.querySelector('#error').innerHTML = "Your link is missing"
-            }
+            document.querySelector('#error').innerHTML = ""
+        } else if (!urlInput.value) {
+            document.querySelector('#error').innerHTML = "Your link is missing"
         }
 
         let link = cleanLink(urlInput.value)
 
         if (time && link) {
             resultInput.innerText = link + '?t=' + time.toString()
-        } else resultInput.innerText = null
+            document.querySelector('.result').classList.add('visible')
+        } else {
+            document.querySelector('.result').classList.remove('visible')
+            resultInput.innerText = null
+        } 
     }
 
     document.querySelector('#urlInput').addEventListener('input', processLink)
@@ -355,4 +355,45 @@ if (document.body.classList.contains('youtube-timecode')) {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+// stolen here https://gist.github.com/mheland/1fc280248e40cbe08c1f36c20f879cc1
+function getYoutubeData(videoId) {
+    return fetch(`https://www.youtube-nocookie.com/oembed?format=json&url=http%3A//youtube.com/watch%3Fv%3D${videoId}`)
+        .then(res => res.json())
+        .catch(err => { console.log(err) })
+}
+
+function initYouTubeVideo(videoId) {
+    let playerElements = document.getElementsByClassName('youtube-player')
+    for (let n = 0; n < playerElements.length; n++) {
+        let thisPlayerId = 'playerid-' + n.toString()
+
+        getYoutubeData(videoId)
+            .then(out => document.getElementById(thisPlayerId).innerHTML = out.title.substr(0, 40))
+            .catch(err => { console.log(err) })
+
+        let div = document.createElement('div')
+            div.setAttribute('data-id', videoId)
+            div.appendChild(document.createElement('img')).src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace('ID', videoId)
+
+        let videoTitle = document.createElement('div')
+            videoTitle.setAttribute('class', 'videotitle')
+            videoTitle.setAttribute('id', thisPlayerId)
+            videoTitle.appendChild(document.createTextNode(''))
+
+        div.appendChild(videoTitle)
+
+        playerElements[n].appendChild(div)
+    }
+}
 

@@ -17,7 +17,7 @@
             <div class="inputContainer">
                 <label for="urlInput">YouTube link</label>
                 <input type="url" name="urlInput" id="urlInput" placeholder="Paste here!" />
-                <span id="error">test</span>
+                <span id="error"></span>
             </div>
             
             <div class="times">
@@ -37,7 +37,14 @@
                 </div>
             </div>
 
-            <p contenteditable="false" id="result"></p>
+            <div class="result">
+                <div class="youtube-player"></div>
+                <p contenteditable="false" class="glass" id="timecodeLink"></p>
+            </div>
+
+
+
+
         </section>
     </article>
 
