@@ -14,22 +14,26 @@
         </header>
 
         <section>
-            <input type="url" id="urlInput" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
-
+            <div class="inputContainer">
+                <label for="urlInput">YouTube link</label>
+                <input type="url" name="urlInput" id="urlInput" placeholder="Paste here!" />
+                <span id="error">test</span>
+            </div>
+            
             <div class="times">
-                <div>
+                <div class="inputContainer">
                     <label for="hours">Hours</label>
-                    <input type="number" name="hours" min='0' placeholder="1">
+                    <input type="tel" pattern="[0-9]*" name="hours" min='0' placeholder="1">
                 </div>
 
-                <div>
+                <div class="inputContainer">
                     <label for="hours">Minutes</label>
-                    <input type="number" name="minutes" min="0" max="59" placeholder="12">
+                    <input type="tel" pattern="[0-9]*" name="minutes" min="0" max="59" placeholder="12">
                 </div>
 
-                <div>
+                <div class="inputContainer">
                     <label for="hours">Seconds</label>
-                    <input type="number" name="seconds" min="0" max="59" placeholder="27">
+                    <input type="tel" pattern="[0-9]*" name="seconds" min="0" max="59" placeholder="27">
                 </div>
             </div>
 

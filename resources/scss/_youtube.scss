@@ -1,11 +1,49 @@
 body.youtube-timecode {
-    input {
-        color: black;
+    // article {
+    //     width: 66%;
+    //     margin-inline: auto;
+    // }
+    
+    .inputContainer:has(#urlInput) {
+        margin-bottom: 2em;
+
+        #error {
+            display: none;
+            font-size: 1rem;
+            padding-left: .75rem;
+            margin-top: .5rem;
+            color: red;
+    
+            &.visible {
+                display: block;
+            }
+        }
     }
 
-    #urlInput {
-        width: 100%;
-        margin-bottom: 2em;
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        input {
+            background-color: #111827;
+            border-radius: 10px;
+
+            &:focus {
+                border-color: $accentColor;
+                box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
+            }
+
+            &.error {
+                border-color: red!important;
+                background: red;
+                box-shadow: inset 0 1px 14px rgba(255, 60, 60, 0.906), 0 0 30px 1px rgba(244, 31, 31, 0.959);
+            }
+        }
     }
 
     .times {
@@ -15,11 +53,8 @@ body.youtube-timecode {
 
         input {
             width: 100%;
-        }
-
-        > div {
-            display: flex;
-            flex-direction: column;
+            font-size: 1.3em;
+            text-align: center;
         }
     }
 
@@ -27,17 +62,22 @@ body.youtube-timecode {
         margin-top: 3em;
         text-align: center;
         cursor: pointer;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 850px) and (min-width: 630px) {
+        .times {
+            gap: 0.5em;
+        }
+    }
+
+    @media only screen and (max-width: 630px) {
+        .times {
+            gap: 1em;
+        }
     }
 }
 
-@media only screen and (max-width: 850px) and (min-width: 630px) {
-    .times {
-        gap: .5em;
-    }
-}
-
-@media only screen and (max-width: 630px) {
-    .times {
-        flex-direction: column;
-    }
-}

@@ -244,11 +244,26 @@ function copyToClipboard(text) {
     console.log('Text copied to clipboard:', text)
 }
 
+function isValidUrl(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
+
 function isValidYouTubeUrl(url) {
     // Regular expression pattern for YouTube video URLs
     let pattern = /^(http(s)?:\/\/)?(www\.)?(m\.)?(youtube\.com\/(watch\?(v=|.*&v=)|embed\/|v\/)|youtu\.be\/|youtube\.com\/live\/)([\w-]{11})(\?‌​.+)?.*$/
 
-    return pattern.test(url)
+    let result = pattern.test(url)
+
+    if (!result) {
+        document.querySelector('#error').innerHTML = "Your link is invalid"
+        document.querySelector('#error').classList = "visible"
+    } return result
 
     // should work with these:
     // https://youtu.be/dQw4w9WgXcQ
@@ -256,53 +271,84 @@ function isValidYouTubeUrl(url) {
     // https://www.youtube.com/watch?v=1ThO140eQY4
 }
 
-function removeParametersFromUrl(url) {
-    let parsedUrl = new URL(url)
-    let params = new URLSearchParams(parsedUrl.search)
+function cleanLink(url) {
+    let parsedUrl = isValidUrl(url) ? new URL(url) : false,
+        params = new URLSearchParams(parsedUrl.search),
+        videoId
 
-    let videoId
-
-    // if live url, gets video id with regex
-    if (!params.get('v') && url.includes('/live/')) {
-        let match = url.match(/\/live\/([^?]+)/)
+    if (parsedUrl) {
+        // if live url, gets video id with regex
+        if (!params.get('v') && url.includes('/live/')) {
+            let match = url.match(/\/live\/([^?]+)/)
             videoId = match ? match[1] : null
-    } else videoId = params.get('v') // else just gets the parameter
+        } else if (url.includes('youtu.be')) {
+            // Split the URL by '/' and get the last part
+            let parts = url.split('/')
+            let lastPart = parts[parts.length - 1]
 
-    parsedUrl.search = ''
-    
-    return `https://youtube.com/watch?v=${videoId}`
+            // Split the last part by '?' to remove any additional parameters
+            videoId = lastPart.split('?')[0]
+        } else videoId = params.get('v') // else just gets the parameter
+
+        return `https://youtu.be/${videoId}`
+    } else return null
+
 }
 
+function error(event) {
+    event.preventDefault()
+    event.target.classList.add("error")
+    setTimeout(() => { event.target.classList.remove("error") }, 125)
+}
 
-
-
+function validateNumber(event) {
+    if (event.target.name !== 'urlInput' && !/^\d+$/.test(event.data) && event.inputType !== 'deleteContentBackward') {
+        error(event)
+        return false
+    } return true
+}
 
 if (document.body.classList.contains('youtube-timecode')) {
-    function processLink() {
-        let link = urlInput.value
-
-        if (isValidYouTubeUrl(link)) {
-            let cleanLink = removeParametersFromUrl(link)
-
-            let seconds = parseInt(secondsInput?.value) || 0,
-                minutes = parseInt(minutesInput?.value) || 0,
-                hours = parseInt(hoursInput?.value) || 0
-
-            let time = seconds + (minutes * 60) + (hours * 60 * 60)
-
-            resultInput.innerText = cleanLink + '&t=' + time.toString()
-        }
-    }
-
     let resultInput = document.querySelector('#result'),
         secondsInput = document.querySelector('input[name=seconds]'),
         minutesInput = document.querySelector('input[name=minutes]'),
         hoursInput = document.querySelector('input[name=hours]')
 
-    document.querySelector('#urlInput').oninput = processLink
-    secondsInput.oninput = processLink
-    minutesInput.oninput = processLink
-    hoursInput.oninput = processLink
+    document.querySelector('#urlInput').addEventListener('beforeinput', validateNumber)
+    secondsInput.addEventListener('beforeinput', validateNumber)
+    minutesInput.addEventListener('beforeinput', validateNumber)
+    hoursInput.addEventListener('beforeinput', validateNumber)
+
+    function processLink() {
+        let seconds = parseInt(secondsInput?.value) || 0,
+            minutes = parseInt(minutesInput?.value) || 0,
+            hours = parseInt(hoursInput?.value) || 0
+
+        let time = seconds + (minutes * 60) + (hours * 60 * 60)
+
+        // obligé de refaire la validation d'URL ici parce que beforeevent pue
+        // mais obligé de l'utiliser parce que c'est le seul cancellable et pas deprecated
+        if (urlInput.value && isValidYouTubeUrl(urlInput.value) || !time) {
+            document.querySelector('#error').classList = null
+        } else {
+            document.querySelector('#error').classList = "visible"
+
+            if (!urlInput.value) {
+                document.querySelector('#error').innerHTML = "Your link is missing"
+            }
+        }
+
+        let link = cleanLink(urlInput.value)
+
+        if (time && link) {
+            resultInput.innerText = link + '?t=' + time.toString()
+        } else resultInput.innerText = null
+    }
+
+    document.querySelector('#urlInput').addEventListener('input', processLink)
+    secondsInput.addEventListener('input', processLink)
+    minutesInput.addEventListener('input', processLink)
+    hoursInput.addEventListener('input', processLink)
 
     resultInput.onclick = function () {
         copyToClipboard(resultInput.innerText)
