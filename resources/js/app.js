@@ -242,6 +242,8 @@ function copyToClipboard(text) {
     document.body.removeChild(el)
 
     console.log('Text copied to clipboard:', text)
+
+
 }
 
 function isValidUrl(string) {
@@ -337,11 +339,13 @@ if (document.body.classList.contains('youtube-timecode')) {
         let link = cleanLink(urlInput.value)
 
         if (time && link) {
-            resultInput.innerText = link + '?t=' + time.toString()
+            resultInput.value = link + '?t=' + time.toString()
+            let readableTime = (hours ? `${hours}h` : '') + (minutes ? `${minutes}m` : '') + (seconds ? `${seconds}s` : '')
+            document.querySelector('#readableTime').innerHTML = readableTime
             document.querySelector('.result').classList.add('visible')
         } else {
             document.querySelector('.result').classList.remove('visible')
-            resultInput.innerText = null
+            resultInput.value = null
         } 
     }
 
@@ -350,8 +354,15 @@ if (document.body.classList.contains('youtube-timecode')) {
     minutesInput.addEventListener('input', processLink)
     hoursInput.addEventListener('input', processLink)
 
-    resultInput.onclick = function () {
-        copyToClipboard(resultInput.innerText)
+    document.querySelector('#copy').onclick = function () {
+        copyToClipboard(resultInput.value)
+
+        let initvalue = resultInput.value
+
+        resultInput.value = "Copied! 🎉"
+        setTimeout(function () {
+            resultInput.value = initvalue
+        }, 1500)
     }
 }
 

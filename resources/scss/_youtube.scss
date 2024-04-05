@@ -20,6 +20,22 @@ body.youtube-timecode {
         }
     }
 
+    input {
+        background-color: #111827;
+        border-radius: 10px;
+
+        &:focus {
+            border-color: $accentColor;
+            box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
+        }
+
+        &.error {
+            border-color: red !important;
+            background: red;
+            box-shadow: inset 0 1px 14px rgba(255, 60, 60, 0.906), 0 0 30px 1px rgba(244, 31, 31, 0.959);
+        }
+    }
+
     .inputContainer {
         display: flex;
         flex-direction: column;
@@ -27,22 +43,6 @@ body.youtube-timecode {
         label {
             margin-bottom: 10px;
             text-align: center;
-        }
-
-        input {
-            background-color: #111827;
-            border-radius: 10px;
-
-            &:focus {
-                border-color: $accentColor;
-                box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
-            }
-
-            &.error {
-                border-color: red!important;
-                background: red;
-                box-shadow: inset 0 1px 14px rgba(255, 60, 60, 0.906), 0 0 30px 1px rgba(244, 31, 31, 0.959);
-            }
         }
     }
 
@@ -62,8 +62,16 @@ body.youtube-timecode {
         margin-top: 2em;
         position: relative;
         display: none;
+        max-width: 620px;
+        margin-inline: auto;
 
-        #timecodeLink {
+        h3 {
+            margin-bottom: .5em;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        #readableTime {
             cursor: pointer;
             position: relative;
             overflow-x: hidden;
@@ -74,6 +82,7 @@ body.youtube-timecode {
             right: 1em;
             position: absolute;
             margin-bottom: 0;
+            z-index: 1;
         
             &.glass {
                 padding: .4em .7em;
@@ -86,8 +95,82 @@ body.youtube-timecode {
             }
         }
 
+        .copyContainer {
+            display: flex;
+            margin-bottom: 1.5em;
+            gap: .5em;
+
+            #timecodeLink {
+                flex: 1;
+            }
+
+            #copy {
+                width: 2.5em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #111827;
+                border-radius: 10px;
+                border: 1px solid #6b7280;
+                cursor: pointer;
+                transition: border .1s ease-in, box-shadow .1s ease-in;
+                box-shadow: inset 0 1px 4px #e73c7e00, 0 0 20px 1px #e6317600;
+
+                // retire transition sur touch screen
+                @media (hover: none) {
+                    transition: unset;
+                }
+
+                &:hover, &:active {
+                    border-color: $accentColor;
+                    box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
+                }
+                
+                svg {
+                    width: 1.2em;
+                }
+            }
+        }
+
         &.visible {
             display: block;
+        }
+
+        .youtube-player {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+            overflow: hidden;
+            border-radius: 13px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            img {
+                object-fit: cover;
+                display: block;
+                left: 0;
+                bottom: 0;
+                margin: auto;
+                max-width: 100%;
+                width: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                border: none;
+                height: auto;
+                cursor: pointer;
+                -webkit-filter: brightness(75%);
+            }
+
+            .videotitle {
+                font-weight: bold;
+                z-index: 1;
+                position: absolute;
+                text-shadow: 1px 1px black;
+                left: 1em;
+                top: 1em;
+            }
         }
     }
 
@@ -105,13 +188,21 @@ body.youtube-timecode {
         main article {
             padding: 0.85em;
 
-            .result #timecodeLink {
-                bottom: 0.5em;
-                right: 0.5em;
-                font-size: .9em;
-                width: 80%;
-                text-overflow: ellipsis;
-            }
+            .result {
+                #readableTime {
+                    bottom: 0.5em;
+                    right: 0.5em;
+                    font-size: .9em;
+                    text-overflow: ellipsis;
+                }
+
+                .youtube-player .videotitle {
+                    left: .5em;
+                    top: .5em;
+                }
+            } 
+
+
         }
     }
 }
@@ -119,42 +210,3 @@ body.youtube-timecode {
 
 
 
- .youtube-player {
-     position: relative;
-     aspect-ratio: 16 / 9;
-     /* Modern browsers https://caniuse.com/mdn-css_properties_aspect-ratio */
-     width: 100%;
-     overflow: hidden;
-     background: #000;
-    overflow: hidden;
-    border-radius: 13px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
- }
-
- /* Poster image */
- .youtube-player img {
-     object-fit: cover;
-     display: block;
-     left: 0;
-     bottom: 0;
-     margin: auto;
-     max-width: 100%;
-     width: 100%;
-     position: absolute;
-     right: 0;
-     top: 0;
-     border: none;
-     height: auto;
-     cursor: pointer;
-    -webkit-filter: brightness(75%);
- }
-
- .youtube-player .videotitle {
-    font-weight: bold;
-    z-index: 1;
-     position: absolute;
-     color: white;
-     text-shadow: 1px 1px black;
-     left: 10px;
-     top: 10px;
- }
