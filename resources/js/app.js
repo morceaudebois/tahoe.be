@@ -425,7 +425,7 @@ function initYouTubeVideo(videoId) {
             div.setAttribute('data-id', videoId)
         
         let thumbnail = document.createElement('img')
-            thumbnail.src = `//i.ytimg.com/vi/${videoId}/sddefault.jpg`
+            thumbnail.src = `//i.ytimg.com/vi/${videoId}/hqdefault.jpg`
 
         div.appendChild(thumbnail)
 
