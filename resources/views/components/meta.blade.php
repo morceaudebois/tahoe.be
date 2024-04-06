@@ -5,7 +5,8 @@
     'image' => null,
     'url' => url()->current(),
     'author' => 'Tahoe Beetschen',
-    'noindex' => false
+    'noindex' => false,
+    'webapp' => false
 ])
 
 @php 
@@ -33,6 +34,11 @@
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:image" content="{{ $image }}">
+
+@if ($webapp)
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+@endif
 
 @if ($noindex)
     <meta name=”robots” content=”noindex”>
