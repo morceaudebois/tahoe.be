@@ -93,6 +93,10 @@ body {
         transform: translateZ(0) translateX(-50%);
         filter: blur(130px);
 
+        g ellipse {
+            fill: $accentColor;
+        }
+
         @media (prefers-reduced-motion: no-preference) {
             animation: bg-glow-animation .8s ease-in forwards;
         }

@@ -2,7 +2,7 @@
     @section('metatags')
         <x-meta
             title="YouTube timecode link generator for mobile"
-            {{-- image="{{ $post->getThumbnailUrl('lg') }}" --}}
+            image="/images/youtube-timecode-thumbnail.jpg"
             description="Annoyed with YouTube not allowing you to create timecode links on mobile? This is the right place!"
         />
     @endsection
@@ -10,7 +10,7 @@
     <article>
         <header>
             <h1>YouTube timecode link generator for mobile</h1>
-            <h2>Annoyed with YouTube not allowing you to create timecode links on mobile?<br>You're at the right place! Just paste in your link and set your time.<br>It even works for live links :)</h2>
+            <h2>Just paste your link and set a time :)</h2>
         </header>
 
         <section>
