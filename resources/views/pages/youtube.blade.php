@@ -23,17 +23,17 @@
             <div class="times">
                 <div class="inputContainer">
                     <label for="hours">Hours</label>
-                    <input type="tel" pattern="[0-9]*" name="hours" min='0' placeholder="1">
+                    <input type="tel" pattern="[0-9]*" id="hours" name="hours" min='0' placeholder="1">
                 </div>
 
                 <div class="inputContainer">
-                    <label for="hours">Minutes</label>
-                    <input type="tel" pattern="[0-9]*" name="minutes" min="0" max="59" placeholder="12">
+                    <label for="minutes">Minutes</label>
+                    <input type="tel" pattern="[0-9]*" id="minutes" name="minutes" min="0" max="59" placeholder="12">
                 </div>
 
                 <div class="inputContainer">
-                    <label for="hours">Seconds</label>
-                    <input type="tel" pattern="[0-9]*" name="seconds" min="0" max="59" placeholder="27">
+                    <label for="seconds">Seconds</label>
+                    <input type="tel" pattern="[0-9]*" id="seconds" name="seconds" min="0" max="59" placeholder="27">
                 </div>
             </div>
 
@@ -42,12 +42,12 @@
 
                 <div class="copyContainer">
                     <input type="url" name="timecodeLink" id="timecodeLink" placeholder="Paste here!" readonly />
-                    <div id="copy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files"><path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/></svg></div>
+                    <div id="copy" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files"><path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/></svg></div>
                 </div>
 
-                <div class="youtube-player">
+                <a class="youtube-player" target="_blank">
                     <p contenteditable="false" class="glass" id="readableTime"></p>
-                </div>
+                </a>
             
                 <span id="error"></span>
             </div>

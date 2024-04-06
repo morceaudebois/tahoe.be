@@ -262,9 +262,8 @@ function isValidYouTubeUrl(url) {
 
     let result = pattern.test(url)
 
-    if (!result) {
-        document.querySelector('#error').innerHTML = "Your link is invalid"
-    } return result
+    
+    return result
 
     // should work with these:
     // https://youtu.be/dQw4w9WgXcQ
@@ -314,7 +313,10 @@ if (document.body.classList.contains('youtube-timecode')) {
     let resultInput = document.querySelector('#timecodeLink'),
         secondsInput = document.querySelector('input[name=seconds]'),
         minutesInput = document.querySelector('input[name=minutes]'),
-        hoursInput = document.querySelector('input[name=hours]')
+        hoursInput = document.querySelector('input[name=hours]'),
+        errorField = document.querySelector('#error'),
+        resultContainer = document.querySelector('.result'),
+        youtubePlayer = document.querySelector('.youtube-player')
 
     document.querySelector('#urlInput').addEventListener('beforeinput', validateNumber)
     secondsInput.addEventListener('beforeinput', validateNumber)
@@ -328,23 +330,41 @@ if (document.body.classList.contains('youtube-timecode')) {
 
         let time = seconds + (minutes * 60) + (hours * 60 * 60)
 
-        // obligé de refaire la validation d'URL ici parce que beforeevent pue
-        // mais obligé de l'utiliser parce que c'est le seul cancellable et pas deprecated
-        if (urlInput.value && isValidYouTubeUrl(urlInput.value) || !time) {
-            document.querySelector('#error').innerHTML = ""
-        } else if (!urlInput.value) {
-            document.querySelector('#error').innerHTML = "Your link is missing"
+        // no validation if no time
+        if (!time) {
+            resultContainer.classList.remove('visible')
+            errorField.innerHTML = ""
+            return
+        } 
+
+        // if time, then checks if link is valid
+        if (!isValidYouTubeUrl(urlInput.value)) {
+            errorField.innerHTML = "Your link is invalid"
+            resultContainer.classList.remove('visible')
+
+            if (!urlInput.value) {
+                errorField.innerHTML = "Your link is missing"
+            } return
         }
+        
+        errorField.innerHTML = ""
 
         let link = cleanLink(urlInput.value)
 
-        if (time && link) {
-            resultInput.value = link + '?t=' + time.toString()
+        if (link) {
+            link = link + '?t=' + time.toString()
+
             let readableTime = (hours ? `${hours}h` : '') + (minutes ? `${minutes}m` : '') + (seconds ? `${seconds}s` : '')
+
+            resultInput.value = link
+            resultInput.dataset.link = link // for copy feature
+            youtubePlayer.href = link
             document.querySelector('#readableTime').innerHTML = readableTime
-            document.querySelector('.result').classList.add('visible')
+            
+            resultContainer.classList.add('visible')
         } else {
-            document.querySelector('.result').classList.remove('visible')
+            resultContainer.classList.remove('visible')
+            youtubePlayer.href = null
             resultInput.value = null
         } 
     }
@@ -354,16 +374,22 @@ if (document.body.classList.contains('youtube-timecode')) {
     minutesInput.addEventListener('input', processLink)
     hoursInput.addEventListener('input', processLink)
 
-    document.querySelector('#copy').onclick = function () {
-        copyToClipboard(resultInput.value)
-
-        let initvalue = resultInput.value
+    function copyButton() {
+        copyToClipboard(resultInput.dataset.link)
 
         resultInput.value = "Copied! 🎉"
+
         setTimeout(function () {
-            resultInput.value = initvalue
+            resultInput.value = resultInput.dataset.link
         }, 1500)
     }
+
+    document.querySelector('#copy').addEventListener("click", copyButton)
+    document.querySelector('#copy').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.keyCode === 13 || event.key === ' ' || event.keyCode === 32) {
+            copyButton()
+        }
+    })
 }
 
 
@@ -390,12 +416,18 @@ function initYouTubeVideo(videoId) {
         let thisPlayerId = 'playerid-' + n.toString()
 
         getYoutubeData(videoId)
-            .then(out => document.getElementById(thisPlayerId).innerHTML = out.title.substr(0, 40))
-            .catch(err => { console.log(err) })
+            .then(out => document.getElementById(thisPlayerId).innerHTML = out.title)
+            .catch(err => {
+                document.getElementById(thisPlayerId).innerHTML = "Video couldn't be found :("
+            })
 
         let div = document.createElement('div')
             div.setAttribute('data-id', videoId)
-            div.appendChild(document.createElement('img')).src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace('ID', videoId)
+        
+        let thumbnail = document.createElement('img')
+            thumbnail.src = `//i.ytimg.com/vi/${videoId}/sddefault.jpg`
+
+        div.appendChild(thumbnail)
 
         let videoTitle = document.createElement('div')
             videoTitle.setAttribute('class', 'videotitle')

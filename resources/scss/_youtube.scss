@@ -72,7 +72,6 @@ body.youtube-timecode {
         }
 
         #readableTime {
-            cursor: pointer;
             position: relative;
             overflow-x: hidden;
             justify-content: flex-end;
@@ -88,6 +87,10 @@ body.youtube-timecode {
                 padding: .4em .7em;
                 border-radius: 10px;
                 @include glassBackground();
+            }
+
+            &:before {
+            content: 'Starting at ';
             }
         
             svg {
@@ -117,16 +120,14 @@ body.youtube-timecode {
 
                 @media (hover: hover) {
                     transition: border .1s ease-in, box-shadow .1s ease-in;
-                    
+
                     &:hover {
                         border-color: $accentColor;
                         box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
                     }
-                }
 
-                // retire transition sur touch screen
-                @media (hover: none) {
-                    &:active {
+                    &:focus {
+                        outline: unset;
                         border-color: $accentColor;
                         box-shadow: inset 0 1px 4px #e73c7e9b, 0 0 20px 1px #e6317682;
                     }
@@ -143,6 +144,8 @@ body.youtube-timecode {
         }
 
         .youtube-player {
+            display: block;
+            color: white;
             position: relative;
             aspect-ratio: 16 / 9;
             width: 100%;
@@ -165,7 +168,6 @@ body.youtube-timecode {
                 top: 0;
                 border: none;
                 height: auto;
-                cursor: pointer;
                 -webkit-filter: brightness(75%);
             }
 
@@ -175,6 +177,7 @@ body.youtube-timecode {
                 position: absolute;
                 text-shadow: 1px 1px black;
                 left: 1em;
+                right: 1em;
                 top: 1em;
             }
         }
@@ -204,6 +207,7 @@ body.youtube-timecode {
 
                 .youtube-player .videotitle {
                     left: .5em;
+                    right: .5em;
                     top: .5em;
                 }
             } 
