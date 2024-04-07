@@ -1,8 +1,8 @@
 body.youtube-timecode {
-    // article {
-    //     width: 66%;
-    //     margin-inline: auto;
-    // }
+    article {
+        max-width: 920px;
+        margin-inline: auto;
+    }
     
     .inputContainer:has(#urlInput) {
         margin-bottom: 2em;

@@ -76,6 +76,15 @@ body.post main {
             strong {
                 font-weight: bold;
             }
+
+            figure.attachment {
+                figcaption {
+                    color: grey;
+                    font-size: .8em;
+                    text-align: center;
+                    font-style: italic;
+                }
+            }
         }
 
         .bottomLinks {
