@@ -5,6 +5,8 @@
             image="/images/youtube-timecode-thumbnail.jpg"
             description="Annoyed with YouTube not allowing you to create timecode links on mobile? This is the right place!"
             webapp="true"
+            webapptitle="Timecodes"
+            icon="/images/timecode.png"
         />
     @endsection
 

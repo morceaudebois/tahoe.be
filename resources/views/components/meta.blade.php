@@ -6,7 +6,9 @@
     'url' => url()->current(),
     'author' => 'Tahoe Beetschen',
     'noindex' => false,
-    'webapp' => false
+    'webapp' => false,
+    'webapptitle' => false,
+    'icon' => false
 ])
 
 @php 
@@ -35,9 +37,26 @@
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:image" content="{{ $image }}">
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @if ($webapp)
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    @if ($webapptitle)
+        <meta name="apple-mobile-web-app-title" content="{{ $webapptitle }}">
+        <meta name="application-name" content="{{ $webapptitle }}">
+    @endif
+@endif
+
+@if ($icon)
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $icon }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ $icon }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ $icon }}">
+@else
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🪵</text></svg>" type="image/x-icon">
 @endif
 
 @if ($noindex)
