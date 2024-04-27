@@ -56,7 +56,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ $icon }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ $icon }}">
 @else
-    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🪵</text></svg>" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon-180.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16.png">
 @endif
 
 @if ($noindex)
