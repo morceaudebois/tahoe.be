@@ -310,7 +310,8 @@ function validateNumber(event) {
 }
 
 if (document.body.classList.contains('youtube-timecode')) {
-    let resultInput = document.querySelector('#timecodeLink'),
+    let urlInput = document.querySelector('#urlInput'),
+        resultInput = document.querySelector('#timecodeLink'),
         secondsInput = document.querySelector('input[name=seconds]'),
         minutesInput = document.querySelector('input[name=minutes]'),
         hoursInput = document.querySelector('input[name=hours]'),
@@ -318,7 +319,7 @@ if (document.body.classList.contains('youtube-timecode')) {
         resultContainer = document.querySelector('.result'),
         youtubePlayer = document.querySelector('.youtube-player')
 
-    document.querySelector('#urlInput').addEventListener('beforeinput', validateNumber)
+    urlInput.addEventListener('beforeinput', validateNumber)
     secondsInput.addEventListener('beforeinput', validateNumber)
     minutesInput.addEventListener('beforeinput', validateNumber)
     hoursInput.addEventListener('beforeinput', validateNumber)
@@ -369,7 +370,7 @@ if (document.body.classList.contains('youtube-timecode')) {
         } 
     }
 
-    document.querySelector('#urlInput').addEventListener('input', processLink)
+    urlInput.addEventListener('input', processLink)
     secondsInput.addEventListener('input', processLink)
     minutesInput.addEventListener('input', processLink)
     hoursInput.addEventListener('input', processLink)
@@ -382,6 +383,14 @@ if (document.body.classList.contains('youtube-timecode')) {
         setTimeout(function () {
             resultInput.value = resultInput.dataset.link
         }, 1500)
+    }
+
+    // reset inputs button
+    document.querySelector('.input button').onclick = function () {
+        urlInput.value = ''
+        secondsInput.value = ''
+        minutesInput.value = ''
+        hoursInput.value = ''
     }
 
     document.querySelector('#copy').addEventListener("click", copyButton)

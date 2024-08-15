@@ -7,6 +7,26 @@ body.youtube-timecode {
     .inputContainer:has(#urlInput) {
         margin-bottom: 2em;
 
+        .input {
+            position: relative;
+            display: flex;
+            align-items: center;
+    
+            input {
+                flex: 1;
+                padding-right: 3em;
+
+                &:placeholder-shown + button {
+                    display: none;
+                }
+            }
+    
+            button {
+                position: absolute;
+                right: 1em;
+            }
+        }
+                
         #error {
             display: block;
             font-size: 1rem;
