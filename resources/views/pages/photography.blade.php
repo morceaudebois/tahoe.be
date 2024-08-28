@@ -4,7 +4,6 @@
             title="Photography"
             image="{{ $photos->first()->getThumbnailUrl('lg') }}"
             url="{{ url()->current() }}"
-            noindex="true"
         />
     @endsection
 

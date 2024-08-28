@@ -2,7 +2,7 @@
     <div id="left">
         <a href="{{ route('home') }}" alt="homepage" title="homepage">
             <h1>Tahoe / morceaudebois 🪵</h1>
-            <h2>{{ __('Maker of things (sometimes)') }}</h2>
+            <h2>{{ __('Maker of things') }}</h2>
         </a>
     </div>
 
