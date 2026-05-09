@@ -17,11 +17,14 @@ body.post main {
 
         @media (prefers-reduced-motion: no-preference) {
             opacity: 0;
-            animation: fadeInScaleUpAnimation .8s ease forwards;
+            animation: fadeInScaleUpAnimation 0.8s ease forwards;
             transform-origin: bottom;
         }
 
-        header h6, header h1, header .tagContainer, section {
+        .onTopOfTitle,
+        header h1,
+        header .tagContainer,
+        section {
             margin-inline: 30px;
         }
 
@@ -42,8 +45,12 @@ body.post main {
                 }
             }
 
-            h6 {
+            .onTopOfTitle {
                 margin-top: 30px;
+
+                h6 {
+                    display: inline;
+                }
             }
 
             h1 {
@@ -51,7 +58,7 @@ body.post main {
                 margin-block: 10px;
                 font-size: 2.2em;
             }
-            
+
             .tagContainer {
                 justify-content: center;
             }
@@ -62,7 +69,7 @@ body.post main {
             font-size: 1.3em;
 
             div {
-                text-align: justify
+                text-align: justify;
             }
 
             a {
@@ -80,7 +87,7 @@ body.post main {
             figure.attachment {
                 figcaption {
                     color: grey;
-                    font-size: .8em;
+                    font-size: 0.8em;
                     text-align: center;
                     font-style: italic;
                 }
@@ -92,11 +99,9 @@ body.post main {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: .5em;
+            gap: 0.5em;
             margin-top: 2em;
         }
-
-        
     }
 
     .callToAction {
@@ -112,7 +117,7 @@ body.post main {
         border: 1px solid rgba(255, 255, 255, 0.076);
 
         h5 {
-            margin-bottom: .4em;
+            margin-bottom: 0.4em;
             font-size: 1.1em;
             font-weight: bolder;
 
@@ -120,11 +125,20 @@ body.post main {
                 font-style: italic;
             }
         }
+
+        a {
+            color: $accentColor;
+            font-weight: bold;
+
+            &:hover {
+                @include pinkLink();
+            }
+        }
     }
 
     @media only screen and (max-width: 630px) {
         article {
-            padding: .85em;
+            padding: 0.85em;
 
             header h1 {
                 margin-inline: 0;
@@ -140,7 +154,7 @@ body.post main {
                     text-align: unset;
                 }
             }
-        } 
+        }
 
         .callToAction {
             width: 100%;

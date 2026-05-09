@@ -30,8 +30,14 @@
                 </div>
             </div>
 
-            @if ($post->category->name)
+            @if ($post->category->name) 
+            <div class="onTopOfTitle">
                 <h6>{{ $post->category->name }}</h6>
+
+                @if ($post->category->slug === "blog")
+                · <span title="{{ \Carbon\Carbon::parse($post->date)->translatedFormat('F j, Y') }}">{{ $post->created_at->diffForHumans() }}</span>
+                @endif
+            </div>
             @endif
 
             <h1>{{ $post->title }}</h1>
@@ -57,9 +63,12 @@
     </article>
 
     <div class="callToAction">
-        <h5>✨ <span>Enjoying this project?</span> ✨</h5>
-        <span>Please share it on social media and tell your friends about it!<br>
-            It helps making what I do worth it.
-        </span>
+        @if ($post->category->slug === 'blog')
+            <h5>✨ <span>Found this post helpful?</span> ✨</h5>
+        @else
+            <h5>✨ <span>Enjoying this project?</span> ✨</h5>
+        @endif
+            <span>Please share it or <a href="https://ko-fi.com/tahoe" title="Donate on my Ko-fi page">support my work</a> to help me keep creating.
+            </span>
     </div>
 </x-front-layout>

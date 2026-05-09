@@ -1,5 +1,5 @@
 $screenPadding: 1.5em;
-$accentColor: #E73C7E;
+$accentColor: #e73c7e;
 $whiteButActuallyBlue: rgba(226, 232, 255, 0.9);
 $radius: 20px;
 $maxWidth: 1152px;
@@ -10,22 +10,25 @@ $maxWidth: 1152px;
 
     &:hover {
         color: $accentColor;
+        text-decoration: underline;
     }
 }
 
 @mixin glassBackground() {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow:
+        rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
     backdrop-filter: blur(4em);
     -webkit-backdrop-filter: blur(4em);
     background-color: #19191972;
     border: 1px solid rgba(255, 255, 255, 0.076);
-    
+
     // firefox backdrop-filter fallback because performance is terrible otherwise
     // may they fix it someday 🙏
     @-moz-document url-prefix() {
         backdrop-filter: unset;
         -webkit-backdrop-filter: unset;
-        background-color: rgba(50, 50, 50, .9);
+        background-color: rgba(50, 50, 50, 0.9);
     }
 }
 
@@ -63,12 +66,13 @@ $maxWidth: 1152px;
     }
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
 
 body {
-    background-color: #0B0C14;
+    background-color: #0b0c14;
     color: rgb(243 244 246);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -77,8 +81,8 @@ body {
 
     ::selection {
         background-color: rgba(231, 60, 126, 0.5);
-        opacity: .5;
-        color: white
+        opacity: 0.5;
+        color: white;
     }
 
     #bg-glow {
@@ -98,7 +102,7 @@ body {
         }
 
         @media (prefers-reduced-motion: no-preference) {
-            animation: bg-glow-animation .8s ease-in forwards;
+            animation: bg-glow-animation 0.8s ease-in forwards;
         }
 
         @media (prefers-reduced-motion) {
@@ -122,8 +126,14 @@ body {
         position: fixed;
         pointer-events: none;
         height: 100vh;
-        top: 0; left: 0; right: 0;
-        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 170vh);
+        top: 0;
+        left: 0;
+        right: 0;
+        background: radial-gradient(
+            ellipse at center,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.25) 170vh
+        );
     }
 
     #bg-grain {
@@ -167,12 +177,17 @@ body {
         border: 0;
         text-align: center;
         height: 1.5em;
-        opacity: .9;
+        opacity: 0.9;
 
         &:before {
-            content: '';
+            content: "";
             // use the linear-gradient for the fading effect
-            background: linear-gradient(to right, transparent, #818078, transparent);
+            background: linear-gradient(
+                to right,
+                transparent,
+                #818078,
+                transparent
+            );
             position: absolute;
             left: 0;
             top: 50%;
@@ -223,7 +238,8 @@ nav {
             opacity: 0.8;
             will-change: transform;
 
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 opacity: 1;
             }
 
@@ -235,14 +251,14 @@ nav {
 
     @media (prefers-reduced-motion: no-preference) {
         opacity: 0;
-        animation: simpleFadeIn .8s ease forwards;
+        animation: simpleFadeIn 0.8s ease forwards;
     }
 }
 
 article {
     padding: 0.25em;
     background-color: #1b1c2a;
-    border: 1px solid #282B3A;
+    border: 1px solid #282b3a;
     border-radius: $radius;
     overflow: hidden;
     position: relative;
@@ -262,26 +278,29 @@ h6 {
     display: flex;
     bottom: 1.5em;
     right: 1.5em;
-    gap: .4em;
+    gap: 0.4em;
 }
 
 .likeContainer {
     display: flex;
     align-items: center;
-    gap: .4em;
+    gap: 0.4em;
     cursor: pointer;
     user-select: none;
 
     .likeCounter {
         font-weight: bold;
-        font-size: .9em;
-        transition: color ease-in .2s;
+        font-size: 0.9em;
+        transition: color ease-in 0.2s;
         color: rgba(226, 232, 255, 0.8);
     }
 
     svg {
         height: 1em;
-        transition: rotate ease-in .2s, scale ease .2s, box-shadow ease .2s;
+        transition:
+            rotate ease-in 0.2s,
+            scale ease 0.2s,
+            box-shadow ease 0.2s;
         rotate: 0deg;
         scale: 1;
         overflow: visible;
@@ -293,7 +312,7 @@ h6 {
 
     &.glass {
         @include glassBackground();
-        padding: .4em .7em;
+        padding: 0.4em 0.7em;
         border-radius: 10px;
     }
 
@@ -317,7 +336,7 @@ h6 {
             scale: 1.1;
 
             path {
-                fill: rgba(229, 146, 191)
+                fill: rgba(229, 146, 191);
             }
         }
     }
@@ -326,17 +345,19 @@ h6 {
 .visitContainer {
     display: flex;
     align-items: center;
-    gap: .8em;
+    gap: 0.8em;
     cursor: pointer;
     position: relative;
     overflow-x: hidden;
     max-width: 50px;
     justify-content: flex-end;
     white-space: nowrap;
-    transition: max-width ease-in .2s, gap ease-in .2s;
+    transition:
+        max-width ease-in 0.2s,
+        gap ease-in 0.2s;
 
     &.glass {
-        padding: .4em .7em;
+        padding: 0.4em 0.7em;
         border-radius: 10px;
         @include glassBackground();
     }
@@ -347,15 +368,19 @@ h6 {
 
     &:hover {
         max-width: 140px;
-        gap: .4em;
+        gap: 0.4em;
     }
 }
 
 .glassHover {
-    transition: .3s transform, .3s background-color, .3s border;
+    transition:
+        0.3s transform,
+        0.3s background-color,
+        0.3s border;
 
     @media (prefers-reduced-motion: no-preference) {
-        &:hover, &:has(a:focus:not(:active)) {
+        &:hover,
+        &:has(a:focus:not(:active)) {
             transform: scale(1.015);
         }
 
@@ -368,11 +393,12 @@ h6 {
             left: -100%;
             transform: rotate(-45deg);
             height: 60rem;
-            transition: .4s all;
+            transition: 0.4s all;
             z-index: 1;
         }
 
-        &:hover:before, &:has(a:focus):before {
+        &:hover:before,
+        &:has(a:focus):before {
             top: -100%;
             left: 200%;
         }
@@ -394,29 +420,30 @@ main {
             border-radius: 10px;
             background-color: #1f2937;
             padding: 0.4em;
-            padding-bottom: .3em;
+            padding-bottom: 0.3em;
             line-height: 1.3em;
             padding-top: 0.25em;
             box-sizing: border-box;
-            transition: .4s background-color;
+            transition: 0.4s background-color;
         }
     }
 }
 
-@import 'home';
-@import 'post';
-@import 'photography';
+@import "home";
+@import "post";
+@import "photography";
 
 .switchToAdmin {
     @include glassBackground();
-    padding: .4em .7em;
+    padding: 0.4em 0.7em;
     border-radius: 10px;
     position: fixed;
     bottom: 3em;
     right: 3em;
 }
 
-footer, #support {
+footer,
+#support {
     a {
         @include pinkLink();
     }
@@ -441,7 +468,7 @@ footer {
         display: flex;
         align-items: center;
         flex-direction: row;
-        font-size: .9em;
+        font-size: 0.9em;
 
         > * {
             flex: 1;
@@ -476,47 +503,43 @@ footer {
 
     @media (prefers-reduced-motion: no-preference) {
         opacity: 0;
-        animation: simpleFadeIn .8s ease forwards;
+        animation: simpleFadeIn 0.8s ease forwards;
     }
 }
-
-
-
 
 // tablets
 @media only screen and (max-width: 850px) and (min-width: 630px) {
     nav {
-        font-size: .9em;
+        font-size: 0.9em;
 
         #right {
             gap: 1.15em;
         }
     }
-
-
 }
 
 // phones
 @media only screen and (max-width: 630px) {
-    $screenPadding: 1em; 
+    $screenPadding: 1em;
 
     body {
         line-height: 1.3;
     }
 
-    nav, main {
+    nav,
+    main {
         padding: $screenPadding;
     }
 
     nav {
         flex-direction: column;
         text-align: center;
-        font-size: .9em;
+        font-size: 0.9em;
     }
 
     .links {
-        bottom: .5em;
-        right: .5em;
+        bottom: 0.5em;
+        right: 0.5em;
     }
 
     footer {
@@ -526,7 +549,7 @@ footer {
             text-align: center;
 
             .social {
-                margin-top: 5px;;
+                margin-top: 5px;
             }
         }
     }
@@ -536,4 +559,4 @@ footer {
     background-image: url("../images/grain.png");
 }
 
-@import 'youtube';
+@import "youtube";

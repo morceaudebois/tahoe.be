@@ -1,24 +1,52 @@
 body.home main {
-    #projects {
+    section {
+        > h3 {
+            font-size: 2.2em;
+            margin-bottom: 1em;
+        }
+
+        > h3,
+        > h6 {
+            text-align: center;
+        }
+
+        > p {
+            text-align: justify;
+            font-size: 1.2em;
+        }
+
+        &:not(#projects) {
+            margin-top: 4em;
+        }
+    }
+
+    #projects,
+    #blog {
         #post-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(min(20em, 100%), 1fr)
+            );
             grid-template-rows: masonry;
             justify-content: center;
             grid-gap: 1.75em;
             margin-top: 1.75em;
+            position: relative;
 
-            >.article-wrapper {
+            > .article-wrapper {
                 align-self: start;
             }
         }
 
         @media (prefers-reduced-motion: no-preference) {
             .article-wrapper:hover {
-                transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+                transform: perspective(5000px) rotateY(var(--rotateX))
+                    rotateX(var(--rotateY));
 
                 // pas d'animation sur Safari parce que bug dégueulasse
-                @supports (hanging-punctuation: first) and (-webkit-appearance: none) {
+                @supports (hanging-punctuation: first) and
+                    (-webkit-appearance: none) {
                     transform: unset;
                 }
             }
@@ -29,7 +57,7 @@ body.home main {
 
             @media (prefers-reduced-motion: no-preference) {
                 opacity: 0;
-                animation: fadeInScaleUpAnimation .8s ease forwards;
+                animation: fadeInScaleUpAnimation 0.8s ease forwards;
                 transform-origin: center;
             }
 
@@ -70,7 +98,8 @@ body.home main {
                 }
             }
 
-            &:hover, &:has(a:focus:not(:active)) {
+            &:hover,
+            &:has(a:focus:not(:active)) {
                 background-color: #212233;
                 border: 1px solid #3b3f55;
             }
@@ -87,7 +116,7 @@ body.home main {
                     margin-bottom: 1em;
 
                     h6 {
-                        font-size: .9em;
+                        font-size: 0.9em;
                     }
                 }
             }
@@ -112,7 +141,7 @@ body.home main {
                     margin-bottom: 1em;
 
                     h6 {
-                        font-size: .8em;
+                        font-size: 0.8em;
                     }
                 }
 
@@ -122,7 +151,7 @@ body.home main {
                 }
 
                 p {
-                    margin-block: .5em;
+                    margin-block: 0.5em;
                 }
             }
 
@@ -132,7 +161,7 @@ body.home main {
                 right: 15px;
 
                 span {
-                    font-size: .9em;
+                    font-size: 0.9em;
                     @include glassBackground();
                 }
             }
@@ -144,35 +173,27 @@ body.home main {
         }
     }
 
+    #blog {
+        > p {
+            text-align: center;
+        }
+    }
+
     #support {
         max-width: 900px;
         padding-inline: 4em;
-        margin-top: 4em;
         margin-inline: auto;
 
         @media (prefers-reduced-motion: no-preference) {
             opacity: 0;
-            animation: simpleFadeIn .8s ease forwards;
-        }
-
-        h3, h6 {
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 2.2em;
-            margin-bottom: 1em;
-        }
-
-        p {
-            text-align: justify;
-            font-size: 1.2em;
+            animation: simpleFadeIn 0.8s ease forwards;
         }
     }
 
     // tablet
     @media only screen and (max-width: 850px) and (min-width: 630px) {
-        #projects {
+        #projects,
+        #blog {
             margin-top: 1.5em;
             gap: 1.5em;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -181,15 +202,15 @@ body.home main {
                 grid-column: 1 / span 2;
 
                 .info {
-                    font-size: .9em;
+                    font-size: 0.9em;
                     padding-block: 1em;
 
                     h6 {
-                        margin-bottom: .5em;
+                        margin-bottom: 0.5em;
                     }
 
                     p {
-                        margin-top: .5em;
+                        margin-top: 0.5em;
                     }
                 }
             }
@@ -198,7 +219,8 @@ body.home main {
 
     // mobile
     @media only screen and (max-width: 630px) {
-        #projects {
+        #projects,
+        #blog {
             gap: 1.25em;
             grid-template-columns: repeat(1, minmax(0, 1fr));
 
@@ -212,7 +234,7 @@ body.home main {
                     h3 {
                         font-size: 1.7em;
                     }
-            
+
                     .info {
                         padding: 1em;
                         text-align: center;
@@ -223,38 +245,36 @@ body.home main {
 
                             .links {
                                 bottom: unset;
-                                top: .5em;
-                                right: .5em;
+                                top: 0.5em;
+                                right: 0.5em;
                             }
                         }
-            
+
                         h6 {
-                            margin-bottom: .5em;
+                            margin-bottom: 0.5em;
                         }
-            
+
                         p {
-                            margin-top: .5em;
+                            margin-top: 0.5em;
                         }
-            
+
                         .tagContainer {
                             justify-content: center;
                         }
                     }
                 }
-            } 
+            }
 
             .article-wrapper:not(#latest) a {
                 .tagContainer {
-                    bottom: .5em;
-                    right: .5em;
+                    bottom: 0.5em;
+                    right: 0.5em;
                 }
             }
         }
 
         #support {
-            padding-inline: .25em;
+            padding-inline: 0.25em;
         }
     }
 }
-
-

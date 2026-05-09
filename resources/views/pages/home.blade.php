@@ -1,30 +1,52 @@
 <x-front-layout class="home">
     @php
-        $sortedPosts = $posts->where('draft', false)->sortByDesc('date')
+        $sortedPosts = $posts->where('draft', false)->sortByDesc('date');
+
+        $projects = $sortedPosts->filter(function ($post) {
+            return $post->category?->slug !== 'blog';
+        });
+
+        $blog_posts = $sortedPosts->filter(function ($post) {
+            return $post->category?->slug === 'blog';
+        });
     @endphp
 
     @section('metatags')
         <x-meta
-            image="{{ $sortedPosts->first()->getThumbnailUrl('lg') }}"
+            image="{{ $projects->first()->getThumbnailUrl('lg') }}"
         />
     @endsection
 
     <section id="projects">
         <div class="latest">
             <x-post-bloc 
-                :post="$sortedPosts->first()"
+                :post="$projects->first()"
                 featured="true"
             />
         </div>
         
         <div id="post-grid">
-            @foreach($sortedPosts as $post)
+            @foreach($projects as $post)
                 @if (!$loop->first)
                     <x-post-bloc 
                         :loop="$loop"
                         :post="$post"
                     />
                 @endif
+            @endforeach
+        </div>
+    </section>
+
+    <section id="blog">
+        <h3>Blog</h3>
+        <p>Mostly for when I want to document something that might also interest you.</p>
+
+        <div id="post-grid">
+            @foreach($blog_posts as $post)
+                <x-post-bloc 
+                    :loop="$loop"
+                    :post="$post"
+                />
             @endforeach
         </div>
     </section>
