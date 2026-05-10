@@ -1,4 +1,6 @@
 body.post main {
+    max-width: 85ch;
+
     @keyframes fadeInScaleUpAnimation {
         from {
             opacity: 0;
@@ -12,7 +14,7 @@ body.post main {
     }
 
     article {
-        padding: 1.15em;
+        padding: 18px;
         padding-bottom: 2.5em;
 
         @media (prefers-reduced-motion: no-preference) {
@@ -61,6 +63,10 @@ body.post main {
 
             .tagContainer {
                 justify-content: center;
+
+                span {
+                    outline: 1px solid #293648;
+                }
             }
         }
 
@@ -84,14 +90,44 @@ body.post main {
                 font-weight: bold;
             }
 
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
             figure.attachment {
+                img {
+                    border-radius: 20px;
+                    margin-block: 20px;
+                }
+
                 figcaption {
+                    margin-top: 1em;
                     color: grey;
                     font-size: 0.8em;
                     text-align: center;
                     font-style: italic;
                 }
             }
+        }
+
+        pre {
+            outline: 1px solid #293648;
+            border-radius: 10px;
+            background-color: #1f2937;
+            line-height: 1.3em;
+            box-sizing: border-box;
+            transition: 0.4s background-color;
+            color: inherit;
+            text-wrap: wrap;
+            word-wrap: break-word;
+            line-height: 25px;
+            padding: 13px;
+            margin-block: 12px;
+            font-size: 0.8em;
         }
 
         .bottomLinks {
@@ -108,11 +144,10 @@ body.post main {
         color: rgba(226, 232, 255, 0.9);
         font-size: 1.1em;
         background-color: #1f2937;
-        border-radius: 10px;
+        border-radius: 20px;
         padding: 1em;
         text-align: center;
         margin-top: 3em;
-        width: 620px;
         margin-inline: auto;
         border: 1px solid rgba(255, 255, 255, 0.076);
 

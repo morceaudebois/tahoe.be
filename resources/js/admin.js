@@ -4,10 +4,10 @@
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
+import axios from "axios";
 window.axios = axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -33,47 +33,67 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // for uploading Trix post body images
 (function () {
-    let upload_url = "/upload-post-image"
-    let csrfToken = document.querySelector('input[name="_token"]').value
+    let upload_url = "/upload-post-image";
+    let csrfToken = document.querySelector('input[name="_token"]').value;
 
     function uploadFileAttachment(attachment) {
-        uploadFile(attachment.file, setProgress, setAttributes)
+        uploadFile(attachment.file, setProgress, setAttributes);
 
         function setProgress(progress) {
-            attachment.setUploadProgress(progress)
+            attachment.setUploadProgress(progress);
         }
 
         function setAttributes(attributes) {
-            attachment.setAttributes(attributes)
+            attachment.setAttributes(attributes);
         }
     }
 
     function uploadFile(file, progressCallback, successCallback) {
         let formData = new FormData();
-        formData.append("file", file)
-        formData.append("_token", csrfToken) // Include the CSRF token
+        formData.append("file", file);
+        formData.append("_token", csrfToken); // Include the CSRF token
 
-        let xhr = new XMLHttpRequest()
-        xhr.open("POST", upload_url, true)
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", upload_url, true);
 
         xhr.upload.addEventListener("progress", function (event) {
-            let progress = (event.loaded / event.total) * 100
-            progressCallback(progress)
+            let progress = (event.loaded / event.total) * 100;
+            progressCallback(progress);
         });
 
         xhr.onload = function () {
             if (xhr.status === 200) {
-                let response = JSON.parse(xhr.responseText)
-                successCallback(response)
+                let response = JSON.parse(xhr.responseText);
+                successCallback(response);
             }
-        }
+        };
 
-        xhr.send(formData)
+        xhr.send(formData);
     }
 
     addEventListener("trix-attachment-add", function (event) {
         if (event.attachment.file) {
-            uploadFileAttachment(event.attachment)
+            uploadFileAttachment(event.attachment);
         }
-    })
-})()
+    });
+
+    Trix.config.blockAttributes.heading2 = {
+        tagName: "h2",
+        terminal: true,
+        breakOnReturn: true,
+        group: false,
+    };
+
+    // thieved here: https://codepen.io/javan/pen/ZmbWGP
+    addEventListener("trix-initialize", (event) => {
+        const { toolbarElement } = event.target;
+
+        const h1Button = toolbarElement.querySelector(
+            "[data-trix-attribute=heading1]",
+        );
+        h1Button.insertAdjacentHTML(
+            "afterend",
+            `<button type="button" class="trix-button" data-trix-attribute="heading2" title="Heading 2" tabindex="-1" data-trix-active="">H2</button>`,
+        );
+    });
+})();

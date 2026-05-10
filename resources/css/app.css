@@ -7,12 +7,14 @@
 }
 
 .switchToAdmin {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow:
+        rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
     backdrop-filter: blur(4em);
     -webkit-backdrop-filter: blur(4em);
     background-color: #191919a5;
     border: 1px solid rgba(255, 255, 255, 0.076);
-    padding: .4em .7em;
+    padding: 0.4em 0.7em;
     border-radius: 10px;
     position: fixed;
     bottom: 3em;
@@ -22,14 +24,30 @@
 
 @media (prefers-color-scheme: dark) {
     .trix-button {
-        filter: invert(.95);
+        filter: invert(0.95);
     }
 
     trix-toolbar .trix-dialog {
         background: #1f2937;
     }
+
+    .trix-content pre {
+        color: #333;
+    }
 }
 
 trix-editor a {
-    color: #6875F5;
+    color: #6875f5;
+}
+
+trix-editor.trix-content h1 {
+    font-size: 1.7em;
+}
+
+trix-editor.trix-content h2 {
+    font-size: 1.4em;
+}
+
+trix-editor.trix-content h3 {
+    font-size: 1.2em;
 }
