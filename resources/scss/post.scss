@@ -91,11 +91,11 @@ body.post main {
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
 
             h2 {
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
 
             figure.attachment {
@@ -114,7 +114,8 @@ body.post main {
             }
         }
 
-        pre {
+        pre,
+        code {
             outline: 1px solid #293648;
             border-radius: 10px;
             background-color: #1f2937;
@@ -125,9 +126,16 @@ body.post main {
             text-wrap: wrap;
             word-wrap: break-word;
             line-height: 25px;
-            padding: 13px;
-            margin-block: 12px;
             font-size: 0.8em;
+        }
+
+        code {
+            padding: 5px;
+        }
+
+        pre {
+            margin-block: 12px;
+            padding: 13px;
         }
 
         .bottomLinks {

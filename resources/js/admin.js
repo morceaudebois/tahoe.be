@@ -77,6 +77,11 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
         }
     });
 
+    Trix.config.textAttributes.inlineCode = {
+        tagName: "code",
+        inheritable: true,
+    };
+
     Trix.config.blockAttributes.heading2 = {
         tagName: "h2",
         terminal: true,
@@ -88,12 +93,24 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
     addEventListener("trix-initialize", (event) => {
         const { toolbarElement } = event.target;
 
+        const boldButton = toolbarElement.querySelector(
+            "[data-trix-attribute=bold]",
+        );
+        if (boldButton) {
+            boldButton.insertAdjacentHTML(
+                "afterend",
+                `<button type="button" class="trix-button" data-trix-attribute="inlineCode" title="Inline code" tabindex="-1" data-trix-active="">&lt;/&gt;</button>`,
+            );
+        }
+
         const h1Button = toolbarElement.querySelector(
             "[data-trix-attribute=heading1]",
         );
-        h1Button.insertAdjacentHTML(
-            "afterend",
-            `<button type="button" class="trix-button" data-trix-attribute="heading2" title="Heading 2" tabindex="-1" data-trix-active="">H2</button>`,
-        );
+        if (h1Button) {
+            h1Button.insertAdjacentHTML(
+                "afterend",
+                `<button type="button" class="trix-button" data-trix-attribute="heading2" title="Heading 2" tabindex="-1" data-trix-active="">H2</button>`,
+            );
+        }
     });
 })();
