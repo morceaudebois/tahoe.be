@@ -88,7 +88,7 @@ class AdminPostController extends Controller {
     public function uploadImage(Request $request) {
         $uploadedFile = $request->file('file');
         $fileName = time() . '-' . $uploadedFile->getClientOriginalName();
-        $uploadedFile->storeAs('post-body', $fileName);
+        $uploadedFile->storeAs('post-body', $fileName, 'public');
 
         return response()->json([
             'url' => asset("storage/post-body/{$fileName}"),
