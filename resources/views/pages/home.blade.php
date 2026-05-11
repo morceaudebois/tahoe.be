@@ -37,19 +37,21 @@
         </div>
     </section>
 
-    <section id="blog">
-        <h3>Blog</h3>
-        <p>Mostly for when I want to document something that might also interest you.</p>
+    @if (!$blog_posts->isEmpty())
+        <section id="blog">
+            <h3>Blog</h3>
+            <p>Mostly for when I want to document something that might also interest you.</p>
 
-        <div id="post-grid">
-            @foreach($blog_posts as $post)
-                <x-post-bloc 
-                    :loop="$loop"
-                    :post="$post"
-                />
-            @endforeach
-        </div>
-    </section>
+            <div id="post-grid">
+                @foreach($blog_posts as $post)
+                    <x-post-bloc 
+                        :loop="$loop"
+                        :post="$post"
+                    />
+                @endforeach
+            </div>
+        </section>
+    @endif
 
     <section id="support">
         <h3>Support</h3>
