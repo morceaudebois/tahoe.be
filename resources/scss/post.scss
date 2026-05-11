@@ -99,9 +99,12 @@ body.post main {
             }
 
             figure.attachment {
+                margin-bottom: 20px;
+
                 img {
                     border-radius: 20px;
                     margin-block: 20px;
+                    margin-inline: auto;
                 }
 
                 figcaption {
