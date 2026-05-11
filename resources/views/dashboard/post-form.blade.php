@@ -66,6 +66,20 @@
                         </div>
 
                         <div class="col-span-6">
+                            <x-label id="metatitle" for="metatitle" value="{{ __('metatitle') }}" />
+                            <x-input name="metatitle" type="text" class="mt-1 block w-full" 
+                             value="{{ old('metatitle', isset($post) ? $post->metatitle : '') }}" />
+                            <x-input-error for="metatitle" class="mt-2" />
+                        </div>
+
+                        <div class="col-span-6">
+                            <x-label id="metadescription" for="metadescription" value="{{ __('metadescription') }}" />
+                            <x-input name="metadescription" type="text" class="mt-1 block w-full" 
+                             value="{{ old('metadescription', isset($post) ? $post->metadescription : '') }}" />
+                            <x-input-error for="metadescription" class="mt-2" />
+                        </div>
+
+                        <div class="col-span-6">
                             <x-label id="external_url" for="external_url" value="{{ __('External URL') }}" />
                             <x-input name="external_url" type="url" class="mt-1 block w-full" value="{{ old('external_url', isset($post) ? $post->external_url : '') }}" />
                             <x-input-error for="external_url" class="mt-2" />

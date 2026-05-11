@@ -1,9 +1,9 @@
 <x-front-layout class="post">
     @section('metatags')
         <x-meta
-            title="{{ $post->title }}"
+            title="{{ $post->metatitle ? $post->metatitle : $post->title }}"
             image="{{ $post->getThumbnailUrl('lg') }}"
-            description="{{ $post->excerpt }}"
+            description="{{ $post->metadescription ? $post->metadescription : $post->excerpt }}"
         />
     @endsection
 

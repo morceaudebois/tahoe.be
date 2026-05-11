@@ -14,6 +14,8 @@ class Post extends Model {
         'slug',
         'tags',
         'excerpt',
+        'metadescription',
+        'metatitle',
         'external_url',
         'source_url',
         'body',
