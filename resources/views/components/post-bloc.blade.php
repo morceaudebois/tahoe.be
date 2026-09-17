@@ -4,9 +4,15 @@
         <a href="/post/{{ $post->slug }}" title='Read post "{{ $post->title }}", a {{ $post->category->name }}' tabindex="0">
             <div class="info">
                 <div class="top">
-                    @if ($post->category->name)
-                        <h6>{{ $post->category->name }}</h6>
-                    @endif
+                    <div class="left">
+                        @if ($post->category->name)
+                            <h6>{{ $post->category->name }}</h6>
+
+                            @if ($post->category->slug === "blog" && !$featured)
+                                · <span title="{{ \Carbon\Carbon::parse($post->date)->translatedFormat('F j, Y') }}">{{ \Carbon\Carbon::parse($post->date)->translatedFormat('F Y') }}</span>
+                            @endif
+                        @endif
+                    </div>
                     <div {{ $featured ? 'class=links' : '' }}>
                         @livewire('like-button', ['element' => $post, 'glass' => $featured ? true : false])
                     </div>

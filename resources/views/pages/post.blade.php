@@ -31,13 +31,13 @@
             </div>
 
             @if ($post->category->name) 
-            <div class="onTopOfTitle">
-                <h6>{{ $post->category->name }}</h6>
+                <div class="onTopOfTitle">
+                    <h6>{{ $post->category->name }}</h6>
 
-                @if ($post->category->slug === "blog")
-                · <span title="{{ \Carbon\Carbon::parse($post->date)->translatedFormat('F j, Y') }}">{{ $post->created_at->diffForHumans() }}</span>
-                @endif
-            </div>
+                    @if ($post->category->slug === "blog")
+                    · <span title="{{ \Carbon\Carbon::parse($post->date)->translatedFormat('F j, Y') }}">{{ $post->created_at->diffForHumans() }}</span>
+                    @endif
+                </div>
             @endif
 
             <h1>{{ $post->title }}</h1>

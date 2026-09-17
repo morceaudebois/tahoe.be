@@ -3,7 +3,7 @@
         $sortedPosts = $posts->where('draft', false)->sortByDesc('date');
 
         $projects = $sortedPosts->filter(function ($post) {
-            return $post->category?->slug !== 'blog';
+            return $post;
         });
 
         $blog_posts = $sortedPosts->filter(function ($post) {
@@ -40,7 +40,7 @@
     @if (!$blog_posts->isEmpty())
         <section id="blog">
             <h3>Blog</h3>
-            <p>Mostly for when I want to document something that might also interest you.</p>
+            <p>For updates and when something deserves documenting.</p>
 
             <div id="post-grid">
                 @foreach($blog_posts as $post)
@@ -54,7 +54,7 @@
     @endif
 
     <section id="support">
-        <h3>Support</h3>
+        <h3>✨ Support ✨</h3>
         <p>Open source development requires a significant amount of time and effort. Since I don't run ads on my projects nor do I collect & sell your data, I don't make any money from them. This is why your support matters so much, as it keeps me motivated and allows me to dedicate more time into these projects.</p><br>
 
         <p>If you like what I do, please consider sharing my projects around, <a href="https://ko-fi.com/tahoe" title="Visit my Ko-Fi page">donating</a>, or even just <a href="mailto:mail@tahoe.be" title="Send me an email">saying thank you</a>. 😊</p>

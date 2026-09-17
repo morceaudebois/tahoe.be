@@ -80,6 +80,12 @@ body.home main {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
+
+                        .left {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 3px;
+                        }
                     }
 
                     p {

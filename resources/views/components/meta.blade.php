@@ -15,7 +15,7 @@
     $title = $title ? "$title · $author" : "$author · Maker of things";
 @endphp
  
-<title>{{ $title }}</title>
+<title>{{ html_entity_decode($title) }}</title>
 
 <meta property="og:locale" content="en" />
  
