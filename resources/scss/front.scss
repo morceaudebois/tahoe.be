@@ -311,9 +311,9 @@ h6 {
     }
 
     &.glass {
-        @include glassBackground();
         padding: 0.4em 0.7em;
         border-radius: 10px;
+        @include glassBackground();
     }
 
     &.liked {
@@ -434,12 +434,12 @@ main {
 @import "photography";
 
 .switchToAdmin {
-    @include glassBackground();
     padding: 0.4em 0.7em;
     border-radius: 10px;
     position: fixed;
     bottom: 3em;
     right: 3em;
+    @include glassBackground();
 }
 
 footer,
